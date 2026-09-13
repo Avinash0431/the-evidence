@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Evidence | Avinash R — Product Intelligence × Editorial Interface</title>
-<meta name="description" content="The evidence layer of the Avinash product ecosystem: operational bottlenecks, trade-off decisions, shipped workflows, and reported outcomes across 16 resume achievements.">
+<title>The Evidence | Avinash R — Product Manager</title>
+<meta name="description" content="The evidence layer of the Avinash product ecosystem: operational bottlenecks, trade-off decisions, shipped workflows, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.">
 
 <!-- Proxima Nova Webfont CDN + Fallbacks -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dannymichel/proxima-nova@1.0.1/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -78,6 +78,10 @@
     font-family: 'DM Serif Display', Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.01em;
+  }
+  .mono-font {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
   }
   .hand { font-family: 'Caveat', cursive; font-weight: 600; }
   p { margin: 0; }
@@ -432,7 +436,7 @@
   .work-header p {
     font-size: 0.94rem;
     color: var(--muted);
-    max-width: 62ch;
+    max-width: 64ch;
     margin-top: 8px;
   }
 
@@ -558,20 +562,21 @@
     margin-bottom: 3px;
   }
 
-  /* Thin Editorial Metadata Rail */
+  /* Explicit 3-Tier Ownership Boundary Rail */
   .ev-meta-rail {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 36px;
-    padding: 12px 0 14px;
-    border-top: 1px solid rgba(12, 16, 24, 0.08);
-    border-bottom: 1px solid rgba(12, 16, 24, 0.08);
+    padding: 12px 16px;
+    background: #EAE6DB;
+    border-radius: 6px;
+    border: 1px solid rgba(12, 16, 24, 0.08);
   }
   .ev-meta-line {
     display: flex;
     align-items: baseline;
-    gap: 14px;
+    gap: 12px;
     font-size: 0.81rem;
     line-height: 1.45;
   }
@@ -580,12 +585,17 @@
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--paper-sub);
-    min-width: 80px;
+    min-width: 86px;
     flex-shrink: 0;
   }
+  .ev-meta-kicker.owned { color: #0E6656; }
+  .ev-meta-kicker.partnered { color: #8F6A1E; }
+  .ev-meta-kicker.not-mine { color: #727C8E; }
+
   .ev-meta-val { color: #232B38; font-weight: 500; }
-  .ev-meta-val.ownership { color: var(--signal-deep); font-weight: 600; }
+  .ev-meta-val.owned { color: #0E6656; font-weight: 700; }
+  .ev-meta-val.partnered { color: #4B5563; font-weight: 500; }
+  .ev-meta-val.not-mine { color: #6B7280; font-weight: 500; font-style: italic; }
 
   /* Editorial Master Header */
   .deep-evidence-master-header {
@@ -734,6 +744,20 @@
     font-weight: 700;
     color: var(--paper-text);
   }
+  .flagship-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8F6A1E;
+    background: rgba(199, 158, 67, 0.12);
+    border: 1px solid rgba(199, 158, 67, 0.3);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
   .bei-bullet-subtext { font-size: 0.76rem; color: var(--paper-muted); }
 
   .bei-action-col { justify-self: end; }
@@ -758,7 +782,7 @@
     .bei-action-col { justify-self: start; }
   }
 
-  /* Expanded Continuous Timeline (Clear Visual Hierarchy: Problem → Decision → Outcome lead) */
+  /* Expanded Continuous Timeline */
   .bei-story-pane {
     display: none;
     padding: 30px 24px 32px;
@@ -769,7 +793,7 @@
 
   .causal-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
     gap: 32px;
     align-items: start;
   }
@@ -927,7 +951,7 @@
     font-weight: 600;
   }
 
-  /* Sidebar Stack */
+  /* Concrete PM Artifact Box */
   .c-sidebar-stack {
     display: flex;
     flex-direction: column;
@@ -954,7 +978,40 @@
     padding-bottom: 6px;
     border-bottom: 1px solid rgba(12, 16, 24, 0.08);
   }
-  .c-art-sublabel { font-size: 0.66rem; font-weight: 600; color: #6C7688; text-transform: none; }
+  .c-art-sublabel { font-size: 0.66rem; font-weight: 700; color: var(--signal-deep); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Spec Excerpt Styling */
+  .artifact-spec-box {
+    background: #FAF8F2;
+    border: 1px solid rgba(12, 16, 24, 0.08);
+    border-radius: 5px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+  .spec-kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4B5563;
+    margin-bottom: 6px;
+  }
+  .spec-kicker span.tag {
+    color: #0E6656;
+    background: rgba(34,181,155,0.12);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .spec-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #1F2937;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
   .c-flow-row {
     background: #FAF8F2;
@@ -1009,7 +1066,7 @@
   }
 
   /* ========================================================
-     05: PATTERNS
+     05: PATTERNS & INTELLECTUAL HONESTY
   ======================================================== */
   .evidence-shows-sec {
     background: var(--ink-900);
@@ -1023,7 +1080,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
-    align-items: center;
+    align-items: start;
   }
   @media(min-width: 900px) {
     .ess-layout { grid-template-columns: 0.85fr 1.15fr; }
@@ -1041,6 +1098,29 @@
     line-height: 1.68;
     color: var(--muted);
     margin-top: 12px;
+  }
+
+  /* When Evidence Changed My Mind Callout */
+  .mind-change-box {
+    margin-top: 24px;
+    background: rgba(199, 158, 67, 0.08);
+    border: 1px solid var(--brass-border);
+    border-left: 3px solid var(--brass);
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+  .mind-change-tag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 4px;
+  }
+  .mind-change-text {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(250, 249, 246, 0.85);
   }
 
   .instinct-blocks {
@@ -1202,7 +1282,7 @@
           <h1 class="hero-h1">The evidence behind <br>the <span class="accent">thinking</span>.</h1>
 
           <div class="hero-narrative">
-            <p>Beyond My Resume shows how I think about products. This website unpacks what happened when that thinking met real constraints, trade-off decisions, and reported outcomes across 16 resume achievements.</p>
+            <p>Beyond My Resume shows how I think about products. This website unpacks what happened when that thinking met real constraints, trade-off decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.</p>
           </div>
 
           <div class="hero-cta-row">
@@ -1277,7 +1357,7 @@
       <div class="foundation-lead-area">
         <div class="eyebrow" style="color:#C79E43;">The Foundation · 2 Years</div>
         <h2>Operating under real constraints before software.</h2>
-        <p>My first two years in steel manufacturing established an operational baseline: mapping cascading dependencies, defining falsifiable quality acceptance, and tracing symptoms to systemic constraints.</p>
+        <p>Before software, I learned how systems behave under real physical constraints: mapping dependencies, defining falsifiable acceptance criteria, and tracing operational symptoms back to constraints.</p>
       </div>
 
       <div class="disciplines-grid">
@@ -1307,7 +1387,7 @@
       <div class="work-header">
         <span class="recruiter-kicker">8+ Years Across Software, Consumer IoT &amp; Industrial Systems</span>
         <h2>Where the thinking met reality.</h2>
-        <p>Select a product environment to inspect the operational bottlenecks, product decisions, and reported outcomes across 16 resume achievements.</p>
+        <p>Select a product environment to inspect the operational bottlenecks, product decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.</p>
       </div>
 
       <div class="company-nav-cards">
@@ -1389,15 +1469,19 @@
         </div>
       </div>
 
-      <!-- Scope & Ownership Thin Editorial Metadata Rail -->
+      <!-- Explicit 3-Tier Ownership Boundary Rail -->
       <div class="ev-meta-rail">
         <div class="ev-meta-line">
-          <span class="ev-meta-kicker">Scope</span>
-          <span class="ev-meta-val" id="evScopeVal">Connected hardware onboarding · Smart Gym · AI coaching · Workout experience · Subscription growth</span>
+          <span class="ev-meta-kicker owned">Owned</span>
+          <span class="ev-meta-val owned" id="evOwnedVal">Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking</span>
         </div>
         <div class="ev-meta-line">
-          <span class="ev-meta-kicker">Ownership</span>
-          <span class="ev-meta-val ownership" id="evOwnershipLine">Product discovery · Companion app PRDs · Feature prioritization · Experiment design · Cross-functional rollout</span>
+          <span class="ev-meta-kicker partnered">Partnered</span>
+          <span class="ev-meta-val partnered" id="evPartneredVal">UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing</span>
+        </div>
+        <div class="ev-meta-line">
+          <span class="ev-meta-kicker not-mine">Not Mine</span>
+          <span class="ev-meta-val not-mine" id="evNotMineVal">Hardware PCB/BLE firmware manufacturing · Gym hardware industrial tooling · Membership base pricing</span>
         </div>
       </div>
 
@@ -1430,14 +1514,22 @@
     </div>
   </section>
 
-  <!-- 05: PATTERNS -->
+  <!-- 05: PATTERNS & INTELLECTUAL HONESTY -->
   <section class="evidence-shows-sec" id="synthesis">
     <div class="wrap">
       <div class="ess-layout">
         <div class="ess-copy">
           <div class="eyebrow" style="color:#C79E43;">Product Synthesis</div>
           <h2>Patterns observed across environments.</h2>
-          <p>Across fintech, enterprise manufacturing, and connected consumer hardware, four operational principles consistently determined adoption and velocity.</p>
+          <p>Across fintech, enterprise manufacturing, and connected consumer hardware, four operational patterns repeatedly shaped adoption and velocity.</p>
+
+          <!-- Defensible PM Signal: When Evidence Changed My Mind -->
+          <div class="mind-change-box">
+            <div class="mind-change-tag">Intellectual Honesty · When Evidence Changed My Mind</div>
+            <div class="mind-change-text">
+              At Sportstech, our initial hypothesis was that device setup drop-offs were driven by insufficient instructional guidance, leading to calls for animated video guides. Telemetry analysis disproved this: users weren't abandoning due to confusion; they were encountering Bluetooth stack discovery timeouts. We shifted focus from educational tutorials to the connection flow itself, after which onboarding setup completion improved materially.
+            </div>
+          </div>
         </div>
 
         <div class="instinct-blocks">
@@ -1447,19 +1539,19 @@
             <span class="proof-cite">Seen across: Sportstech (+25% Activation) · VS Happy (14 → 6d TTV)</span>
           </div>
           <div class="instinct-row">
-            <b>02 · The physical environment dictates the software architecture</b>
+            <b>02 · The physical environment shapes the software architecture</b>
             <span>A factory floor with intermittent connectivity cannot run always-online forms. A consumer hardware setup cannot tolerate multi-step discovery menus at unboxing. Designing for physical constraints unlocks adoption.</span>
             <span class="proof-cite">Seen across: GetAI (+35% Engagement) · Sportstech (BLE Setup)</span>
           </div>
           <div class="instinct-row">
-            <b>03 · Highest-leverage interventions removed manual coordination</b>
+            <b>03 · High-leverage interventions often removed manual coordination</b>
             <span>Replacing phone collections with self-serve document ingestion eliminated hours of back-and-forth status calls. Centralizing digital plant logs eliminated manual spreadsheet consolidation for weekly audits.</span>
             <span class="proof-cite">Seen across: VS Happy (-30% Manual Effort) · GetAI (-40% Turnaround)</span>
           </div>
           <div class="instinct-row">
             <b>04 · Measuring operational movement, not release outputs</b>
             <span>Shipping software is an output. The meaningful evaluation is whether activation, session completion, cycle time, or retention moved after rollout.</span>
-            <span class="proof-cite">Seen across all 16 resume achievements</span>
+            <span class="proof-cite">Seen across all 12 evidence stories covering 16 resume outcomes</span>
           </div>
         </div>
       </div>
@@ -1472,13 +1564,13 @@
       <div class="eco-head">
         <div class="eyebrow" style="color:#C79E43;">The Ecosystem</div>
         <h2>Four layers. One coherent body of work.</h2>
-        <p>A connected system answering distinct questions across the evaluation journey.</p>
+        <p>Four interconnected artifacts addressing distinct evaluation questions across the candidate journey.</p>
       </div>
 
       <div class="eco-system-architecture">
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">1 · Give Me The Signal</div>
+            <div class="esa-step-tag">1 · Career Context</div>
             <div class="esa-title">Resume</div>
             <div class="esa-question">What did I do?</div>
             <div class="esa-body">Career trajectory, titles, companies, and quantified achievements structured for fast recruiter evaluation.</div>
@@ -1488,7 +1580,7 @@
 
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">2 · Give Me The Thinking</div>
+            <div class="esa-step-tag">2 · Product Mindset</div>
             <div class="esa-title">Beyond My Resume</div>
             <div class="esa-question">How do I think?</div>
             <div class="esa-body">Product mental models, prioritization frameworks, discovery trade-offs, and lessons from execution failures.</div>
@@ -1498,17 +1590,17 @@
 
         <div class="esa-node active">
           <div>
-            <div class="esa-step-tag" style="color:var(--signal);">3 · Give Me The Proof</div>
+            <div class="esa-step-tag" style="color:var(--signal);">3 · Production Evidence</div>
             <div class="esa-title">The Evidence</div>
             <div class="esa-question" style="color:var(--signal);">How that thinking held up</div>
-            <div class="esa-body">The proof behind the bullet points: real operational constraints, direct PM ownership, shipped workflows, and reported outcomes across 16 achievements.</div>
+            <div class="esa-body">The proof behind the bullet points: real operational constraints, direct PM ownership, shipped workflows, and reported outcomes across 12 stories.</div>
           </div>
-          <span style="font-size: 0.76rem; font-weight:800; color:var(--signal); margin-top:12px;">Current Evidence Layer ✓</span>
+          <span style="font-size: 0.72rem; font-weight:700; color:var(--signal); margin-top:12px; letter-spacing:0.04em;">You Are Here</span>
         </div>
 
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">4 · Let's Test It Together</div>
+            <div class="esa-step-tag">4 · The Conversation</div>
             <div class="esa-title">The Interview</div>
             <div class="esa-question">Let's discuss the work</div>
             <div class="esa-body">Direct conversation: testing assumptions, probing trade-offs, and discussing role fit.</div>
@@ -1555,16 +1647,12 @@
       name: "Sportstech",
       what: "A connected fitness ecosystem spanning smart hardware (treadmills, bikes, rowing machines, Smart Gym strength equipment), companion mobile apps, workout streaming, and personalized workout recommendations.",
       roleDesc: "Product Manager responsible for connected fitness experiences, hardware onboarding, AI coaching, and subscription growth experiments.",
-      scopeTags: [
-        "Connected hardware onboarding",
-        "Smart Gym",
-        "AI coaching",
-        "Workout experience",
-        "Subscription growth"
-      ],
-      ownershipLine: "Product discovery · Companion app PRDs · Feature prioritization · Experiment design · Cross-functional rollout",
+      ownedLine: "Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking",
+      partneredLine: "UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing",
+      notMineLine: "Hardware PCB/BLE firmware manufacturing · Gym hardware industrial tooling · Membership base pricing",
       bullets: [
         {
+          isFlagship: true,
           outcome: "+25%",
           outcomeSub: "Day-1 Activation",
           headline: "Redesigned device pairing from manual setup to guided discovery",
@@ -1579,7 +1667,12 @@
           roleContextNote: "Primary onboarding initiative outcome observed among newly unboxed hardware cohorts.",
           measurement: "Day-1 activation tracked for cohorts completing device pairing and an initial workout session within 24 hours of setup.",
           learningAdded: "You cannot educate your way out of onboarding friction. Improving the discovery architecture was a higher-leverage intervention than adding setup guide content.",
-          artifactTitle: "Device Onboarding Flow",
+          artifactTitle: "Representative PM Spec",
+          artifactSpec: {
+            title: "Requirement Spec · BLE Proximity Flow",
+            tag: "PRD-2025-03",
+            code: "STATE_MACHINE: DISCONNECTED -> RSSI_DETECT (Proximity Threshold) -> AUTO_PAIR -> CALIBRATION_INIT\nAC-1.2: If discovery latency > timeout threshold, execute background retry before surfacing user-facing recovery UI."
+          },
           artifactRows: [
             { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "High setup friction" },
             { resolved: true, bold: "After (Guided Discovery)", text: "Unbox hardware → App auto-discovers device → One-tap connection → Immediate calibration workout launch" },
@@ -1684,17 +1777,12 @@
       name: "GetAI × ITC Infotech",
       what: "Digital operations and AI transformation for ITC's Foods & Beverages plants (snacks, noodles, pasta, biscuits, and staples).",
       roleDesc: "Product Manager owning two enterprise workflows: shop-floor operations through IOMS and AI-assisted contract workflows through CMS.",
-      scopeTags: [
-        "Shop-floor digitization",
-        "IOMS",
-        "Contract workflows",
-        "AI-assisted drafting",
-        "Clause review",
-        "Analytics"
-      ],
-      ownershipLine: "IOMS mobile sync requirements · CMS AI workflow PRDs & prompt boundaries · Milestone delivery",
+      ownedLine: "IOMS mobile sync requirements · CMS AI prompt boundary guidelines · Human review gate logic · KPI schemas",
+      partneredLine: "Plant engineering leads · Enterprise UI designers · Security/compliance auditors · Plant supervisors",
+      notMineLine: "Plant physical Wi-Fi mesh network infrastructure · SAP ERP core ledger administration · Corporate legal sign-offs",
       bullets: [
         {
+          isFlagship: true,
           outcome: "+35%",
           outcomeSub: "Feature Engagement",
           headline: "Shipped offline-first shop floor logging application (IOMS)",
@@ -1709,7 +1797,12 @@
           roleContextNote: "Primary operational adoption outcome observed across active manufacturing shifts.",
           measurement: "+35% digital feature engagement across pilot manufacturing facilities compared to legacy paper logs.",
           learningAdded: "Software must respect real environmental constraints. Designing for offline realities unlocked floor adoption where cloud tools failed.",
-          artifactTitle: "Floor Operations Workflow",
+          artifactTitle: "Representative Sync Spec",
+          artifactSpec: {
+            title: "Sync Architecture · Local Queue & Conflict Rule",
+            tag: "IOMS-SYNC-01",
+            code: "SYNC_RULE: Local IndexedDB -> Batch queue -> Background ping (20s)\nCONFLICT_HANDLING: Shift supervisor timestamp takes precedence on concurrent row edits."
+          },
           artifactRows: [
             { resolved: false, bold: "Before", text: "Unstable plant connectivity caused form drops and reinforced reliance on paper logbooks", note: "Connectivity gap" },
             { resolved: true, bold: "After", text: "Offline-first tablet entry with background synchronization when network is available" },
@@ -1752,7 +1845,7 @@
           reportedOutcome: "-40% Reporting Turnaround · 95% On-Time Delivery",
           roleContextNote: "Reporting turnaround dropped by 40% and 95% on-time release completion was achieved across scheduled enterprise deployments.",
           measurement: "40% reduction in turnaround time for recurring operational review and audit cycles; 95% on-time release completion tracked across enterprise software deployment schedule.",
-          learningAdded: "Centralizing operational data at the point of entry reduces downstream review overhead, while resolving factory operational constraints before sprints begin guarantees release predictability.",
+          learningAdded: "Centralizing operational data at the point of entry reduces downstream review overhead, while resolving factory operational constraints before sprints begin improves release predictability.",
           artifactTitle: "Reporting Automation Shift",
           artifactRows: [
             { resolved: false, bold: "Before", text: "Fragmented logs manually compiled across spreadsheets, and mid-sprint requirement pauses delayed launches", note: "Delays & scope drift" },
@@ -1770,14 +1863,9 @@
       name: "VS Happy Infotech",
       what: "A US-based financial services platform managing auto title, mortgage, commercial, and personal loan origination.",
       roleDesc: "Joined as Project Team Manager in 2020; transitioned into Product Manager in 2022 owning applicant self-service, document intake, and operational reporting.",
-      scopeTags: [
-        "Loan onboarding",
-        "Self-service applications",
-        "Document workflows",
-        "Applicant visibility",
-        "Operational reporting"
-      ],
-      ownershipLine: "Self-service funnel PRDs · Document verification scope · Milestone KPIs · Backlog prioritization",
+      ownedLine: "Self-service funnel PRDs · Document validation rules · SQL dashboard schemas · Sprint grooming prioritization",
+      partneredLine: "Underwriting operations heads · Frontend web designers · Database engineers · Compliance officers",
+      notMineLine: "Capital credit risk thresholds · Credit bureau licensing agreements · Loan balance underwriting decisions",
       bullets: [
         {
           outcome: "+20 · -20%",
@@ -1794,7 +1882,12 @@
           roleContextNote: "Primary applicant experience and funnel conversion outcome observed after self-service rollout.",
           measurement: "NPS improvement measured via post-intake customer surveys; churn reduction measured as the decrease in borrower drop-offs between initial inquiry and completed document submission.",
           learningAdded: "Diagnosing whether friction stems from superficial usability versus a structural operating-model dependency is essential before committing engineering resources.",
-          artifactTitle: "Onboarding Flow Shift",
+          artifactTitle: "Onboarding Flow Architecture",
+          artifactSpec: {
+            title: "Funnel Architecture · 4-Step Intake Decomposition",
+            tag: "PRD-FUNNEL-04",
+            code: "PROGRESSION: 1. Identity Auth -> 2. Asset Lookup (VIN/Mileage) -> 3. Instant Range -> 4. Doc Upload\nGATE RULE: Do not block app progression on manual CS phone consultation."
+          },
           artifactRows: [
             { resolved: false, bold: "Before (Assisted Journey)", text: "Customer phone call → CS phone intake → Manual app creation → Disjointed email doc request → Email attachment return → Manual verification backlog", note: "CS dependency" },
             { resolved: true, bold: "After (Self-Service Journey)", text: "Web application → Direct info & vehicle entry → Live estimated value & loan range → Customer decides to continue → Direct in-app document upload → Immediate underwriting queue" },
@@ -1802,6 +1895,7 @@
           ]
         },
         {
+          isFlagship: true,
           outcome: "14 → 6d",
           outcomeSub: "Time-to-Value (TTV)",
           headline: "Cut loan cycle time by eliminating redundant manual handoffs",
@@ -1916,9 +2010,10 @@
     document.getElementById('evCompanyWhat').textContent = co.what;
     document.getElementById('evCompanyRoleDesc').textContent = co.roleDesc;
 
-    // Scope & Ownership Rail
-    document.getElementById('evScopeVal').textContent = co.scopeTags.join('  ·  ');
-    document.getElementById('evOwnershipLine').textContent = co.ownershipLine;
+    // 3-Tier Ownership Rail
+    document.getElementById('evOwnedVal').textContent = co.ownedLine;
+    document.getElementById('evPartneredVal').textContent = co.partneredLine;
+    document.getElementById('evNotMineVal').textContent = co.notMineLine;
     document.getElementById('evStoryCount').textContent = `${co.bullets.length} Stories`;
 
     // Render Evidence Stories
@@ -1935,7 +2030,7 @@
           </div>
 
           <div class="bei-headline-column">
-            <span class="bei-bullet-label">${b.headline}</span>
+            <span class="bei-bullet-label">${b.isFlagship ? '<span class="flagship-tag">Flagship</span>' : ''}${b.headline}</span>
             <span class="bei-bullet-subtext">Inspect operational bottleneck, PM trade-off, and measured result</span>
           </div>
 
@@ -1947,7 +2042,7 @@
           </div>
         </button>
 
-        <!-- Expanded Continuous Evidence Timeline: Problem → Decision → Outcome Lead -->
+        <!-- Expanded Continuous Evidence Timeline -->
         <div class="bei-story-pane" id="story-${idx}-${i}">
           <div class="causal-grid">
             <div class="causal-timeline">
@@ -1961,7 +2056,7 @@
                 <div class="tl-context-note"><b>Operational Context:</b> ${b.bizContext}</div>
               </div>
 
-              <!-- Step 02: Investigation (Secondary Detail) -->
+              <!-- Step 02: Investigation -->
               <div class="tl-step">
                 <div class="tl-step-header">
                   <span class="tl-step-num">02</span>
@@ -1979,7 +2074,7 @@
                 <div class="tl-decision-text">${b.decision}</div>
               </div>
 
-              <!-- Step 04: PM Scope (Secondary Detail) -->
+              <!-- Step 04: PM Scope & Collaboration -->
               <div class="tl-step role">
                 <div class="tl-step-header">
                   <span class="tl-step-num">04</span>
@@ -1997,7 +2092,7 @@
                 </div>
               </div>
 
-              <!-- Step 05: Product Change (Secondary Detail) -->
+              <!-- Step 05: Product Change -->
               <div class="tl-step">
                 <div class="tl-step-header">
                   <span class="tl-step-num">05</span>
@@ -2016,7 +2111,7 @@
                 <span class="tl-outcome-note">${b.roleContextNote}</span>
               </div>
 
-              <!-- Step 07: Learning (Secondary Detail) -->
+              <!-- Step 07: Learning -->
               <div class="tl-step">
                 <div class="tl-step-header">
                   <span class="tl-step-num">07</span>
@@ -2026,13 +2121,24 @@
               </div>
             </div>
 
-            <!-- Sidebar Stack -->
+            <!-- Sidebar Stack with Real Artifact Snippet -->
             <div class="c-sidebar-stack">
               <div class="c-artifact-card">
                 <div class="c-art-title">
                   <span>${b.artifactTitle}</span>
-                  <span class="c-art-sublabel">Workflow transformation</span>
+                  <span class="c-art-sublabel">PM Spec</span>
                 </div>
+                
+                ${b.artifactSpec ? `
+                  <div class="artifact-spec-box">
+                    <div class="spec-kicker">
+                      <span>${b.artifactSpec.title}</span>
+                      <span class="tag">${b.artifactSpec.tag}</span>
+                    </div>
+                    <div class="spec-code">${b.artifactSpec.code}</div>
+                  </div>
+                ` : ''}
+
                 ${b.artifactRows.map(r => `
                   <div class="c-flow-row ${r.resolved ? 'resolved' : ''}">
                     <b>${r.bold}</b>
