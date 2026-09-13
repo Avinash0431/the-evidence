@@ -1671,7 +1671,7 @@
           artifactSpec: {
             title: "Sanitized Working Requirement · AC-BLE-02",
             tag: "PRD-2025-03",
-            code: "CONNECTION_FLOW: DISCONNECTED -> RSSI Proximity Scan -> Auto-Pair Handshake -> Calibration Prompt\nAC-1.2: If discovery exceeds timeout threshold, trigger silent background retry before surfacing manual selection fallback."
+            code: "CONNECTION_FLOW: DISCONNECTED -> RSSI Discovery Scan -> Proximity Auto-Connect -> Workout Calibration Launch\nAC-1.2: If discovery latency exceeds timeout threshold, trigger background retry before surfacing manual selection fallback."
           },
           artifactRows: [
             { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "High setup friction" },
@@ -2121,7 +2121,7 @@
               </div>
             </div>
 
-            <!-- Sidebar Stack with Real Artifact Snippet -->
+            <!-- Sidebar Stack with Representative Working Spec -->
             <div class="c-sidebar-stack">
               <div class="c-artifact-card">
                 <div class="c-art-title">
