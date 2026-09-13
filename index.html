@@ -1,58 +1,56 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Evidence | Avinash R — Product Manager</title>
-<meta name="description" content="The evidence layer of the Avinash product ecosystem: operational bottlenecks, trade-off decisions, shipped workflows, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.">
+<title>The Evidence | Avinash R — Product Intelligence × Editorial Interface</title>
+<meta name="description" content="The real-world evidence layer of the Avinash product ecosystem: how product thinking met real constraints, operational decisions, and reported outcomes across 16 resume achievements.">
 
 <!-- Proxima Nova Webfont CDN + Fallbacks -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dannymichel/proxima-nova@1.0.1/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --ink-950: #070B10;
-    --ink-900: #0D131C;
-    --ink-850: #121A26;
-    --ink-800: #182232;
+    --ink-950: #06090E;
+    --ink-900: #0A0F17;
+    --ink-850: #101622;
+    --ink-800: #151E2E;
 
     /* Surface Hierarchy */
-    --surface-flat: #0F1622;
-    --glass-subtle: rgba(15, 22, 34, 0.55);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-border-bright: rgba(255, 255, 255, 0.16);
-    --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
-    --glass-blur: blur(20px);
+    --surface-flat: #0E1420;
+    --glass-subtle: rgba(16, 23, 36, 0.45);
+    --glass-active: rgba(22, 33, 52, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-border-bright: rgba(255, 255, 255, 0.2);
+    --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
+    --glass-blur: blur(24px) saturate(180%);
+    --glass-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.35);
 
-    /* Editorial Canvas */
+    /* Editorial Light Canvas */
     --paper-bg: #F4F1E8;
     --paper-card: #FFFFFF;
-    --paper-border: rgba(12, 16, 24, 0.09);
-    --paper-border-focus: rgba(34, 181, 155, 0.4);
+    --paper-border: rgba(12, 16, 24, 0.08);
     --paper-text: #141B26;
     --paper-muted: #4E5767;
     --paper-sub: #727C8E;
 
-    /* Disciplined Color System */
+    /* Disciplined Color System: 90% Neutral · 8% Signal Teal · 2% Brass */
     --signal: #22B59B;
     --signal-bright: #2DD4B4;
-    --signal-deep: #0E6656;
-    --signal-dim: rgba(34, 181, 155, 0.10);
-    --signal-border: rgba(34, 181, 155, 0.30);
+    --signal-dim: rgba(34, 181, 155, 0.12);
+    --signal-border: rgba(34, 181, 155, 0.36);
 
     --brass: #C79E43;
-    --brass-deep: #8F6A1E;
-    --brass-dim: rgba(199, 158, 67, 0.10);
-    --brass-border: rgba(199, 158, 67, 0.28);
+    --brass-dim: rgba(199, 158, 67, 0.12);
+    --brass-border: rgba(199, 158, 67, 0.32);
 
     --white: #FAF9F6;
     --muted: rgba(250, 249, 246, 0.72);
     --muted-dim: rgba(250, 249, 246, 0.42);
-    --line: rgba(255, 255, 255, 0.07);
+    --line: rgba(255, 255, 255, 0.08);
     --maxw: 1220px;
   }
 
@@ -80,10 +78,6 @@
     font-weight: 400;
     letter-spacing: -0.01em;
   }
-  .mono-font {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-  }
   .hand { font-family: 'Caveat', cursive; font-weight: 600; }
   p { margin: 0; }
   a { color: inherit; text-decoration: none; }
@@ -99,14 +93,14 @@
   a:focus-visible, button:focus-visible { outline: 2px solid var(--signal-bright); outline-offset: 3px; }
 
   .eyebrow {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     color: var(--signal-bright);
     text-transform: uppercase;
   }
 
-  /* Header Navigation: Strictly Centered */
+  /* Header Navigation */
   header {
     position: sticky;
     top: 14px;
@@ -116,57 +110,47 @@
     padding: 0 clamp(16px, 3vw, 32px);
   }
   .navrow {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
+    display: flex;
     align-items: center;
-    padding: 10px 24px;
+    justify-content: space-between;
+    padding: 12px 26px;
     border-radius: 999px;
     background: var(--glass-subtle);
     border: 1px solid var(--glass-border);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--glass-specular), 0 12px 30px rgba(0, 0, 0, 0.45);
+    box-shadow: var(--glass-specular), 0 16px 36px rgba(0, 0, 0, 0.45);
   }
-  @media(max-width: 920px) {
-    .navrow {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
   .mark {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 800;
     line-height: 1.1;
-    justify-self: start;
   }
   .mark .r { color: var(--signal-bright); font-style: normal; }
   .mark small {
     display: block;
     font-weight: 600;
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     color: var(--muted-dim);
     margin-top: 2px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  /* Center-Aligned Links Group */
   nav.links {
-    justify-self: center;
     display: flex;
     align-items: center;
-    gap: 3px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     padding: 3px 6px;
   }
-  @media(max-width: 920px) { nav.links { display: none; } }
+  @media(max-width: 768px) { nav.links { display: none; } }
   nav.links a {
-    font-size: 0.77rem;
+    font-size: 0.8rem;
     color: rgba(250, 249, 246, 0.72);
-    padding: 6px 13px;
+    padding: 7px 16px;
     border-radius: 999px;
     transition: all .18s ease;
     font-weight: 600;
@@ -174,73 +158,60 @@
   nav.links a.active {
     color: #fff;
     background: rgba(34, 181, 155, 0.22);
-    border: 1px solid rgba(34, 181, 155, 0.45);
+    border: 1px solid rgba(34, 181, 155, 0.5);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.2);
   }
-  nav.links a:not(.active):hover { color: #fff; background: rgba(255,255,255,0.05); }
+  nav.links a:not(.active):hover { color: #fff; background: rgba(255,255,255,0.06); }
 
-  .header-right {
-    justify-self: end;
+  .header-tagline {
+    font-size: 0.76rem;
+    color: var(--brass);
+    font-weight: 700;
+    letter-spacing: 0.04em;
     display: flex;
     align-items: center;
-    gap: 12px;
-  }
-  .nav-resume-btn {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--white);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--glass-border-bright);
-    padding: 6px 14px;
-    border-radius: 999px;
-    transition: all .18s ease;
-  }
-  .nav-resume-btn:hover {
-    background: rgba(34, 181, 155, 0.2);
-    border-color: var(--signal-bright);
-  }
-
-  .chapter-tag {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--brass);
-    display: inline-flex;
-    align-items: center;
     gap: 6px;
-    margin-bottom: 12px;
+  }
+  .header-tagline::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brass);
+    box-shadow: 0 0 6px var(--brass);
   }
 
   /* ========================================================
-     SCREEN 01: HERO — WHY DOES THIS LAYER EXIST?
+     01: HERO: THE EVIDENCE ENGINE
   ======================================================== */
   .hero-sec {
     position: relative;
-    padding: 72px 0 76px;
+    padding: 76px 0 88px;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
-    margin-top: -62px;
-    padding-top: 130px;
+    margin-top: -66px;
+    padding-top: 136px;
   }
   .hero-backdrop-photo {
     position: absolute;
     inset: 0;
     z-index: 0;
     background-image: 
-      radial-gradient(ellipse at 75% 35%, rgba(34, 181, 155, 0.08) 0%, transparent 60%),
-      linear-gradient(to bottom, rgba(7, 11, 16, 0.88) 0%, var(--ink-950) 100%),
-      url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=2200&q=80');
+      radial-gradient(ellipse at 75% 35%, rgba(34, 181, 155, 0.18) 0%, rgba(199, 158, 67, 0.06) 35%, transparent 68%),
+      linear-gradient(to bottom, rgba(6, 9, 14, 0.75) 0%, rgba(6, 9, 14, 0.94) 60%, var(--ink-950) 100%),
+      url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=2200&q=85');
     background-size: cover;
     background-position: center 30%;
-    opacity: 0.14;
+    opacity: 0.38;
+    filter: saturate(1.1) contrast(1.1);
   }
   .hero-grid-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
     background-size: 48px 48px;
     pointer-events: none;
   }
@@ -253,115 +224,162 @@
     align-items: center;
   }
   @media(min-width: 980px) {
-    .hero-grid { grid-template-columns: 1.18fr 0.82fr; }
+    .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
   }
 
   .ecosystem-flow-tag {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    font-size: 0.67rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
     color: var(--muted-dim);
     text-transform: uppercase;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-specular);
+    padding: 7px 18px;
+    border-radius: 999px;
+    margin-bottom: 24px;
   }
   .ecosystem-flow-tag span.active-node {
     color: var(--signal-bright);
-    font-weight: 700;
+    font-weight: 800;
   }
 
   h1.hero-h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 4.4vw, 4rem);
-    line-height: 1.08;
+    font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+    line-height: 1.06;
     color: #fff;
     font-weight: 400;
   }
   h1.hero-h1 .accent { color: var(--signal-bright); font-style: italic; }
 
   .hero-narrative {
-    margin-top: 18px;
-    font-size: 1.04rem;
-    line-height: 1.68;
+    margin-top: 22px;
+    font-size: 1.12rem;
+    line-height: 1.72;
     color: var(--muted);
-    max-width: 50ch;
+    max-width: 48ch;
   }
-  .hero-narrative strong { color: #fff; }
+  .hero-narrative strong { color: #fff; font-weight: 700; }
 
-  .hero-cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-apple {
+  .hero-role-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.86rem;
-    font-weight: 700;
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
-    border: 1px solid var(--glass-border-bright);
-    padding: 11px 24px;
-    border-radius: 999px;
-    transition: all .2s ease;
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--signal-bright);
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
-  .btn-apple:hover {
-    background: rgba(34, 181, 155, 0.2);
-    border-color: var(--signal-bright);
-    transform: translateY(-1px);
+  .hero-role-badge::before {
+    content: "—";
+    color: var(--brass);
+    font-weight: 800;
   }
 
-  /* Circuit Visual */
+  .hero-cta-row { margin-top: 36px; }
+  .btn-apple {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid var(--glass-border-bright);
+    box-shadow: var(--glass-specular), 0 8px 24px rgba(0,0,0,0.35);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    padding: 12px 28px;
+    border-radius: 999px;
+    transition: all .22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-apple:hover {
+    background: rgba(34, 181, 155, 0.25);
+    border-color: var(--signal-bright);
+    transform: translateY(-2px);
+  }
+  .btn-apple .a { transition: transform .18s ease; }
+  .btn-apple:hover .a { transform: translateX(3px); }
+
+  /* Evidence in Motion Circuit */
   .evidence-visual-stage {
-    background: rgba(13, 19, 28, 0.7);
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    padding: 24px 26px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    background: var(--glass-subtle);
+    border: 1px solid var(--glass-border-bright);
+    border-radius: 12px;
+    padding: 26px 28px;
+    position: relative;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-specular), var(--glass-shadow);
   }
   .evs-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.69rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--signal-bright);
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .circuit-company-indicator {
-    font-size: 0.69rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 800;
     color: var(--brass);
     background: var(--brass-dim);
     border: 1px solid var(--brass-border);
-    padding: 3px 9px;
+    padding: 3px 10px;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
   .live-dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--brass);
+    box-shadow: 0 0 8px var(--brass);
+    animation: pulseDot 2s infinite ease-in-out;
+  }
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.4); opacity: 1; }
   }
 
-  .circuit-svg-wrap { width: 100%; height: 180px; }
-  .circuit-svg { width: 100%; height: 100%; overflow: visible; }
-  .circuit-bg-track { stroke: rgba(255,255,255,0.1); stroke-width: 1.8; fill: none; stroke-dasharray: 4 4; }
+  .circuit-svg-wrap {
+    width: 100%;
+    height: 190px;
+  }
+  .circuit-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .circuit-bg-track {
+    stroke: rgba(255,255,255,0.12);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 4 4;
+  }
   .signal-line {
     stroke: var(--signal-bright);
-    stroke-width: 2.2;
+    stroke-width: 2.6;
     fill: none;
     stroke-dasharray: 60 180;
     animation: signalFlow 4.5s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(45, 212, 180, 0.6));
   }
   @keyframes signalFlow {
     from { stroke-dashoffset: 240; }
@@ -369,141 +387,68 @@
   }
   @media(prefers-reduced-motion: reduce) {
     .signal-line { stroke-dasharray: none; stroke: var(--signal-border); animation: none; }
+    .live-dot { animation: none; }
   }
 
-  .circuit-node text.n-label { fill: rgba(250,249,246,0.5); font-size: 10px; font-weight: 700; }
-  .circuit-node text.n-head { fill: #fff; font-size: 12px; font-weight: 700; }
-  .circuit-node circle { fill: var(--ink-850); stroke: rgba(255,255,255,0.25); stroke-width: 1.5; }
-  .circuit-node.active circle { stroke: var(--signal-bright); fill: #0E2420; }
+  .circuit-node text.n-label {
+    fill: rgba(250,249,246,0.55);
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .circuit-node text.n-head {
+    fill: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .circuit-node circle {
+    fill: var(--ink-850);
+    stroke: rgba(255,255,255,0.3);
+    stroke-width: 1.5;
+  }
+  .circuit-node.active circle {
+    stroke: var(--signal-bright);
+    fill: #0F2B26;
+  }
 
+  /* Live Rotating Step Explainer */
   .circuit-dynamic-card {
-    margin-top: 14px;
-    background: rgba(7, 11, 16, 0.6);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    padding: 11px 14px;
+    margin-top: 16px;
+    background: rgba(8, 12, 18, 0.65);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 12px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem;
     transition: opacity .25s ease;
   }
-  .cdc-left b { display: block; color: var(--signal-bright); font-size: 0.69rem; text-transform: uppercase; }
-  .cdc-left span { color: var(--muted); font-weight: 500; font-size: 0.77rem; }
+  .cdc-left b { display: block; color: var(--signal-bright); font-size: 0.72rem; text-transform: uppercase; }
+  .cdc-left span { color: var(--muted); font-weight: 500; font-size: 0.78rem; }
   .cdc-metric {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     color: var(--signal-bright);
     white-space: nowrap;
   }
 
   /* ========================================================
-     SCREEN 02: ECOSYSTEM MAP — HOW SHOULD YOU READ THIS?
-  ======================================================== */
-  .ecosystem-bridge-sec {
-    background: #0B1017;
-    padding: 56px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .eco-bridge-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    position: relative;
-  }
-  @media(max-width: 860px) {
-    .eco-bridge-grid { grid-template-columns: 1fr; gap: 14px; }
-  }
-  .eb-card {
-    background: var(--surface-flat);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: 22px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px;
-    transition: border-color .2s ease;
-  }
-  .eb-card.active-layer {
-    border-color: var(--signal);
-    background: #111A27;
-    box-shadow: 0 0 0 1px var(--signal), 0 10px 24px rgba(34, 181, 155, 0.1);
-  }
-  .eb-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .eb-number {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: var(--paper-sub);
-    text-transform: uppercase;
-  }
-  .eb-badge {
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
-  .eb-badge.here {
-    color: var(--signal-bright);
-    background: rgba(34, 181, 155, 0.15);
-    border: 1px solid rgba(34, 181, 155, 0.35);
-  }
-  .eb-badge.external {
-    color: var(--brass);
-    background: var(--brass-dim);
-    border: 1px solid var(--brass-border);
-  }
-  .eb-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .eb-question {
-    font-size: 0.79rem;
-    font-weight: 700;
-    color: var(--signal-bright);
-    margin-bottom: 6px;
-  }
-  .eb-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .eb-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.76rem;
-    font-weight: 800;
-    color: var(--signal-bright);
-    margin-top: 14px;
-  }
-
-  /* ========================================================
-     SCREEN 03: FOUNDATION (TWO-CARD CONTRASTING TRANSFER)
+     THE FOUNDATION: COMPACT SYSTEMS BRIDGE
   ======================================================== */
   .foundation-sec {
     background: var(--paper-bg);
     color: var(--paper-text);
-    padding: 68px 0 64px;
+    padding: 72px 0 64px;
     border-bottom: 1px solid rgba(10, 14, 21, 0.08);
   }
   .foundation-lead-area {
     max-width: 820px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
   }
   .foundation-lead-area h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.4vw, 2.6rem);
-    line-height: 1.15;
+    font-size: clamp(2rem, 3.4vw, 2.5rem);
+    line-height: 1.12;
     color: var(--paper-text);
     margin-top: 6px;
     font-weight: 400;
@@ -512,166 +457,159 @@
     font-size: 0.96rem;
     line-height: 1.65;
     color: var(--paper-muted);
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
-  .foundation-two-panel-grid {
+  /* Systems Transfer Architecture */
+  .systems-bridge-container {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: stretch;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
   }
-  @media(max-width: 860px) {
-    .foundation-two-panel-grid { grid-template-columns: 1fr; }
+  @media(max-width: 840px) {
+    .systems-bridge-container { grid-template-columns: 1fr; }
   }
-
-  .transfer-panel {
+  .bridge-column {
     background: #FFFFFF;
     border: 1px solid var(--paper-border);
-    border-radius: 8px;
-    padding: 26px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border-radius: 6px;
+    padding: 20px 22px;
   }
-  .transfer-panel.target {
-    border-left: 3.5px solid var(--signal-deep);
-    background: #FAF8F3;
+  .bridge-column.target {
+    border-left: 3px solid var(--signal);
+    background: #FAF8F4;
   }
-  .tp-tag {
-    font-size: 0.69rem;
+  .bridge-col-tag {
+    font-size: 0.7rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--paper-sub);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-  .transfer-panel.target .tp-tag { color: var(--signal-deep); }
-  .tp-head {
+  .bridge-col-tag.active { color: #0E6656; }
+  .bridge-col-head {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--paper-text);
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
-  .tp-subhead {
-    font-size: 0.81rem;
-    color: var(--paper-muted);
-    margin-bottom: 16px;
-  }
-  .tp-list {
+  .bridge-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.84rem;
-    color: var(--paper-text);
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--paper-muted);
   }
-  .tp-list li {
+  .bridge-list li {
     display: flex;
     align-items: baseline;
-    gap: 9px;
-    line-height: 1.45;
+    gap: 8px;
   }
-  .tp-list li::before {
+  .bridge-list li::before {
     content: "•";
     color: var(--signal);
     font-weight: bold;
-    font-size: 1rem;
-    line-height: 1;
   }
-  .tp-takeaway {
-    margin-top: 20px;
-    padding-top: 14px;
-    border-top: 1px dashed rgba(12, 16, 24, 0.12);
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: var(--paper-muted);
-  }
-
-  .transfer-arrow-divider {
+  .bridge-arrow-connector {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #8C96A8;
     font-size: 1.5rem;
-    font-weight: 900;
-    padding: 0 4px;
+    color: #8C96A8;
+    font-weight: 800;
   }
-  @media(max-width: 860px) {
-    .transfer-arrow-divider {
-      padding: 10px 0;
-      transform: rotate(90deg);
-    }
+  @media(max-width: 840px) {
+    .bridge-arrow-connector { transform: rotate(90deg); padding: 8px 0; }
   }
 
-  .transfer-conclusion-banner {
-    background: #EAE5D8;
-    border-radius: 6px;
-    padding: 12px 18px;
-    font-size: 0.84rem;
-    color: #2F3642;
-    text-align: center;
-    font-weight: 600;
+  .disciplines-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
-  .transfer-conclusion-banner b { color: var(--signal-deep); }
+  @media(max-width: 900px) { .disciplines-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(max-width: 520px) { .disciplines-grid { grid-template-columns: 1fr; } }
+  .d-card {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-border);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .d-card b {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: var(--paper-text);
+  }
+  .d-card span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--paper-muted);
+    margin-top: 4px;
+    line-height: 1.46;
+  }
 
   /* ========================================================
-     SCREEN 04: THE WORK — WHERE THE THINKING MET REALITY
+     THE WORK: PRODUCT ENVIRONMENTS
   ======================================================== */
   .work-sec {
     background: var(--ink-950);
     color: #FAF9F6;
-    padding: 72px 0 52px;
+    padding: 80px 0 56px;
     position: relative;
   }
-  .work-header { margin-bottom: 28px; }
+  .work-header { margin-bottom: 32px; }
   .work-header h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.4vw, 2.75rem);
-    line-height: 1.12;
+    font-size: clamp(2.1rem, 3.6vw, 3rem);
+    line-height: 1.1;
     color: #fff;
+    margin-top: 8px;
     font-weight: 400;
   }
   .work-header p {
-    font-size: 0.94rem;
+    font-size: 0.98rem;
     color: var(--muted);
-    max-width: 62ch;
-    margin-top: 8px;
+    max-width: 64ch;
+    margin-top: 10px;
   }
 
   .company-nav-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 18px;
   }
   @media(max-width: 960px) { .company-nav-cards { grid-template-columns: 1fr; } }
 
+  /* Editorial Archive Selector Cards */
   button.company-card {
     appearance: none;
     background: var(--surface-flat);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px;
-    padding: 22px;
+    padding: 24px;
     cursor: pointer;
     text-align: left;
     color: inherit;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: transform .18s ease, border-color .18s ease;
+    gap: 12px;
+    transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1), border-color .2s ease;
   }
   button.company-card:hover {
-    border-color: rgba(34, 181, 155, 0.4);
-    transform: translateY(-1px);
+    border-color: rgba(34, 181, 155, 0.45);
+    transform: translateY(-2px);
   }
   button.company-card.active {
     border-color: var(--signal-bright);
-    background: #101824;
+    background: #111A28;
     box-shadow: 0 0 0 1px var(--signal-bright);
   }
 
@@ -681,10 +619,10 @@
     justify-content: space-between;
     width: 100%;
   }
-  .cc-domain { font-size: 0.7rem; font-weight: 800; color: var(--signal-bright); letter-spacing: 0.08em; text-transform: uppercase; }
-  .cc-dates { font-size: 0.7rem; color: var(--muted-dim); font-weight: 600; }
-  .cc-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: #fff; font-weight: 400; }
-  .cc-role { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+  .cc-domain { font-size: 0.72rem; font-weight: 800; color: var(--signal-bright); letter-spacing: 0.08em; text-transform: uppercase; }
+  .cc-dates { font-size: 0.72rem; color: var(--muted-dim); font-weight: 600; }
+  .cc-name { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: #fff; margin-top: 2px; font-weight: 400; }
+  .cc-role { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
   
   .cc-environment-stack {
     display: flex;
@@ -693,473 +631,508 @@
     margin-top: 2px;
   }
   .env-tag {
-    font-size: 0.67rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: rgba(255,255,255,0.85);
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 2px 7px;
     border-radius: 4px;
   }
 
   .cc-coverage-badge {
-    font-size: 0.73rem;
+    font-size: 0.74rem;
     color: var(--muted);
     font-weight: 600;
     margin-top: auto;
-    padding-top: 8px;
+    padding-top: 10px;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
   .cc-coverage-badge b { color: var(--signal-bright); font-weight: 800; }
 
   /* ========================================================
-     SCREEN 05: EVIDENCE VIEWPORT
+     EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
   ======================================================== */
   .evidence-viewport {
     background: var(--paper-bg);
     color: var(--paper-text);
     border-top: 1px solid rgba(10, 14, 21, 0.08);
     border-bottom: 1px solid rgba(10, 14, 21, 0.08);
-    padding: 56px 0 88px;
-    min-width: 0;
+    padding: 60px 0 80px;
   }
   .ev-company-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
     margin-bottom: 20px;
     padding-bottom: 18px;
-    border-bottom: 1px solid rgba(10, 14, 21, 0.09);
+    border-bottom: 1px solid rgba(10, 14, 21, 0.08);
   }
   .ev-title-area h3 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-size: clamp(2.1rem, 3.4vw, 2.7rem);
     color: var(--paper-text);
-    line-height: 1.1;
+    line-height: 1.12;
     font-weight: 400;
   }
   .ev-title-area p {
-    font-size: 0.94rem;
+    font-size: 0.96rem;
     color: var(--paper-muted);
-    margin-top: 6px;
-    max-width: 66ch;
+    margin-top: 8px;
+    max-width: 62ch;
   }
   .ev-company-role {
     padding: 12px 16px;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: #2F3642;
     max-width: 380px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 6px;
-    border: 1px solid var(--paper-border);
-    border-left: 3px solid var(--signal-deep);
+    border-left: 3px solid var(--signal);
   }
-  .ev-company-role b {
-    display: block;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--paper-muted);
-    margin-bottom: 3px;
-  }
+  .ev-company-role b { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-muted); margin-bottom: 4px; }
 
-  /* Scope & Ownership Rail */
-  .ev-meta-rail {
+  /* Scope & Ownership Flat Strip */
+  .what-i-worked-on-box {
+    margin-bottom: 28px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 36px;
-    padding: 12px 16px;
-    background: #EAE6DB;
-    border-radius: 6px;
-    border: 1px solid rgba(12, 16, 24, 0.08);
   }
-  .ev-meta-line {
+  .wiw-row {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
-    font-size: 0.81rem;
-    line-height: 1.45;
-  }
-  .ev-meta-kicker {
-    font-size: 0.67rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    min-width: 86px;
-    flex-shrink: 0;
-  }
-  .ev-meta-kicker.scope { color: var(--paper-sub); }
-  .ev-meta-kicker.owned { color: #0E6656; }
-  .ev-meta-kicker.partnered { color: #8F6A1E; }
-
-  .ev-meta-val { color: #232B38; font-weight: 500; }
-  .ev-meta-val.scope { color: #232B38; font-weight: 500; }
-  .ev-meta-val.owned { color: #0E6656; font-weight: 700; }
-  .ev-meta-val.partnered { color: #4B5563; font-weight: 500; }
-
-  /* Editorial Master Header */
-  .deep-evidence-master-header {
-    padding: 0 0 14px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 20px;
-    border-bottom: 1px solid rgba(12, 16, 24, 0.12);
-  }
-  .demh-left { display: flex; flex-direction: column; gap: 3px; }
-  .from-resume-label {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--brass-deep);
-    display: inline-flex;
     align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .wiw-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #4A5362;
+    text-transform: uppercase;
+  }
+  .wiw-tags {
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
   }
-  .from-resume-label::before {
-    content: "";
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--brass);
-  }
-  .deep-evidence-title-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .deep-evidence-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    line-height: 1.15;
-    font-weight: 400;
-    color: var(--paper-text);
-  }
-  .deep-evidence-count { font-size: 0.72rem; font-weight: 700; color: var(--paper-muted); }
-  .deep-evidence-sub {
-    font-size: 0.86rem;
-    color: var(--paper-muted);
-    max-width: 68ch;
-  }
-  .demh-right { text-align: right; }
-  .causal-chain-micro {
-    font-size: 0.71rem;
+  .wtag {
+    background: #FFFFFF;
+    border: 1px solid #DAD5C6;
+    border-radius: 4px;
+    font-size: 0.76rem;
     font-weight: 600;
-    color: var(--paper-sub);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
+    color: #2D333F;
+    padding: 3px 9px;
+  }
+  .wiw-ownership-line {
+    font-size: 0.8rem;
+    color: #0E6656;
+    font-weight: 700;
+    padding-top: 6px;
   }
 
-  /* Table Header */
-  .evidence-table-header {
+  /* Production safety: flex/grid children must be allowed to shrink. */
+  .evidence-viewport,
+  .evidence-viewport .wrap,
+  .evidence-viewport .ev-company-header,
+  .evidence-viewport .what-i-worked-on-box {
+    min-width: 0;
+  }
+
+  /* Evidence Stories Section */
+  .deep-evidence-heading {
     display: grid;
-    grid-template-columns: 240px 1fr 100px;
-    gap: 24px;
-    padding: 10px 20px;
-    font-size: 0.66rem;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+    align-items: end;
+    gap: 28px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(12, 16, 24, 0.10);
+  }
+
+  .deep-evidence-heading-copy {
+    min-width: 0;
+  }
+
+  .from-resume-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.68rem;
+    line-height: 1;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--paper-sub);
-    border-bottom: 1px solid rgba(12, 16, 24, 0.08);
-  }
-  .eth-action { text-align: right; }
-
-  @media(max-width: 900px) {
-    .deep-evidence-master-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .demh-right { text-align: left; }
-    .evidence-table-header { display: none; }
+    color: #8F6A1E;
+    margin-bottom: 8px;
   }
 
-  /* Bullets Evidence List */
+  .from-resume-heading::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: var(--brass);
+    flex: 0 0 auto;
+  }
+
+  .deep-evidence-title {
+    font-size: 1.35rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--paper-text);
+    margin: 0;
+  }
+
+  .deep-evidence-heading-note {
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #6C7688;
+    text-align: right;
+    max-width: 300px;
+    justify-self: end;
+  }
+
   .bullets-evidence-list {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--paper-border);
-    border-radius: 6px;
-    background: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(10, 14, 21, 0.03);
-    overflow: hidden;
-    margin-top: 6px;
+    gap: 12px;
+    min-width: 0;
   }
 
   .bullet-evidence-item {
-    border-bottom: 1px solid rgba(12, 16, 24, 0.07);
-    transition: background-color .18s ease;
+    background: #FFFFFF;
+    border: 1px solid var(--paper-border);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 0;
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
-  .bullet-evidence-item:last-child { border-bottom: none; }
 
-  /* Trigger Row */
+  .bullet-evidence-item:hover {
+    border-color: rgba(34, 181, 155, 0.28);
+  }
+
+  .bullet-evidence-item.expanded {
+    border-color: var(--signal);
+    box-shadow: 0 14px 34px rgba(10, 14, 21, 0.08);
+  }
+
+  /*
+   * Evidence index row
+   * Column 1 = result
+   * Column 2 = story
+   * Column 3 = action
+   */
   .bei-trigger {
     appearance: none;
     width: 100%;
-    min-height: 80px;
-    padding: 16px 20px;
+    min-width: 0;
+    min-height: 82px;
+    padding: 15px 18px;
     text-align: left;
     display: grid;
-    grid-template-columns: 240px 1fr 100px;
+    grid-template-columns: minmax(145px, 0.28fr) minmax(0, 1fr) auto;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     cursor: pointer;
     background: transparent;
     border: 0;
     color: inherit;
-    transition: background-color .18s ease;
-  }
-  .bei-trigger:hover { background: #FAF8F2; }
-  .bullet-evidence-item.expanded .bei-trigger {
-    background: #F4EFE3;
-    border-bottom: 1px solid rgba(12, 16, 24, 0.08);
   }
 
-  /* Typographic Metric Hero */
-  .bei-metric-col {
+  .bei-trigger:hover {
+    background: #FAF8F4;
+  }
+
+  .bei-outcome-column,
+  .bei-headline-column {
+    min-width: 0;
+  }
+
+  .bei-outcome-column {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    padding-right: 14px;
-    border-right: 1px solid rgba(12, 16, 24, 0.08);
-  }
-  .bei-metric-stat {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1.35rem;
-    line-height: 1.15;
-    color: var(--signal-deep);
-    letter-spacing: -0.01em;
-  }
-  .bei-metric-sub {
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--paper-sub);
+    align-items: center;
   }
 
-  .bei-headline-column { display: flex; flex-direction: column; gap: 2px; }
-  .bei-bullet-label {
-    font-size: 0.96rem;
-    line-height: 1.45;
-    font-weight: 700;
-    color: var(--paper-text);
-  }
-  .flagship-tag {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #8F6A1E;
-    background: rgba(199, 158, 67, 0.12);
-    border: 1px solid rgba(199, 158, 67, 0.3);
-    padding: 1px 6px;
-    border-radius: 3px;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .bei-bullet-subtext { font-size: 0.76rem; color: var(--paper-muted); }
-
-  .bei-action-col { justify-self: end; }
-  .bei-quiet-link {
+  .bei-outcome-tag {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    font-size: 0.76rem;
+    max-width: 100%;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.08rem;
+    line-height: 1.18;
+    color: #0E6656;
+    background: rgba(34, 181, 155, 0.10);
+    border: 1px solid rgba(34, 181, 155, 0.30);
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .bei-bullet-label {
+    display: block;
+    font-size: 0.97rem;
+    line-height: 1.42;
     font-weight: 700;
-    color: var(--paper-muted);
-    transition: color .18s ease;
-  }
-  .bei-quiet-link .arrow { font-size: 0.84rem; transition: transform .2s ease; }
-  .bei-trigger:hover .bei-quiet-link { color: var(--signal-deep); }
-  .bei-trigger:hover .bei-quiet-link .arrow { transform: translate(2px, -2px); }
-  .bullet-evidence-item.expanded .bei-quiet-link { color: var(--signal-deep); }
-  .bullet-evidence-item.expanded .bei-quiet-link .arrow { transform: rotate(90deg); }
-
-  @media(max-width: 900px) {
-    .bei-trigger { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
-    .bei-metric-col { border-right: none; padding-right: 0; padding-bottom: 6px; border-bottom: 1px solid rgba(12, 16, 24, 0.08); }
-    .bei-action-col { justify-self: start; }
+    color: var(--paper-text);
+    overflow-wrap: anywhere;
   }
 
-  /* Expanded Continuous Timeline */
+  .bei-chevron {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 132px;
+    padding: 8px 11px;
+    border: 1px solid rgba(34, 181, 155, 0.22);
+    border-radius: 999px;
+    font-size: 0.71rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #0E6656;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .bei-chevron .arrow {
+    display: inline-block;
+    transition: transform .2s ease;
+  }
+
+  .bullet-evidence-item.expanded .bei-chevron {
+    background: rgba(34, 181, 155, 0.08);
+  }
+
+  .bullet-evidence-item.expanded .bei-chevron span.arrow {
+    transform: rotate(180deg);
+  }
+
   .bei-story-pane {
     display: none;
-    padding: 30px 24px 32px;
-    background: #FAF8F3;
-    border-bottom: 1px solid rgba(12, 16, 24, 0.08);
+    padding: 0 18px 24px;
+    border-top: 1px solid rgba(12, 16, 24, 0.08);
+    background: #FAF8F4;
+    min-width: 0;
   }
-  .bullet-evidence-item.expanded .bei-story-pane { display: block; }
 
+  .bullet-evidence-item.expanded .bei-story-pane {
+    display: block;
+  }
+
+  /* Expanded story: narrative and artifact share a clean baseline. */
   .causal-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
-    gap: 32px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 26px;
+    margin-top: 18px;
     align-items: start;
-  }
-  @media(max-width: 960px) {
-    .causal-grid { grid-template-columns: 1fr; gap: 24px; }
+    min-width: 0;
   }
 
-  .causal-timeline {
-    position: relative;
-    padding-left: 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .causal-timeline::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    bottom: 16px;
-    width: 1.5px;
-    background: rgba(12, 16, 24, 0.11);
+  .causal-narrative-steps,
+  .causal-grid > div:last-child {
+    min-width: 0;
+    width: 100%;
   }
 
-  .tl-step { position: relative; }
-  .tl-step::before {
-    content: "";
-    position: absolute;
-    left: -26px;
-    top: 5px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #FAF8F3;
-    border: 2px solid #8C96A8;
-    box-sizing: border-box;
-  }
-  .tl-step.primary::before {
-    border-color: var(--signal-deep);
-    background: #FAF8F3;
-  }
-  .tl-step.decision::before {
-    border-color: var(--signal-deep);
-    background: var(--signal-bright);
-    width: 15px;
-    height: 15px;
-    left: -27px;
-  }
-  .tl-step.role::before {
-    border-color: var(--brass-deep);
-    background: var(--brass);
-  }
-  .tl-step.outcome::before {
-    border-color: var(--signal-deep);
-    background: var(--signal-deep);
-    width: 15px;
-    height: 15px;
-    left: -27px;
+  /* Prevent long URLs / tokens / labels from breaking the layout. */
+  .causal-grid *,
+  .causal-narrative-steps *,
+  .c-artifact-card *,
+  .measurement-callout * {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
 
-  .tl-step-header {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 3px;
-  }
-  .tl-step-num {
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    color: var(--paper-sub);
-  }
-  .tl-step.primary .tl-step-num { color: #161D28; font-weight: 900; }
-  .tl-step.decision .tl-step-num { color: var(--signal-deep); font-weight: 900; }
-  .tl-step.role .tl-step-num { color: var(--brass-deep); }
-  .tl-step.outcome .tl-step-num { color: var(--signal-deep); font-weight: 900; }
-
-  .tl-step-title {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--paper-sub);
-  }
-  .tl-step.primary .tl-step-title { color: #161D28; }
-  .tl-step.decision .tl-step-title { color: var(--signal-deep); font-weight: 900; }
-  .tl-step.role .tl-step-title { color: var(--brass-deep); }
-  .tl-step.outcome .tl-step-title { color: var(--signal-deep); font-weight: 900; }
-
-  .tl-problem-text {
-    font-size: 0.93rem;
-    line-height: 1.62;
-    color: #141B26;
-    font-weight: 600;
-  }
-  .tl-decision-text {
-    font-size: 0.91rem;
-    line-height: 1.6;
-    color: #0B382F;
-    font-weight: 600;
+  .c-artifact-card {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-border);
+    border-radius: 7px;
+    padding: 16px;
+    min-width: 0;
+    box-shadow: 0 6px 18px rgba(10, 14, 21, 0.04);
   }
 
-  .tl-context-note {
-    margin-top: 5px;
-    font-size: 0.79rem;
-    line-height: 1.48;
-    color: #384252;
-    border-left: 2px solid var(--brass);
-    padding-left: 9px;
-  }
-  .tl-context-note b { color: var(--brass-deep); font-weight: 700; }
-
-  .tl-desc {
-    font-size: 0.86rem;
-    line-height: 1.58;
-    color: var(--paper-muted);
+  @media (min-width: 901px) {
+    .c-artifact-card {
+      position: sticky;
+      top: 96px;
+    }
   }
 
-  .tl-role-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 5px;
-    font-size: 0.79rem;
-    line-height: 1.48;
-  }
-  @media(max-width: 620px) {
-    .tl-role-split { grid-template-columns: 1fr; gap: 8px; }
-  }
-  .tl-role-block b {
-    display: block;
-    font-size: 0.66rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 2px;
-  }
-  .tl-role-block.pm b { color: var(--signal-deep); }
-  .tl-role-block.design b { color: var(--brass-deep); }
-  .tl-role-block p { color: var(--paper-muted); margin: 0; }
+  @media (max-width: 900px) {
+    .bei-trigger {
+      grid-template-columns: minmax(125px, 0.30fr) minmax(0, 1fr);
+      gap: 16px;
+    }
 
-  .tl-outcome-stat {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    line-height: 1.1;
-    color: var(--signal-deep);
-    margin-top: 2px;
-  }
-  .tl-outcome-note {
-    font-size: 0.77rem;
-    color: var(--paper-muted);
-    margin-top: 3px;
-    display: block;
-    font-weight: 600;
+    .bei-chevron {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: -2px;
+    }
+
+    .causal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .c-artifact-card {
+      position: static;
+    }
   }
 
-  /* Concrete PM Artifact Box */
-  .c-sidebar-stack {
+  @media (max-width: 620px) {
+    .deep-evidence-heading {
+      grid-template-columns: 1fr;
+      gap: 7px;
+      align-items: start;
+    }
+
+    .deep-evidence-heading-note {
+      justify-self: start;
+      text-align: left;
+      max-width: none;
+    }
+
+    .bei-trigger {
+      grid-template-columns: 1fr;
+      gap: 9px;
+      padding: 15px 16px;
+    }
+
+    .bei-chevron {
+      grid-column: auto;
+      justify-self: start;
+      margin-top: 0;
+    }
+
+    .bei-story-pane {
+      padding: 0 14px 18px;
+    }
+
+    .causal-grid {
+      gap: 16px;
+      margin-top: 14px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .bei-outcome-tag {
+      font-size: 1rem;
+    }
+
+    .bei-bullet-label {
+      font-size: 0.92rem;
+    }
+
+    .bei-chevron {
+      min-width: 0;
+    }
+  }
+
+  /* Causal Storyline Spine */
+  .causal-narrative-steps {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    position: sticky;
-    top: 96px;
   }
+  .c-step {
+    padding-left: 14px;
+    border-left: 2px solid #D8D2C2;
+  }
+  .c-step.decision-step {
+    border-left-color: var(--signal);
+    background: rgba(34, 181, 155, 0.06);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .c-step.role-step {
+    border-left-color: var(--brass);
+    background: rgba(199, 158, 67, 0.07);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .c-step.outcome-step {
+    border-left-color: #0E6656;
+    background: #FFFFFF;
+    padding: 12px 14px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid rgba(14, 102, 86, 0.2);
+    border-left: 4px solid #0E6656;
+  }
+  .c-step-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--paper-muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .c-step.decision-step .c-step-title { color: #0E6656; }
+  .c-step.role-step .c-step-title { color: #8F6A1E; }
+  .c-step.outcome-step .c-step-title { color: #0E6656; font-weight: 800; }
+
+  /* Refined Problem Text */
+  .c-step-problem-text {
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: #1E2633;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .c-step.outcome-step .c-step-head {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: #0E6656;
+    font-weight: 400;
+  }
+  .c-step-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--paper-muted);
+    margin-top: 4px;
+  }
+  .c-context-sub {
+    font-size: 0.76rem;
+    color: var(--paper-muted);
+    margin-top: 4px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .collaboration-rail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 0.76rem;
+  }
+  .collab-block {
+    background: #FFFFFF;
+    border: 1px solid rgba(12, 16, 24, 0.08);
+    border-radius: 4px;
+    padding: 8px 10px;
+    line-height: 1.4;
+  }
+  .collab-block b { display: block; font-size: 0.68rem; text-transform: uppercase; margin-bottom: 2px; }
+  .collab-block.pm b { color: #0E6656; }
+  .collab-block.design b { color: #8F6A1E; }
+
+  .biz-context-line {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #2F3642;
+  }
+  .biz-context-line b { color: #0E6656; }
+
+  /* Workflow Before vs After */
   .c-artifact-card {
     background: #FFFFFF;
     border: 1px solid var(--paper-border);
@@ -1170,109 +1143,67 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     color: var(--paper-muted);
     text-transform: uppercase;
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid rgba(12, 16, 24, 0.08);
+    margin-bottom: 12px;
   }
-  .c-art-sublabel { font-size: 0.66rem; font-weight: 700; color: var(--signal-deep); text-transform: uppercase; letter-spacing: 0.06em; }
-
-  /* Spec Excerpt Styling */
-  .artifact-spec-box {
-    background: #FAF8F2;
-    border: 1px solid rgba(12, 16, 24, 0.08);
-    border-radius: 5px;
-    padding: 10px 12px;
-    margin-bottom: 10px;
+  .c-art-sublabel {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #6C7688;
+    text-transform: none;
   }
-  .spec-kicker {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.66rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #4B5563;
-    margin-bottom: 6px;
-  }
-  .spec-kicker span.tag {
-    color: #0E6656;
-    background: rgba(34,181,155,0.12);
-    padding: 1px 5px;
-    border-radius: 3px;
-  }
-  .spec-code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    line-height: 1.45;
-    color: #1F2937;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
   .c-flow-row {
-    background: #FAF8F2;
-    padding: 9px 11px;
+    background: #F6F4ED;
+    padding: 10px 12px;
     border-radius: 4px;
-    border: 1px solid rgba(12, 16, 24, 0.06);
+    border: 1px solid rgba(12,16,24,0.06);
     line-height: 1.45;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
     font-size: 0.78rem;
     color: #374151;
+    position: relative;
   }
   .c-flow-row:last-child { margin-bottom: 0; }
   .c-flow-row.resolved {
-    background: rgba(34, 181, 155, 0.06);
-    border-color: rgba(34, 181, 155, 0.25);
+    background: rgba(34,181,155,0.08);
+    border-color: rgba(34,181,155,0.3);
   }
-  .c-flow-row b {
-    display: block;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-    color: #4B5563;
-    font-weight: 800;
-  }
-  .c-flow-row.resolved b { color: var(--signal-deep); }
+  .c-flow-row b { display: block; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 2px; color: #4B5563; font-weight: 800; }
+  .c-flow-row.resolved b { color: #0E6656; }
   .c-flow-row .editorial-note {
     display: block;
     width: fit-content;
-    margin-top: 4px;
+    max-width: 100%;
+    margin-top: 7px;
     font-family: 'Caveat', cursive;
     font-size: 0.9rem;
-    line-height: 1.15;
-    color: #A03816;
+    line-height: 1.2;
+    color: #9A3412;
   }
 
   .measurement-callout {
+    margin-top: 14px;
     background: #FFFFFF;
     border: 1px solid var(--paper-border);
     border-left: 3px solid var(--signal);
-    border-radius: 4px;
-    padding: 11px 13px;
+    padding: 10px 12px;
     font-size: 0.78rem;
     color: #4C5564;
+    border-radius: 0 4px 4px 0;
   }
-  .measurement-callout b {
-    display: block;
-    color: var(--paper-text);
-    margin-bottom: 2px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+  .measurement-callout b { display: block; color: var(--paper-text); margin-bottom: 2px; }
 
   /* ========================================================
-     PATTERNS & INTELLECTUAL HONESTY
+     PATTERNS I KEPT SEEING IN THE WORK
   ======================================================== */
   .evidence-shows-sec {
     background: var(--ink-900);
     color: #FAF9F6;
-    padding: 72px 0;
+    padding: 80px 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     position: relative;
@@ -1280,103 +1211,81 @@
   .ess-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
-    align-items: start;
+    gap: 36px;
+    align-items: center;
   }
   @media(min-width: 900px) {
     .ess-layout { grid-template-columns: 0.85fr 1.15fr; }
   }
   .ess-copy h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.4vw, 2.6rem);
+    font-size: clamp(2.1rem, 3.6vw, 2.8rem);
     line-height: 1.12;
     color: #fff;
     margin-top: 6px;
     font-weight: 400;
   }
   .ess-copy p {
-    font-size: 0.94rem;
-    line-height: 1.68;
+    font-size: 0.98rem;
+    line-height: 1.7;
     color: var(--muted);
-    margin-top: 12px;
-  }
-
-  .mind-change-box {
-    margin-top: 24px;
-    background: rgba(199, 158, 67, 0.08);
-    border: 1px solid var(--brass-border);
-    border-left: 3px solid var(--brass);
-    border-radius: 4px;
-    padding: 14px 16px;
-  }
-  .mind-change-tag {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--brass);
-    margin-bottom: 4px;
-  }
-  .mind-change-text {
-    font-size: 0.82rem;
-    line-height: 1.55;
-    color: rgba(250, 249, 246, 0.85);
+    margin-top: 14px;
   }
 
   .instinct-blocks {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   .instinct-row {
     background: var(--surface-flat);
     border: 1px solid var(--glass-border);
     border-radius: 6px;
-    padding: 15px 18px;
+    padding: 16px 18px;
   }
   .instinct-row b {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: #fff;
   }
   .instinct-row span {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--muted);
     margin-top: 3px;
     line-height: 1.5;
   }
   .instinct-row .proof-cite {
     display: block;
-    font-size: 0.71rem;
+    font-size: 0.72rem;
     color: var(--signal-bright);
-    margin-top: 5px;
+    margin-top: 6px;
     font-weight: 600;
   }
 
   /* ========================================================
-     SCREEN 06: THE ECOSYSTEM
+     THE ECOSYSTEM
   ======================================================== */
   .ecosystem-sec {
     background: var(--paper-bg);
     color: var(--paper-text);
-    padding: 72px 0 60px;
+    padding: 80px 0 68px;
     position: relative;
   }
   .eco-head {
     text-align: center;
-    max-width: 680px;
-    margin: 0 auto 32px;
+    max-width: 720px;
+    margin: 0 auto 36px;
   }
-  .eco-head h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.45rem); color: var(--paper-text); margin-top: 4px; font-weight: 400; }
-  .eco-head p { font-size: 0.94rem; color: var(--paper-muted); margin-top: 6px; }
+  .eco-head h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.4vw, 2.6rem); color: var(--paper-text); margin-top: 6px; font-weight: 400; }
+  .eco-head p { font-size: 0.98rem; color: var(--paper-muted); margin-top: 8px; }
 
   .eco-system-architecture {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 14px;
+    margin-bottom: 24px;
   }
   @media(max-width: 980px) { .eco-system-architecture { grid-template-columns: repeat(2, 1fr); } }
   @media(max-width: 540px) { .eco-system-architecture { grid-template-columns: 1fr; } }
@@ -1385,84 +1294,65 @@
     background: #FFFFFF;
     border: 1px solid var(--paper-border);
     border-radius: 6px;
-    padding: 20px 18px;
-    box-shadow: 0 3px 12px rgba(10, 14, 21, 0.03);
+    padding: 22px 20px;
+    box-shadow: 0 4px 14px rgba(10, 14, 21, 0.04);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 210px;
+    min-height: 220px;
   }
-  .eco-system-architecture {
-    position: relative;
-  }
-  .esa-node {
-    position: relative;
-  }
-  @media(min-width: 981px) {
-    .esa-node:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      right: -22px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.15rem;
-      color: var(--muted);
-      z-index: 2;
-    }
-  }
-
   .esa-node.active {
     border-color: var(--signal);
-    background: #FFFDF9;
-    box-shadow: 0 0 0 1px var(--signal), 0 12px 28px rgba(34, 181, 155, 0.1);
+    background: #FFFDF8;
+    box-shadow: 0 0 0 1.5px var(--signal), 0 16px 36px rgba(34, 181, 155, 0.12);
   }
   .esa-step-tag {
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--brass);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
-  .esa-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--paper-text); font-weight: 400; }
-  .esa-question { font-size: 0.79rem; font-weight: 700; color: #0E6656; margin: 3px 0 6px; }
-  .esa-body { font-size: 0.8rem; color: var(--paper-muted); line-height: 1.45; }
+  .esa-title { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--paper-text); font-weight: 400; }
+  .esa-question { font-size: 0.8rem; font-weight: 700; color: #0E6656; margin: 4px 0 8px; }
+  .esa-body { font-size: 0.82rem; color: var(--paper-muted); line-height: 1.48; }
   .esa-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 800;
     color: var(--signal);
-    margin-top: 12px;
+    margin-top: 14px;
   }
 
   .eco-conclusion-banner {
     text-align: center;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: #2E3847;
-    margin-top: 16px;
+    margin-top: 20px;
   }
 
   footer {
     background: var(--ink-950);
     color: #FAF9F6;
-    padding: 44px 0;
-    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 50px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
   }
   .foot-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
   }
   .foot-links {
     display: flex;
     align-items: center;
-    gap: 22px;
-    font-size: 0.86rem;
+    gap: 24px;
+    font-size: 0.88rem;
     color: var(--muted);
     font-weight: 600;
   }
@@ -1471,28 +1361,31 @@
 </head>
 <body>
 
-<!-- FLOATING FROSTED GLASS HEADER -->
+<!-- ========================================================
+     FLOATING FROSTED GLASS HEADER
+======================================================== -->
 <header>
   <div class="navrow">
-    <a href="#home" class="mark">The <span class="r">Evidence.</span><small>Avinash R</small></a>
+    <a href="#home" class="mark">The <span class="r">Evidence.</span><small>Avinash Product Ecosystem</small></a>
     
     <nav class="links" id="navlinks">
-      <a href="#home" class="active">Purpose</a>
-      <a href="#ecosystem-map">Ecosystem</a>
+      <a href="#home" class="active">Overview</a>
       <a href="#foundation">Foundation</a>
-      <a href="#work">Work</a>
-      <a href="#evidenceViewport">Evidence</a>
-      <a href="#synthesis">Synthesis</a>
+      <a href="#work">The Work</a>
+      <a href="#synthesis">What It Shows</a>
+      <a href="#ecosystem">Ecosystem</a>
     </nav>
 
-    <div class="header-right">
-      <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn">Resume ↗</a>
+    <div class="header-tagline">
+      One candidate · Three lenses
     </div>
   </div>
 </header>
 
 <main>
-  <!-- SCREEN 01: HERO -->
+  <!-- ========================================================
+       HERO: THE EVIDENCE ENGINE
+  ======================================================== -->
   <section class="hero-sec" id="home">
     <div class="hero-backdrop-photo"></div>
     <div class="hero-grid-overlay"></div>
@@ -1500,18 +1393,17 @@
       <div class="hero-grid">
         <div>
           <div class="ecosystem-flow-tag">
-            <span>Resume</span> › <span>Beyond My Resume</span> › <span class="active-node">The Evidence</span>
+            <span>Surface 1 · Resume (What I Did)</span> › <span>Surface 2 · Beyond My Resume (How I Think)</span> › <span class="active-node">Surface 3 · The Evidence</span>
           </div>
 
           <h1 class="hero-h1">The evidence behind <br>the <span class="accent">thinking</span>.</h1>
 
           <div class="hero-narrative">
-            <p>My resume shows what happened. <em>Beyond My Resume</em> explains how I think. <strong>This website unpacks reality:</strong> what happened when product thinking met real constraints, operational bottlenecks, trade-off decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume metrics.</p>
+            <p>Beyond My Resume shows how I think about products. This website unpacks what happened when I applied that thinking to real products, constraints, operational decisions, and reported outcomes across 16 resume achievements.</p>
           </div>
 
           <div class="hero-cta-row">
-            <a href="#work" class="btn-apple">Inspect The Evidence <span class="a">↓</span></a>
-            <a href="#ecosystem-map" class="btn-apple" style="background:transparent;">How To Read This ↗</a>
+            <a href="#work" class="btn-apple">Explore The Evidence <span class="a">↓</span></a>
           </div>
         </div>
 
@@ -1564,6 +1456,7 @@
             </svg>
           </div>
 
+          <!-- Dynamic Live State Card -->
           <div class="circuit-dynamic-card" id="heroCircuitCard">
             <div class="cdc-left">
               <b id="heroCircuitProblemLabel">Pairing Friction At Unboxing</b>
@@ -1576,123 +1469,82 @@
     </div>
   </section>
 
-  <!-- SCREEN 02: ECOSYSTEM MAP -->
-  <section class="ecosystem-bridge-sec" id="ecosystem-map">
-    <div class="wrap">
-      <div style="margin-bottom: 24px;">
-        <span class="chapter-tag">01 / 05 · The Hiring Ecosystem</span>
-        <h2 style="font-family:'DM Serif Display',serif; font-size:1.9rem; color:#fff; font-weight:400;">Three surfaces. One coherent body of work.</h2>
-        <p style="color:var(--muted); font-size:0.92rem; max-width:64ch; margin-top:4px;">Each layer answers a fundamentally different question across the candidate evaluation journey.</p>
-      </div>
-
-      <div class="eco-bridge-grid">
-        <div class="eb-card">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number">Surface 01</span>
-              <span class="eb-badge external">Resume</span>
-            </div>
-            <div class="eb-title">Resume</div>
-            <div class="eb-question">"What did I do?"</div>
-            <div class="eb-desc">Titles, companies, progression, and quantified outcomes formatted for rapid recruiter screening.</div>
-          </div>
-          <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="eb-link">View Resume (PDF) ↗</a>
-        </div>
-
-        <div class="eb-card active-layer">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number" style="color:var(--signal-bright);">Surface 02</span>
-              <span class="eb-badge here">Active Layer</span>
-            </div>
-            <div class="eb-title">The Evidence</div>
-            <div class="eb-question" style="color:var(--signal-bright);">"How did that thinking hold up?"</div>
-            <div class="eb-desc">The reality behind the claims: messy operational constraints, decisions made, workflows shipped, and measured outcomes.</div>
-          </div>
-          <span style="font-size:0.75rem; font-weight:800; color:var(--signal-bright); margin-top:14px;">Current Verification Surface ✓</span>
-        </div>
-
-        <div class="eb-card">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number">Surface 03</span>
-              <span class="eb-badge external">Beyond Resume</span>
-            </div>
-            <div class="eb-title">Beyond My Resume</div>
-            <div class="eb-question">"How do I think?"</div>
-            <div class="eb-desc">First-principles product framing, mental models, prioritization frameworks, and trade-offs.</div>
-          </div>
-          <a href="https://beyondmyresume.com" target="_blank" rel="noopener" class="eb-link">Explore The Thinking ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCREEN 03: THE FOUNDATION -->
+  <!-- ========================================================
+     THE FOUNDATION: COMPACT SYSTEMS BRIDGE
+  ======================================================== -->
   <section class="foundation-sec" id="foundation">
     <div class="wrap">
       <div class="foundation-lead-area">
-        <span class="eyebrow" style="color:#8F6A1E;">02 / 05 · The Foundation · 2 Years</span>
-        <h2>Before software, I learned how systems behave under real-world constraints.</h2>
-        <p>My career began on 24/7 continuous steel and heavy manufacturing lines. This was not a detour—it was where I learned to trace operational symptoms to root constraints, map handoff dependencies, and enforce falsifiable quality standards.</p>
+        <div class="eyebrow" style="color:#C79E43;">The Foundation · 2 Years</div>
+        <h2>Before Product, I learned how systems behave under real-world constraints.</h2>
+        <p>My first two years in steel and heavy manufacturing established an operational baseline before moving into software. The operating disciplines carried over directly: mapping dependencies, defining measurable quality, and tracing operational symptoms back to constraints.</p>
       </div>
 
-      <div class="foundation-two-panel-grid">
-        <div class="transfer-panel">
-          <div>
-            <div class="tp-tag">Physical Systems · 2017–2019</div>
-            <div class="tp-head">Manufacturing Operations</div>
-            <div class="tp-subhead">Continuous 24/7 heavy industrial lines</div>
-            <ul class="tp-list">
-              <li>Physical dependency cascading across continuous production units</li>
-              <li>Component tolerance inspection &amp; vendor validation criteria</li>
-              <li>Planning line work around engineering tolerances and machine dependencies</li>
-              <li>Coordinating cross-functional response to live shop-floor bottlenecks</li>
-            </ul>
-          </div>
-          <div class="tp-takeaway">
-            What it gave me: Rigor in tracing operational breakdowns to systemic constraints rather than applying superficial fixes.
-          </div>
+      <!-- Systems Transfer Architecture -->
+      <div class="systems-bridge-container">
+        <div class="bridge-column">
+          <div class="bridge-col-tag">Physical Systems (2017–2019)</div>
+          <div class="bridge-col-head">Manufacturing Operations</div>
+          <ul class="bridge-list">
+            <li>Physical dependency cascading across 24/7 continuous lines</li>
+            <li>Planning work around engineering specifications and operational dependencies</li>
+            <li>Component tolerance inspection & vendor validation criteria</li>
+            <li>Coordinating responses to shop-floor operational issues</li>
+          </ul>
         </div>
 
-        <div class="transfer-arrow-divider" aria-hidden="true">
+        <div class="bridge-arrow-connector">
           →
         </div>
 
-        <div class="transfer-panel target">
-          <div>
-            <div class="tp-tag">Digital Systems · 2020–Present</div>
-            <div class="tp-head">Software &amp; Product Management</div>
-            <div class="tp-subhead">Fintech Lending · Enterprise AI · Consumer IoT</div>
-            <ul class="tp-list">
-              <li>End-to-end customer journey mapping &amp; system dependency handling</li>
-              <li>Defining falsifiable user story acceptance criteria before sprints begin</li>
-              <li>Sequencing release roadmaps across multi-pod engineering squads</li>
-              <li>Diagnosing drop-off bottlenecks across complex self-service funnels</li>
-            </ul>
-          </div>
-          <div class="tp-takeaway">
-            What carried over: The product environment changed from steel coils to software APIs. The underlying discipline of managing dependencies and testing outcomes didn't.
-          </div>
+        <div class="bridge-column target">
+          <div class="bridge-col-tag active">Digital Systems (2020 – Present)</div>
+          <div class="bridge-col-head">Software Product Management</div>
+          <ul class="bridge-list">
+            <li>End-to-end customer workflow mapping & dependency handling</li>
+            <li>Sequencing sprint release roadmaps across engineering squads</li>
+            <li>Defining measurable user story acceptance criteria</li>
+            <li>Diagnosing drop-off bottlenecks across digital funnels</li>
+          </ul>
         </div>
       </div>
 
-      <div class="transfer-conclusion-banner">
-        <strong>The Transfer:</strong> Physical production taught me that execution delays almost always originate in an unaddressed dependency or handoff—a principle that directly drives my product roadmapping today.
+      <!-- 4 Derived Operating Disciplines -->
+      <div class="disciplines-grid">
+        <div class="d-card">
+          <b>Systems Thinking</b>
+          <span>Physical production taught me to map end-to-end dependencies before proposing interventions.</span>
+        </div>
+        <div class="d-card">
+          <b>Sequencing &amp; Dependencies</b>
+          <span>Manufacturing planning taught me that many delivery failures begin with an unaddressed handoff or dependency.</span>
+        </div>
+        <div class="d-card">
+          <b>Quality Criteria</b>
+          <span>Component inspection taught me that "done" requires a measurable, falsifiable acceptance standard.</span>
+        </div>
+        <div class="d-card">
+          <b>Root-Cause Diagnostics</b>
+          <span>Shop-floor failures taught me to trace operational symptoms back to constraints rather than adding superficial fixes.</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SCREEN 04: THE WORK -->
+  <!-- ========================================================
+     THE WORK: PRODUCT ENVIRONMENTS
+  ======================================================== -->
   <section class="work-sec" id="work">
     <div class="wrap">
       <div class="work-header">
-        <span class="chapter-tag">03 / 05 · The Environments</span>
+        <div class="eyebrow">The Work</div>
         <h2>Where the thinking met reality.</h2>
-        <p>Select a product environment to inspect the operational bottlenecks, product decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume metrics.</p>
+        <p>Select a product environment to inspect the problems, decisions, and reported outcomes across 16 resume achievements.</p>
       </div>
 
+      <!-- 3 Product Environment Navigation Cards -->
       <div class="company-nav-cards">
+        <!-- Card 1: Sportstech -->
         <button type="button" class="company-card active" id="cc-0" onclick="switchCompany(0, true)">
           <div class="cc-meta">
             <span class="cc-domain">Consumer IoT</span>
@@ -1702,9 +1554,16 @@
             <div class="cc-name">Sportstech</div>
             <div class="cc-role">Product Manager · Connected Fitness &amp; Subscription Ecosystem</div>
           </div>
+          <div class="cc-environment-stack">
+            <span class="env-tag">Smart Hardware</span>
+            <span class="env-tag">Mobile App</span>
+            <span class="env-tag">AI Coaching</span>
+            <span class="env-tag">Subscription</span>
+          </div>
           <div class="cc-coverage-badge"><b>5 evidence stories</b> · 7 quantified metrics covered</div>
         </button>
 
+        <!-- Card 2: GetAI × ITC Infotech -->
         <button type="button" class="company-card" id="cc-1" onclick="switchCompany(1, true)">
           <div class="cc-meta">
             <span class="cc-domain">Enterprise AI</span>
@@ -1714,9 +1573,16 @@
             <div class="cc-name">GetAI × ITC Infotech</div>
             <div class="cc-role">Product Manager · Shop Floor IOMS &amp; AI Contracts CMS</div>
           </div>
+          <div class="cc-environment-stack">
+            <span class="env-tag">Plant Ops</span>
+            <span class="env-tag">Offline Sync</span>
+            <span class="env-tag">AI Drafting</span>
+            <span class="env-tag">Clause Review</span>
+          </div>
           <div class="cc-coverage-badge"><b>3 evidence stories</b> · 4 quantified metrics covered</div>
         </button>
 
+        <!-- Card 3: VS Happy Infotech -->
         <button type="button" class="company-card" id="cc-2" onclick="switchCompany(2, true)">
           <div class="cc-meta">
             <span class="cc-domain">Fintech Lending</span>
@@ -1726,15 +1592,24 @@
             <div class="cc-name">VS Happy Infotech</div>
             <div class="cc-role">Project Manager → Product Manager (from 2022)</div>
           </div>
+          <div class="cc-environment-stack">
+            <span class="env-tag">Self-Service</span>
+            <span class="env-tag">Intake Funnel</span>
+            <span class="env-tag">Underwriting</span>
+            <span class="env-tag">SQL Dashboards</span>
+          </div>
           <div class="cc-coverage-badge"><b>4 evidence stories</b> · 5 quantified metrics covered</div>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- SCREEN 05: EVIDENCE VIEWPORT -->
+  <!-- ========================================================
+     EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
+  ======================================================== -->
   <section class="evidence-viewport" id="evidenceViewport">
     <div class="wrap">
+      <!-- Company Meta Context -->
       <div class="ev-company-header">
         <div class="ev-title-area">
           <div class="eyebrow" id="evCompanyDomain">Consumer IoT</div>
@@ -1747,140 +1622,126 @@
         </div>
       </div>
 
-      <!-- Scope & Ownership Rail -->
-      <div class="ev-meta-rail">
-        <div class="ev-meta-line">
-          <span class="ev-meta-kicker scope">Scope</span>
-          <span class="ev-meta-val scope" id="evScopeVal">Connected hardware onboarding · Smart Gym · AI coaching · Workout experience · Subscription growth</span>
-        </div>
-        <div class="ev-meta-line">
-          <span class="ev-meta-kicker owned">Owned</span>
-          <span class="ev-meta-val owned" id="evOwnedVal">Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking</span>
-        </div>
-        <div class="ev-meta-line">
-          <span class="ev-meta-kicker partnered">Partnered</span>
-          <span class="ev-meta-val partnered" id="evPartneredVal">UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing</span>
-        </div>
-      </div>
-
-      <!-- Master Header -->
-      <div class="deep-evidence-master-header">
-        <div class="demh-left">
-          <div class="from-resume-label">From Resume · Evidence Behind The Claim</div>
-          <div class="deep-evidence-title-row">
-            <h4 class="deep-evidence-title">Evidence Stories</h4>
-            <span class="deep-evidence-count" id="evStoryCount">5 Stories</span>
+      <!-- Scope & Ownership Flat Strip -->
+      <div class="what-i-worked-on-box">
+        <div class="wiw-row">
+          <span class="wiw-label">What I Worked On:</span>
+          <div class="wiw-tags" id="evScopeTags">
+            <!-- Dynamically populated tags -->
           </div>
-          <p class="deep-evidence-sub">Direct unpack of reported achievements: operational bottleneck → investigation → product decision → shipped solution → measured outcome.</p>
         </div>
-        <div class="demh-right">
-          <span class="causal-chain-micro">Sequence: Problem → Decision → Shipped → Measured</span>
+        <div class="wiw-ownership-line" id="evOwnershipLine">
+          <!-- Dynamically populated ownership signal -->
         </div>
       </div>
 
-      <!-- Table Column Headers -->
-      <div class="evidence-table-header" aria-hidden="true">
-        <div class="eth-outcome">Reported Outcome</div>
-        <div class="eth-initiative">Resume Achievement &amp; Product Decision</div>
-        <div class="eth-action">Evidence</div>
+      <!-- Evidence Stories Section -->
+      <div class="deep-evidence-heading">
+        <div class="deep-evidence-heading-copy">
+          <div class="from-resume-heading">From resume</div>
+          <div class="deep-evidence-title">Evidence Stories</div>
+        </div>
+        <div class="deep-evidence-heading-note">Outcome → investigation → decision → product change → measured result</div>
       </div>
 
-      <!-- Bullets List & In-Place Expandable Stories -->
+      <!-- Resume Bullets & In-Place Expandable Stories for ALL BULLETS -->
       <div class="bullets-evidence-list" id="evBulletsList">
         <!-- Dynamically populated evidence stories -->
       </div>
     </div>
   </section>
 
-  <!-- PATTERNS & INTELLECTUAL HONESTY -->
+  <!-- ========================================================
+     PATTERNS I KEPT SEEING IN THE WORK
+  ======================================================== -->
   <section class="evidence-shows-sec" id="synthesis">
     <div class="wrap">
       <div class="ess-layout">
         <div class="ess-copy">
-          <div class="eyebrow" style="color:#C79E43;">04 / 05 · Product Synthesis</div>
-          <h2>Patterns observed across environments.</h2>
-          <p>Across fintech, enterprise manufacturing, and connected consumer hardware, four operational patterns repeatedly surfaced across the work.</p>
-
-          <div class="mind-change-box">
-            <div class="mind-change-tag">Intellectual Honesty · When Evidence Changed My Mind</div>
-            <div class="mind-change-text">
-              At Sportstech, our initial hypothesis was that device setup drop-offs were driven by insufficient instructional guidance, leading to calls for animated video guides. Telemetry analysis changed that diagnosis: users were not abandoning because they lacked guidance; the connection flow itself was the bottleneck. We shifted focus from educational tutorials to the connection flow, after which onboarding setup completion improved materially.
-            </div>
-          </div>
+          <div class="eyebrow" style="color:#C79E43;">Product Synthesis</div>
+          <h2>Patterns I kept seeing in the work.</h2>
+          <p>Across fintech, enterprise manufacturing, and connected fitness, the user personas and technologies changed completely. Four patterns kept resurfacing in the work.</p>
         </div>
 
         <div class="instinct-blocks">
           <div class="instinct-row">
             <b>01 · The bottleneck was rarely where the team first looked</b>
-            <span>At Sportstech, pairing failure looked like an onboarding tutorial issue until funnel drop-off pointed to the BLE discovery flow. At VS Happy, backlogs prompted calls for more phone reps until self-service proved intake architecture was the bottleneck.</span>
+            <span>At Sportstech, pairing failure looked like a user tutorial issue until journey drop-off pointed to the connection flow itself. At VS Happy, backlogs prompted calls for more reps until self-service intake proved the process was the bottleneck.</span>
             <span class="proof-cite">Seen across: Sportstech (+25% Activation) · VS Happy (14 → 6d TTV)</span>
           </div>
           <div class="instinct-row">
-            <b>02 · The physical environment shapes the software architecture</b>
-            <span>A factory floor with intermittent connectivity cannot run always-online forms. A consumer hardware setup cannot tolerate multi-step discovery menus at unboxing. Designing for physical constraints unlocks adoption.</span>
-            <span class="proof-cite">Seen across: GetAI (+35% Engagement) · Sportstech (BLE Setup)</span>
+            <b>02 · The operating environment dictates the product architecture</b>
+            <span>A factory floor with unreliable connectivity cannot depend on always-online workflows. A consumer Bluetooth setup cannot afford unnecessary manual steps at the moment of unboxing. Meeting physical realities drives adoption.</span>
+            <span class="proof-cite">Seen across: GetAI (+35% Feature Engagement) · Sportstech (BLE Setup)</span>
           </div>
           <div class="instinct-row">
-            <b>03 · High-leverage interventions often removed manual coordination</b>
-            <span>Replacing phone collections with self-serve document ingestion eliminated hours of back-and-forth status calls. Centralizing digital plant logs eliminated manual spreadsheet consolidation for weekly audits.</span>
+            <b>03 · The highest-leverage interventions removed work instead of adding work</b>
+            <span>Replacing phone collection with self-serve document ingestion eliminated hours of back-and-forth status calls. Centralizing digital plant logs eliminated manual spreadsheet consolidation for audits.</span>
             <span class="proof-cite">Seen across: VS Happy (-30% Manual Effort) · GetAI (-40% Turnaround)</span>
           </div>
           <div class="instinct-row">
-            <b>04 · Measuring operational movement, not release outputs</b>
-            <span>Shipping software is an output. The meaningful evaluation is whether activation, session completion, cycle time, or retention moved after rollout.</span>
-            <span class="proof-cite">Seen across all 12 evidence stories covering 16 resume outcomes</span>
+            <b>04 · Measuring the outcome, not just the release</b>
+            <span>A shipped release is an output. The meaningful question is whether activation, session completion, cycle time, or retention moved after rollout.</span>
+            <span class="proof-cite">Seen across all 16 resume achievements</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SCREEN 06: THE ECOSYSTEM -->
+  <!-- ========================================================
+     THE ECOSYSTEM
+  ======================================================== -->
   <section class="ecosystem-sec" id="ecosystem">
     <div class="wrap">
       <div class="eco-head">
-        <div class="eyebrow" style="color:#C79E43;">05 / 05 · The Next Step</div>
-        <h2>Four layers. One coherent body of work.</h2>
-        <p>Four interconnected steps, each answering a different evaluation question.</p>
+        <div class="eyebrow" style="color:#C79E43;">The Ecosystem</div>
+        <h2>I built the ecosystem around how hiring actually works.</h2>
+        <p>A connected loop of four distinct inquiry layers answering different questions across the candidate evaluation journey.</p>
       </div>
 
+      <!-- Architectural System Loop -->
       <div class="eco-system-architecture">
+        <!-- Surface 1 · Resume -->
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">1 · Career Context</div>
+            <div class="esa-step-tag">Surface 1 · Give Me The Signal</div>
             <div class="esa-title">Resume</div>
-            <div class="esa-question">"What did I do?"</div>
-            <div class="esa-body">Career trajectory, titles, companies, and quantified achievements structured for fast recruiter evaluation.</div>
+            <div class="esa-question">What did I do?</div>
+            <div class="esa-body">The career at a glance. Titles, companies, roles, career trajectory, timelines, and quantified achievements for fast recruiter evaluation.</div>
           </div>
           <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="esa-link">View Resume (PDF) ↗</a>
         </div>
 
+        <!-- Surface 2 · Beyond My Resume -->
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">2 · Product Mindset</div>
+            <div class="esa-step-tag">Surface 2 · Give Me The Thinking</div>
             <div class="esa-title">Beyond My Resume</div>
-            <div class="esa-question">"How do I think?"</div>
-            <div class="esa-body">Product mental models, prioritization frameworks, discovery trade-offs, and lessons from execution failures.</div>
+            <div class="esa-question">How do I think?</div>
+            <div class="esa-body">The product mindset. Mental models, first-principles problem framing, prioritization trade-offs, experimentation frameworks, and learnings from failure.</div>
           </div>
           <a href="https://beyondmyresume.com" target="_blank" rel="noopener" class="esa-link">Explore The Thinking ↗</a>
         </div>
 
+        <!-- Surface 3 · The Evidence (Active) -->
         <div class="esa-node active">
           <div>
-            <div class="esa-step-tag" style="color:var(--signal);">3 · Production Evidence</div>
+            <div class="esa-step-tag" style="color:var(--signal);">Surface 3 · Give Me The Proof</div>
             <div class="esa-title">The Evidence</div>
-            <div class="esa-question" style="color:var(--signal);">"How that thinking held up"</div>
-            <div class="esa-body">The proof behind the bullet points: real operational constraints, direct PM ownership, shipped workflows, and reported outcomes across 12 stories.</div>
+            <div class="esa-question" style="color:var(--signal);">How that thinking held up</div>
+            <div class="esa-body">Real-world execution. The proof behind the bullet points. Messy operational constraints, direct ownership, decisions made, workflows shipped, and reported business outcomes across 16 achievements.</div>
           </div>
-          <span style="font-size: 0.72rem; font-weight:700; color:var(--signal); margin-top:12px; letter-spacing:0.04em;">You Are Here</span>
+          <span style="font-size: 0.76rem; font-weight:800; color:var(--signal); margin-top:14px;">Current Evidence Layer ✓</span>
         </div>
 
+        <!-- Surface 4 · The Interview -->
         <div class="esa-node">
           <div>
-            <div class="esa-step-tag">4 · The Conversation</div>
+            <div class="esa-step-tag">Surface 4 · Let's Test It Together</div>
             <div class="esa-title">The Interview</div>
-            <div class="esa-question">"Let's discuss the work"</div>
-            <div class="esa-body">Direct conversation: testing assumptions, probing trade-offs, and discussing role fit.</div>
+            <div class="esa-question">Let's discuss the work</div>
+            <div class="esa-body">The human and tactical connection. Connect on LinkedIn for product discussions, reach out via Email for high-impact roles, or explore the decisions behind the work directly.</div>
           </div>
           <a href="https://www.linkedin.com/in/avinash-pm/" target="_blank" rel="noopener" class="esa-link">Connect on LinkedIn ↗</a>
         </div>
@@ -1908,30 +1769,35 @@
       <a href="https://beyondmyresume.com" target="_blank" rel="noopener">Beyond My Resume ↗</a>
     </div>
 
-    <div style="font-family:'Caveat', cursive; font-size:1.2rem; color:rgba(250,249,246,0.7);">
+    <div style="font-family:'Caveat', cursive; font-size:1.25rem; color:rgba(250,249,246,0.7);">
       "Let's talk about the work."
     </div>
   </div>
 </footer>
 
-<!-- DATA & LOGIC ENGINE -->
+<!-- ========================================================
+     DATA & LOGIC ENGINE
+======================================================== -->
 <script>
   const companiesData = [
-    // 0: Sportstech
+    // 0: Sportstech (5 Evidence Stories covering 7 Quantified Metrics)
     {
       slug: "sportstech",
       domain: "Consumer IoT · Connected Fitness",
       name: "Sportstech",
       what: "A connected fitness ecosystem spanning smart hardware (treadmills, bikes, rowing machines, Smart Gym strength equipment), companion mobile apps, workout streaming, and personalized workout recommendations.",
       roleDesc: "Product Manager responsible for connected fitness experiences, hardware onboarding, AI coaching, and subscription growth experiments.",
-      scopeVal: "Connected hardware onboarding · Smart Gym · AI coaching · Workout experience · Subscription growth",
-      ownedLine: "Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking",
-      partneredLine: "UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing",
+      scopeTags: [
+        "Connected hardware onboarding",
+        "Smart Gym",
+        "AI coaching",
+        "Workout experience",
+        "Subscription growth"
+      ],
+      ownershipLine: "Core Ownership: Product discovery · Companion app PRDs · Feature prioritization · Experiment design · Cross-functional rollout",
       bullets: [
         {
-          isFlagship: true,
-          outcome: "+25%",
-          outcomeSub: "Day-1 Activation",
+          outcome: "+25% Day-1 Activation",
           headline: "Redesigned device pairing from manual setup to guided discovery",
           bizContext: "Pairing was the gateway to the entire connected fitness experience; drop-offs here halted engagement before habit formation could start.",
           problemBehind: "Newly unboxed smart fitness equipment required pairing with the companion mobile app before users could start their first workout. Customers were dropping off during unboxing because the setup flow involved manual device selection and ambiguous connection states. The friction was not a lack of setup tutorials, but friction in the discovery and connection flow itself.",
@@ -1941,46 +1807,39 @@
           designCollab: "Collaborated with Product Design on UX discovery states, connection progress cues, and retry visual feedback.",
           productChange: "Replaced multi-step manual device selection with a guided discovery flow that gave immediate visual connection feedback upon opening the app.",
           reportedOutcome: "+25% Day-1 Activation",
-          roleContextNote: "Primary onboarding initiative outcome observed among newly unboxed hardware cohorts.",
-          measurement: "Day-1 activation tracked for cohorts completing device pairing and an initial workout session within 24 hours of setup.",
-          learningAdded: "You cannot educate your way out of onboarding friction. Improving the discovery architecture was a higher-leverage intervention than adding setup guide content.",
-          artifactTitle: "Representative PM Spec",
-          artifactSpec: {
-            title: "Sanitized Working Requirement · AC-BLE-02",
-            tag: "PRD-2025-03",
-            code: "CONNECTION_FLOW: DISCONNECTED -> RSSI Discovery Scan -> Proximity Auto-Connect -> Workout Calibration Launch\nAC-1.2: If discovery latency exceeds timeout threshold, trigger background retry before surfacing manual selection fallback."
-          },
+          roleContextNote: "Primary onboarding initiative outcome among newly unboxed hardware cohorts.",
+          measurement: "Reported outcome: Day-1 activation tracked for cohorts completing device pairing and an initial workout session within 24 hours of setup.",
+          learningAdded: "You cannot market or educate your way out of onboarding friction. Solving the device setup experience was a higher-leverage growth action than adding guide content.",
+          artifactTitle: "Device Onboarding: Manual Setup vs. Guided Flow",
           artifactRows: [
-            { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "High setup friction" },
+            { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "Setup friction" },
             { resolved: true, bold: "After (Guided Discovery)", text: "Unbox hardware → App auto-discovers device → One-tap connection → Immediate calibration workout launch" },
-            { resolved: true, bold: "Reported Result", text: "+25% lift in Day-1 device pairing and workout activation" }
+            { resolved: false, bold: "Reported Outcome", text: "+25% lift in Day-1 device pairing and workout activation" }
           ]
         },
         {
-          outcome: "4.3% · 96.8%",
-          outcomeSub: "Paid Conv. · Renewal Ret.",
+          outcome: "4.3% Paid Conversion & 96.8% Retention",
           headline: "Moved subscription conversion into workout milestones while reinforcing renewal habits",
-          bizContext: "Converting hardware buyers into recurring subscribers and maintaining high renewal retention was necessary to expand margins beyond single hardware unit sales.",
-          problemBehind: "Free-tier activation was healthy, but too few newly onboarded hardware owners converted into paid memberships. The paywall was presented upfront during unboxing before users experienced software value, while renewals required ongoing progress reinforcement rather than passive invoicing.",
-          investigation: "Onboarding drop-off logs indicated that presenting premium value during initial setup was premature. Furthermore, cohort patterns showed stronger renewal retention among members consistently hitting workout milestones.",
-          decision: "Tested presenting premium value prompts after users completed meaningful workout milestones rather than during unboxing, while prioritizing progress streaks and milestone recognition to protect long-term renewal retention.",
+          bizContext: "Monetizing hardware buyers into recurring subscribers and maintaining high renewal retention was essential to expand revenue beyond one-time device margins.",
+          problemBehind: "Free-tier activation was healthy, but too few newly onboarded hardware owners were converting into paid memberships. The existing paywall was presented upfront during unboxing when users had not yet experienced product value, while subscriber retention required ongoing progress reinforcement rather than passive renewals.",
+          investigation: "Analysis of onboarding and session behavior indicated that presenting premium value during initial setup was premature. Furthermore, cohort activity analysis showed that members who consistently tracked workout milestones were significantly more likely to remain active through renewal cycles.",
+          decision: "Tested presenting premium value after users completed meaningful workout milestones rather than gating setup, while prioritizing progress streaks and milestone recognition to protect long-term retention.",
           pmOwnership: "Defined the subscription experiment matrix, trial offer timing, streak milestone logic, and monitored cohort conversion and retention rates.",
           designCollab: "Partnered with UX Design on contextual post-workout paywall states, milestone celebration cards, and transparent subscription plan comparisons.",
           productChange: "Implemented contextual trial prompts triggered after workout milestones, clearer premium feature distinctions (custom plans and coaching), progress streak tracking, and flexible subscription options.",
           reportedOutcome: "4.3% Paid Conversion Rate · 96.8% Renewal Retention Rate",
-          roleContextNote: "4.3% paid conversion observed from milestone trial prompts; 96.8% annual renewal retention tracked across active subscribed accounts (observed cohort pattern).",
-          measurement: "Paid conversion reached 4.3% among newly onboarded hardware cohorts; 96.8% annual renewal retention tracked across active subscribed accounts.",
+          roleContextNote: "Both subscription conversion and annual renewal retention tracked across target hardware cohorts.",
+          measurement: "Reported outcome: Paid conversion reached 4.3% among newly onboarded hardware cohorts; 96.8% annual renewal retention maintained across active subscribed accounts.",
           learningAdded: "Timing and contextual relevance of the paywall matter more than aggressive upfront gating on day one; reinforcing consistency through progress milestones sustains long-term retention.",
-          artifactTitle: "Monetization & Retention Flow",
+          artifactTitle: "Subscription Monetization & Retention Workflow",
           artifactRows: [
             { resolved: false, bold: "Before", text: "Static paywall during unboxing setup & passive annual renewals without progress reinforcement", note: "Premature gating" },
             { resolved: true, bold: "After", text: "Contextual trial prompts post-workout & automated milestone streak tracking throughout membership" },
-            { resolved: true, bold: "Reported Result", text: "4.3% paid conversion rate & 96.8% renewal retention sustained across active members" }
+            { resolved: false, bold: "Reported Outcome", text: "4.3% paid conversion rate & 96.8% renewal retention sustained across active members" }
           ]
         },
         {
-          outcome: "+30%",
-          outcomeSub: "New-User Acquisition",
+          outcome: "+30% Acquisition",
           headline: "Used coaching intelligence to strengthen product differentiation",
           bizContext: "Acquisition was plateauing despite steady equipment sales, requiring clear software value differentiation.",
           problemBehind: "Prospective buyers saw companion apps as generic telemetry dashboards rather than active coaching partners.",
@@ -1990,19 +1849,18 @@
           designCollab: "Worked with Design on strength testing calibration UI and visual coach response formats.",
           productChange: "Shipped integrated AI-driven workout recommendations adapting to historical strength levels and personal targets.",
           reportedOutcome: "+30% New-User Acquisition",
-          roleContextNote: "Observed increase in new-user onboarding acquisition following coaching feature launch.",
-          measurement: "+30% increase in new-user onboarding acquisition observed across the target window following coaching rollout.",
-          learningAdded: "Software intelligence provides an ongoing engagement rationale for single-purchase hardware buyers.",
-          artifactTitle: "Positioning Shift",
+          roleContextNote: "Growth marketing and onboarded customer acquisition observed following rollout.",
+          measurement: "Reported outcome: +30% increase in new-user onboarding acquisition following coaching feature rollout.",
+          learningAdded: "Software intelligence turns single-purchase hardware buyers into engaged daily software users.",
+          artifactTitle: "Product Positioning: Utility vs. Intelligent Coach",
           artifactRows: [
             { resolved: false, bold: "Before (Passive Telemetry)", text: "App treated as basic hardware remote → Static video catalog → Generic fitness positioning", note: "Commoditized utility" },
             { resolved: true, bold: "After (Coaching Intelligence)", text: "Strength capacity assessment → Real-time AI recommendations → Personalized progressive training plans" },
-            { resolved: true, bold: "Reported Result", text: "+30% lift in new-user onboarding acquisition following coaching rollout" }
+            { resolved: false, bold: "Reported Outcome", text: "+30% lift in new-user onboarding acquisition following coaching rollout" }
           ]
         },
         {
-          outcome: "+22% · +22.4%",
-          outcomeSub: "Completion · DAU Growth",
+          outcome: "+22% Session Completion & +22.4% DAU",
           headline: "Introduced adaptive workout pacing and active recovery habit scheduling",
           bizContext: "Incomplete workouts signaled user fatigue mismatch, while multi-day engagement gaps between workouts eroded habit formation and increased churn risk.",
           problemBehind: "Users were dropping out mid-session due to uncalibrated workout difficulty, while app opens dropped sharply on non-exercise days because the product lacked utility when users were not actively on the hardware.",
@@ -2013,20 +1871,19 @@
           productChange: "Shipped adaptive workout pacing that scales interval intensity to match demonstrated capacity, alongside active recovery routines, post-workout mobility sessions, and dynamic training schedules.",
           reportedOutcome: "+22% Session Completion Rate · +22.4% DAU Growth",
           roleContextNote: "Session completion rate lifted by 22% and daily active user (DAU) engagement grew by 22.4% across active members.",
-          measurement: "Session completion rate measured as workouts completed through cool-down; DAU growth tracked among active paired accounts over the measurement period.",
+          measurement: "Reported outcome: Session completion rate measured as workouts completed through cool-down; DAU growth tracked among active paired accounts over the measurement period.",
           learningAdded: "Calibrating workout difficulty to real capacity improves completion, while designing for rest and recovery turns exercise gear into an everyday habit.",
-          artifactTitle: "Workout Pacing Shift",
+          artifactTitle: "Workout Pacing & Habit Loop Shift",
           artifactRows: [
-            { resolved: false, bold: "Before", text: "Fixed-intensity classes caused mid-session burnout, and zero utility on rest days created multi-day gaps", note: "Fatigue & multi-day gaps" },
+            { resolved: false, bold: "Before", text: "Fixed-intensity classes caused mid-session burnout, and zero utility on rest days created multi-day gaps", note: "Fatigue & gaps" },
             { resolved: true, bold: "After", text: "Exertion telemetry-calibrated interval pacing paired with rest-day mobility & adaptive weekly scheduling" },
-            { resolved: true, bold: "Reported Result", text: "+22% session completion rate & +22.4% DAU growth across connected hardware base" }
+            { resolved: false, bold: "Reported Outcome", text: "+22% session completion rate & +22.4% DAU growth across connected hardware base" }
           ]
         },
         {
-          outcome: "+81.9%",
-          outcomeSub: "YoY Subscriber Scale",
-          headline: "Strengthened the hardware-to-software loop across the connected ecosystem",
-          bizContext: "Company-level expansion goal: scaling recurring subscription volume across hardware buyers.",
+          outcome: "+81.9% YoY Subscriber Growth",
+          headline: "Scaled connected ecosystem through hardware-app synergy across 174K+ users",
+          bizContext: "Hardware sales alone could not support the platform business model; unifying hardware packaging with app onboarding incentives was necessary to drive recurring subscriber scale.",
           problemBehind: "Hardware sales and software subscriptions were operating as disconnected revenue channels, limiting compounding subscriber growth across the expanding freemium member base.",
           investigation: "Connecting the unboxing moment directly to software value strengthened the activation loop across single and multi-device hardware owners.",
           decision: "Prioritized stronger handoffs between hardware ownership, multi-device app pairing, ongoing coaching value, and ecosystem-wide subscription access.",
@@ -2034,34 +1891,38 @@
           designCollab: "Coordinated with Brand & Industrial Design on packaging QR paths, unboxing app handoffs, and multi-device setup screens.",
           productChange: "Delivered unified multi-device pairing and integrated ecosystem subscriptions covering all smart cardio and strength equipment.",
           reportedOutcome: "+81.9% YoY Subscriber Growth",
-          roleContextNote: "Platform-level business outcome observed across the connected ecosystem during the multi-device rollout period.",
-          measurement: "+81.9% year-over-year subscriber growth tracked across the connected fitness platform.",
-          learningAdded: "IoT synergy occurs when hardware ownership directly seeds and accelerates software subscription engagement.",
+          roleContextNote: "Role-level business outcome: +81.9% YoY platform subscriber growth observed across the 174K+ user ecosystem.",
+          measurement: "Reported outcome: +81.9% year-over-year subscriber growth tracked across the connected fitness platform.",
+          learningAdded: "True IoT synergy occurs when hardware purchase is perceived merely as the gateway to ongoing software value.",
           artifactTitle: "Ecosystem Scaling Shift",
           artifactRows: [
             { resolved: false, bold: "Before", text: "Siloed hardware purchases with fragmented app discovery and disjointed subscriptions", note: "Fragmented channels" },
             { resolved: true, bold: "After", text: "Unified multi-device pairing & all-in-one ecosystem subscriptions linking smart cardio and strength gear" },
-            { resolved: true, bold: "Reported Result", text: "+81.9% YoY subscriber growth across the 174K+ user ecosystem" }
+            { resolved: false, bold: "Reported Outcome", text: "+81.9% YoY subscriber growth across the 174K+ user ecosystem" }
           ]
         }
       ]
     },
 
-    // 1: GetAI × ITC Infotech
+    // 1: GetAI × ITC Infotech (3 Evidence Stories covering 4 Quantified Metrics)
     {
       slug: "getai",
       domain: "Enterprise AI · Manufacturing",
       name: "GetAI × ITC Infotech",
       what: "Digital operations and AI transformation for ITC's Foods & Beverages plants (snacks, noodles, pasta, biscuits, and staples).",
       roleDesc: "Product Manager owning two enterprise workflows: shop-floor operations through IOMS and AI-assisted contract workflows through CMS.",
-      scopeVal: "Shop-floor digitization · IOMS mobile sync · AI contract workflows · Clause variance review · Plant analytics",
-      ownedLine: "IOMS mobile sync requirements · CMS AI prompt boundary guidelines · Human review gate logic · KPI schemas",
-      partneredLine: "Plant engineering leads · Enterprise UI designers · Security/compliance auditors · Plant supervisors",
+      scopeTags: [
+        "Shop-floor digitization",
+        "IOMS",
+        "Contract workflows",
+        "AI-assisted drafting",
+        "Clause review",
+        "Analytics"
+      ],
+      ownershipLine: "Core Ownership: IOMS mobile sync requirements · CMS AI workflow PRDs & prompt boundaries · Milestone delivery",
       bullets: [
         {
-          isFlagship: true,
-          outcome: "+35%",
-          outcomeSub: "Feature Engagement",
+          outcome: "+35% Feature Engagement",
           headline: "Shipped offline-first shop floor logging application (IOMS)",
           bizContext: "Digitizing shift and quality logging was required to improve operational data integrity and audit readiness across manufacturing plants.",
           problemBehind: "Plant connectivity was unreliable enough that always-online forms could not be depended on for shop-floor logging. Operators continued recording parameters on paper logbooks because web forms dropped data during network interruptions.",
@@ -2071,24 +1932,18 @@
           designCollab: "Partnered with UI designers on high-contrast industrial ergonomics, simplified numeric inputs, and visual offline/synced state badges.",
           productChange: "Delivered an offline-first tablet workflow that caches quality, raw material, and shift logs locally, automatically syncing records with the central database when connectivity is restored.",
           reportedOutcome: "+35% Feature Engagement",
-          roleContextNote: "Primary operational adoption outcome observed across active manufacturing shifts.",
-          measurement: "+35% digital feature engagement across pilot manufacturing facilities compared to legacy paper logs.",
+          roleContextNote: "Primary operational adoption outcome across active manufacturing shifts.",
+          measurement: "Reported outcome: +35% digital feature engagement across pilot manufacturing facilities compared to legacy paper logs.",
           learningAdded: "Software must respect real environmental constraints. Designing for offline realities unlocked floor adoption where cloud tools failed.",
-          artifactTitle: "Representative Sync Spec",
-          artifactSpec: {
-            title: "Sanitized Working Requirement · AC-SYNC-01",
-            tag: "IOMS-SYNC-01",
-            code: "SYNC_RULE: Local IndexedDB queue -> Background sync listener -> Automated batch push on network restore.\nCONFLICT_HANDLING: Shift supervisor timestamp takes precedence on concurrent row edits; local cached entries preserved until 200 OK receipt."
-          },
+          artifactTitle: "Floor Operations Workflow",
           artifactRows: [
             { resolved: false, bold: "Before", text: "Unstable plant connectivity caused form drops and reinforced reliance on paper logbooks", note: "Connectivity gap" },
             { resolved: true, bold: "After", text: "Offline-first tablet entry with background synchronization when network is available" },
-            { resolved: true, bold: "Reported Result", text: "+35% feature engagement across active manufacturing shifts" }
+            { resolved: false, bold: "Reported Outcome", text: "+35% feature engagement across active manufacturing shifts" }
           ]
         },
         {
-          outcome: "+20%",
-          outcomeSub: "Active Monthly Usage",
+          outcome: "+20% Active Usage",
           headline: "Designed AI-assisted contract drafting and review with confidentiality boundaries",
           bizContext: "Streamlining contract drafting and review reduced administrative turnaround delays across business and procurement teams while safeguarding enterprise data.",
           problemBehind: "Business and executive users spent substantial hours assembling approved contract language, while reviewers manually checked clauses for policy deviations, creating contract turnaround backlogs.",
@@ -2099,18 +1954,17 @@
           productChange: "Shipped a dual-track contract assistant in CMS: (1) Template Drafting module assembling standardized contracts with abstract placeholders, and (2) Clause Review assistant flagging policy variances against approved corporate standards for human sign-off.",
           reportedOutcome: "+20% Active Usage",
           roleContextNote: "Active monthly usage increased 20% across target business and procurement teams as manual drafting friction decreased.",
-          measurement: "Active monthly usage increased 20% across target business and procurement teams as manual drafting friction decreased.",
+          measurement: "Reported outcome: active monthly usage increased 20% across target business and procurement teams as manual drafting friction decreased.",
           learningAdded: "AI delivers the highest enterprise ROI when accelerating routine draft and review tasks while keeping humans firmly in control of decisions.",
           artifactTitle: "Dual-Track CMS AI Workflow",
           artifactRows: [
             { resolved: true, bold: "01 · Template Drafting", text: "Approved templates → AI-assisted draft → Abstract placeholders → Human completion" },
             { resolved: true, bold: "02 · Clause Review", text: "Contract clause → LLM policy analysis → Variance flags → Human legal/exec approval", note: "Human-in-the-loop" },
-            { resolved: true, bold: "Reported Result", text: "+20% active usage across business and procurement teams" }
+            { resolved: false, bold: "Reported Outcome", text: "+20% active usage across business and procurement teams" }
           ]
         },
         {
-          outcome: "-40% · 95%",
-          outcomeSub: "Turnaround · On-Time Delivery",
+          outcome: "-40% Turnaround & 95% On-Time Delivery",
           headline: "Centralized plant reporting dashboards and locked pre-sprint edge cases",
           bizContext: "Delayed reporting prevented plant leadership from identifying line bottlenecks, while release unpredictability stalled factory digitization roadmaps and increased development rework costs.",
           problemBehind: "Shift, quality, and compliance reporting required manual spreadsheet compilation across disparate sources, delaying operational visibility, while enterprise software releases frequently slipped deadlines due to mid-sprint requirement ambiguity uncovered late on the factory floor.",
@@ -2121,32 +1975,36 @@
           productChange: "Shipped centralized operational reporting dashboards aggregating logged IOMS data automatically for plant leadership, and instituted formal pre-sprint operational edge-case sign-offs aligning plant supervisors and engineering leads.",
           reportedOutcome: "-40% Reporting Turnaround · 95% On-Time Delivery",
           roleContextNote: "Reporting turnaround dropped by 40% and 95% on-time release completion was achieved across scheduled enterprise deployments.",
-          measurement: "40% reduction in turnaround time for recurring operational review and audit cycles; 95% on-time release completion tracked across enterprise software deployment schedule.",
-          learningAdded: "Centralizing operational data at the point of entry reduces downstream review overhead, while resolving factory operational constraints before sprints begin improves release predictability.",
-          artifactTitle: "Reporting Automation Shift",
+          measurement: "Reported outcome: 40% reduction in turnaround time for recurring operational review and audit cycles; 95% on-time release completion tracked across enterprise software deployment schedule.",
+          learningAdded: "Centralizing operational data at the point of entry reduces downstream review overhead, while resolving factory operational constraints before sprints begin guarantees release predictability.",
+          artifactTitle: "Reporting Automation & Release Predictability Shift",
           artifactRows: [
-            { resolved: false, bold: "Before", text: "Fragmented logs manually compiled across spreadsheets, and mid-sprint requirement pauses delayed launches", note: "Delays & scope drift" },
+            { resolved: false, bold: "Before", text: "Fragmented logs manually compiled across spreadsheets, and mid-sprint requirement pauses delayed launches", note: "Delays & drift" },
             { resolved: true, bold: "After", text: "Centralized IOMS reporting dashboards paired with locked pre-sprint operational edge-case sign-offs" },
-            { resolved: true, bold: "Reported Result", text: "-40% reporting turnaround time & 95% on-time delivery across scheduled enterprise releases" }
+            { resolved: false, bold: "Reported Outcome", text: "-40% reporting turnaround time & 95% on-time delivery across scheduled enterprise releases" }
           ]
         }
       ]
     },
 
-    // 2: VS Happy Infotech
+    // 2: VS Happy Infotech (4 Evidence Stories covering 5 Quantified Metrics)
     {
       slug: "vshappy",
       domain: "Fintech Lending",
       name: "VS Happy Infotech",
       what: "A US-based financial services platform managing auto title, mortgage, commercial, and personal loan origination.",
       roleDesc: "Joined as Project Team Manager in 2020; transitioned into Product Manager in 2022 owning applicant self-service, document intake, and operational reporting.",
-      scopeVal: "Loan onboarding · Self-service applications · Document intake · Queue visibility · SLA reporting",
-      ownedLine: "Self-service funnel PRDs · Document validation rules · SQL dashboard schemas · Sprint grooming prioritization",
-      partneredLine: "Underwriting operations heads · Frontend web designers · Database engineers · Compliance officers",
+      scopeTags: [
+        "Loan onboarding",
+        "Self-service applications",
+        "Document workflows",
+        "Applicant visibility",
+        "Operational reporting"
+      ],
+      ownershipLine: "Core Ownership: Self-service funnel PRDs · Document verification scope · Milestone KPIs · Backlog prioritization",
       bullets: [
         {
-          outcome: "+20 · -20%",
-          outcomeSub: "NPS Points · Churn Reduction",
+          outcome: "+20 NPS Points & -20% Churn",
           headline: "Digitized loan onboarding from assisted intake to customer self-service",
           bizContext: "Customer Success was acting as a manual relay for data entry rather than advising borrowers, inflating churn and customer frustration.",
           problemBehind: "Customer intake was entirely assisted and manual. Borrowers had to contact Customer Success by phone, provide their details, wait for an agent to create the application, and then exchange documents through email before underwriting could begin. The deeper issue wasn't a confusing form. It was that customers depended on Customer Success to move through almost every stage of the journey.",
@@ -2156,25 +2014,18 @@
           designCollab: "Partnered with UX Design on progressive disclosure across intake steps, mobile camera photo-capture guidance, and interactive vehicle valuation range estimates.",
           productChange: "Shipped an end-to-end self-service web application flow: direct customer entry of personal information, vehicle make/model/mileage inputs generating estimated vehicle value and potential loan amount, customer decision point to continue, and direct document upload.",
           reportedOutcome: "+20 NPS Points · -20% Churn",
-          roleContextNote: "Primary applicant experience and funnel conversion outcome observed after self-service rollout.",
-          measurement: "NPS improvement measured via post-intake customer surveys; churn reduction measured as the decrease in borrower drop-offs between initial inquiry and completed document submission.",
+          roleContextNote: "Primary applicant experience and funnel conversion outcome",
+          measurement: "Reported outcome: NPS improvement measured via post-intake customer surveys; churn reduction measured as the decrease in borrower drop-offs between initial inquiry and completed document submission.",
           learningAdded: "Diagnosing whether friction stems from superficial usability versus a structural operating-model dependency is essential before committing engineering resources.",
-          artifactTitle: "Representative Funnel Spec",
-          artifactSpec: {
-            title: "Sanitized Working Requirement · AC-INTAKE-04",
-            tag: "PRD-FUNNEL-04",
-            code: "STAGE_GATES: 1. Identity Auth -> 2. Valuation Engine Query -> 3. Estimated Loan Range -> 4. Self-Service Doc Upload\nHANDOFF_RULE: Direct routing to underwriting queue upon completed document packaging without requiring manual phone intake."
-          },
+          artifactTitle: "Loan Onboarding: Assisted vs. Self-Service Flow",
           artifactRows: [
             { resolved: false, bold: "Before (Assisted Journey)", text: "Customer phone call → CS phone intake → Manual app creation → Disjointed email doc request → Email attachment return → Manual verification backlog", note: "CS dependency" },
             { resolved: true, bold: "After (Self-Service Journey)", text: "Web application → Direct info & vehicle entry → Live estimated value & loan range → Customer decides to continue → Direct in-app document upload → Immediate underwriting queue" },
-            { resolved: true, bold: "Reported Result", text: "+20 point increase in Net Promoter Score and -20% reduction in application churn" }
+            { resolved: false, bold: "Reported Outcome", text: "+20 point increase in Net Promoter Score and -20% reduction in application churn" }
           ]
         },
         {
-          isFlagship: true,
-          outcome: "14 → 6d",
-          outcomeSub: "Time-to-Value (TTV)",
+          outcome: "14 → 6 Days TTV",
           headline: "Cut loan cycle time by eliminating redundant manual handoffs",
           bizContext: "In consumer lending, turnaround speed directly drives borrower confidence; a 14-day window allowed cancellations and competitive shopping.",
           problemBehind: "The loan journey was taking 14 days from application initiation to underwriting assessment and loan determination, delayed by redundant manual handoffs and administrative queue time.",
@@ -2185,18 +2036,17 @@
           productChange: "Eliminated redundant manual touchpoints and handoffs by replacing manual collection with direct digital intake, structured document validation, and immediate routing into underwriter review queues.",
           reportedOutcome: "14 → 6 Days TTV",
           roleContextNote: "Reduced cycle time from application submission to assessment decision from 14 down to 6 days.",
-          measurement: "Time-to-value measured as elapsed calendar days from initial customer application initiation to final underwriting assessment decision.",
+          measurement: "Reported outcome: Time-to-value measured as elapsed calendar days from initial customer application initiation to final underwriting assessment decision.",
           learningAdded: "Adding operational headcount around a broken workflow only scales operational overhead; fixing the underlying bottleneck creates permanent operational leverage.",
-          artifactTitle: "Cycle Time Shift",
+          artifactTitle: "Time-to-Value: Processing Cycle Time",
           artifactRows: [
             { resolved: false, bold: "Before (14 Days TTV)", text: "Manual phone intake (Days 1–3) → Email document chasing & manual upload (Days 4–8) → Administrative re-verification (Days 9–11) → Underwriting queue (Days 12–14)", note: "Administrative idle time" },
             { resolved: true, bold: "After (6 Days TTV)", text: "Direct self-service application & upload (Day 1) → Automated file validation & packaging (Days 2–3) → Direct underwriting assessment (Days 4–6)" },
-            { resolved: true, bold: "Reported Result", text: "Turnaround time compressed from 14 days to 6 days without adding support headcount" }
+            { resolved: false, bold: "Reported Outcome", text: "Turnaround time compressed from 14 days to 6 days without adding support headcount" }
           ]
         },
         {
-          outcome: "10+",
-          outcomeSub: "Aligned Initiatives",
+          outcome: "10+ Initiatives",
           headline: "Standardized PRDs, user stories, and acceptance criteria across squads",
           bizContext: "Engineering rework across cross-functional pods was delaying core product releases and degrading cross-functional morale.",
           problemBehind: "Execution was inconsistent across more than 10 concurrent product initiatives. Requirements were not consistently structured, and informal specifications led to differing interpretations of scope between product, design, and engineering.",
@@ -2206,19 +2056,18 @@
           designCollab: "Partnered with Design Leads to embed interactive prototype flows and edge-case specs directly into PRDs.",
           productChange: "Instituted a standardized PRD anatomy across 10+ initiatives: problem statement & user context, operational constraints, structured user stories with unambiguous acceptance criteria, explicit error handling, and cross-functional review sign-off before sprint commitment.",
           reportedOutcome: "Delivery Alignment Across 10+ Initiatives",
-          roleContextNote: "Cross-functional execution discipline across product squads.",
-          measurement: "Qualitative and operational alignment tracked across sprint retrospectives, requirement churn reduction, and milestone completion predictability across squads.",
+          roleContextNote: "Cross-functional execution discipline across product squads",
+          measurement: "Reported outcome: Qualitative and operational alignment tracked across sprint retrospectives, requirement churn reduction, and milestone completion predictability across squads.",
           learningAdded: "Rigor in problem definition, edge-case mapping, and explicit acceptance criteria upfront creates much stronger delivery predictability.",
-          artifactTitle: "Requirement Flow",
+          artifactTitle: "Requirement Handoff: PRD Anatomy & Review Flow",
           artifactRows: [
             { resolved: false, bold: "Before (Informal Specs)", text: "Informal specifications → Differing interpretations between Product, Design & Engineering → Mid-sprint requirement churn → Delivery delays", note: "Scope ambiguity" },
             { resolved: true, bold: "After (Standardized PRD Anatomy)", text: "Problem Context → Structured User Stories → Explicit Acceptance Criteria → Embedded Design Flows → Pre-Development Alignment" },
-            { resolved: true, bold: "Reported Result", text: "Predictable delivery alignment and shared scope clarity across 10+ initiatives" }
+            { resolved: false, bold: "Reported Outcome", text: "Predictable delivery alignment and shared scope clarity across 10+ initiatives" }
           ]
         },
         {
-          outcome: "-30%",
-          outcomeSub: "Manual Effort Cut",
+          outcome: "-30% Manual Effort",
           headline: "Defined SQL-backed operational dashboards for ongoing SLA visibility",
           bizContext: "Underwriters and team leads were wasting hours compiling manual spreadsheet logs to spot stalled loans.",
           problemBehind: "SLA misses were often identified retrospectively through weekly manual reviews: operational activity occurred during the week → data was manually compiled into spreadsheets → weekly review took place → SLA visibility was finally obtained. This was reactive and inefficient.",
@@ -2228,14 +2077,14 @@
           designCollab: "Worked with UX Design on dashboard layout density, visual hierarchy, and queue status indicators to ensure clear operational readability.",
           productChange: "Introduced centralized SQL-backed dashboards providing continuous pipeline visibility into queue bottlenecks and SLA performance without weekly report compilation.",
           reportedOutcome: "-30% Manual Effort",
-          roleContextNote: "Back-office operational efficiency gain observed across loan teams.",
-          measurement: "Measured by the 30% reduction in recurring manual hours spent compiling operational review reports.",
+          roleContextNote: "Back-office operational efficiency gain",
+          measurement: "Reported outcome: Measured by the 30% reduction in recurring manual hours spent compiling operational review reports.",
           learningAdded: "Transforming reactive weekly operational reporting into continuous data visibility shifts teams from retrospective fire-fighting to proactive queue management.",
-          artifactTitle: "Pipeline Visibility Shift",
+          artifactTitle: "Operational Reporting: Pipeline Visibility",
           artifactRows: [
             { resolved: false, bold: "Before (Reactive Weekly Review)", text: "Daily loan operations → Disparate data tables → Manual weekly spreadsheet compilation → Retrospective SLA visibility", note: "Delayed visibility" },
             { resolved: true, bold: "After (Centralized SQL Dashboards)", text: "Operational database → Automated SQL data views → Centralized pipeline dashboard → Ongoing queue & SLA visibility" },
-            { resolved: true, bold: "Reported Result", text: "-30% manual reporting effort and proactive visibility into pipeline turnaround times" }
+            { resolved: false, bold: "Reported Outcome", text: "-30% manual reporting effort and proactive visibility into pipeline turnaround times" }
           ]
         }
       ]
@@ -2244,11 +2093,11 @@
 
   let currentCompanyIdx = 0;
 
-  // Hero Circuit State Engine
+  // Evidence in Motion State Engine
   const heroCircuitCycles = [
     { co: "Sportstech", prob: "Pairing Friction At Unboxing", sol: "Companion app discovery flow redesign", metric: "+25% Activation", out: "+25%" },
     { co: "VS Happy", prob: "Manual Intake & 14-Day Cycle", sol: "Self-service document upload workflow", metric: "14 → 6d TTV", out: "6d" },
-    { co: "GetAI × ITC", prob: "Unreliable Plant Connectivity", sol: "Offline-first tablet logging & sync", metric: "+35% Engagement", out: "+35%" }
+    { co: "GetAI × ITC", prob: "Factory Floor Wi-Fi Outages", sol: "Offline-first tablet logging & sync", metric: "+35% Engagement", out: "+35%" }
   ];
   let heroCycleIdx = 0;
 
@@ -2287,13 +2136,11 @@
     document.getElementById('evCompanyWhat').textContent = co.what;
     document.getElementById('evCompanyRoleDesc').textContent = co.roleDesc;
 
-    // Scope & Ownership Rail
-    document.getElementById('evScopeVal').textContent = co.scopeVal;
-    document.getElementById('evOwnedVal').textContent = co.ownedLine;
-    document.getElementById('evPartneredVal').textContent = co.partneredLine;
-    document.getElementById('evStoryCount').textContent = `${co.bullets.length} Stories`;
+    const scopeBox = document.getElementById('evScopeTags');
+    scopeBox.innerHTML = co.scopeTags.map(t => `<span class="wtag">${t}</span>`).join('');
+    document.getElementById('evOwnershipLine').textContent = co.ownershipLine;
 
-    // Render Evidence Stories
+    // Render Evidence Stories directly
     const listEl = document.getElementById('evBulletsList');
     listEl.innerHTML = co.bullets.map((b, i) => `
       <div class="bullet-evidence-item" id="bei-${idx}-${i}">
@@ -2301,121 +2148,75 @@
           aria-expanded="false"
           aria-controls="story-${idx}-${i}"
           onclick="toggleBulletEvidence(${idx}, ${i})">
-          <div class="bei-metric-col">
-            <span class="bei-metric-stat">${b.outcome}</span>
-            <span class="bei-metric-sub">${b.outcomeSub || 'Reported Metric'}</span>
+          <div class="bei-outcome-column">
+            <span class="bei-outcome-tag">${b.outcome}</span>
           </div>
-
           <div class="bei-headline-column">
-            <span class="bei-bullet-label">${b.isFlagship ? '<span class="flagship-tag">Flagship</span>' : ''}${b.headline}</span>
-            <span class="bei-bullet-subtext">Inspect operational bottleneck, PM trade-off, and measured result</span>
+            <span class="bei-bullet-label">${b.headline}</span>
           </div>
-
-          <div class="bei-action-col">
-            <span class="bei-quiet-link">
-              <span class="btn-text">Inspect</span>
-              <span class="arrow" aria-hidden="true">↗</span>
-            </span>
+          <div class="bei-chevron">
+            <span>Explore evidence</span>
+            <span class="arrow" aria-hidden="true">↓</span>
           </div>
         </button>
 
-        <!-- Expanded Continuous Evidence Timeline -->
         <div class="bei-story-pane" id="story-${idx}-${i}">
           <div class="causal-grid">
-            <div class="causal-timeline">
-              <!-- Step 01: Problem (Primary Scan) -->
-              <div class="tl-step primary">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">01</span>
-                  <span class="tl-step-title">Problem Behind The Outcome</span>
-                </div>
-                <div class="tl-problem-text">${b.problemBehind}</div>
-                <div class="tl-context-note"><b>Operational Context:</b> ${b.bizContext}</div>
+            <div class="causal-narrative-steps">
+              <div class="c-step">
+                <div class="c-step-title">The Problem Behind The Outcome</div>
+                <div class="c-step-problem-text">${b.problemBehind}</div>
+                <div class="biz-context-line"><b>Why this mattered:</b> ${b.bizContext}</div>
               </div>
 
-              <!-- Step 02: Investigation -->
-              <div class="tl-step">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">02</span>
-                  <span class="tl-step-title">What I Investigated</span>
-                </div>
-                <div class="tl-desc">${b.investigation}</div>
+              <div class="c-step">
+                <div class="c-step-title">What I Investigated</div>
+                <div class="c-step-desc">${b.investigation}</div>
               </div>
 
-              <!-- Step 03: Decision (Primary Scan) -->
-              <div class="tl-step decision">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">03</span>
-                  <span class="tl-step-title">What I Decided &amp; Trade-Offs</span>
-                </div>
-                <div class="tl-decision-text">${b.decision}</div>
+              <div class="c-step decision-step">
+                <div class="c-step-title">What I Decided</div>
+                <div class="c-step-desc">${b.decision}</div>
               </div>
 
-              <!-- Step 04: PM Scope & Collaboration -->
-              <div class="tl-step role">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">04</span>
-                  <span class="tl-step-title">PM Scope &amp; Design Collaboration</span>
-                </div>
-                <div class="tl-role-split">
-                  <div class="tl-role-block pm">
+              <div class="c-step role-step">
+                <div class="c-step-title">My Role &amp; Design Collaboration</div>
+                <div class="collaboration-rail">
+                  <div class="collab-block pm">
                     <b>PM Ownership</b>
-                    <p>${b.pmOwnership || ''}</p>
+                    ${b.pmOwnership || ''}
                   </div>
-                  <div class="tl-role-block design">
+                  <div class="collab-block design">
                     <b>Design Collaboration</b>
-                    <p>${b.designCollab || ''}</p>
+                    ${b.designCollab || ''}
                   </div>
                 </div>
               </div>
 
-              <!-- Step 05: Product Change -->
-              <div class="tl-step">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">05</span>
-                  <span class="tl-step-title">What Changed In The Product</span>
-                </div>
-                <div class="tl-desc">${b.productChange}</div>
+              <div class="c-step">
+                <div class="c-step-title">What Changed In The Product</div>
+                <div class="c-step-desc">${b.productChange}</div>
               </div>
 
-              <!-- Step 06: Outcome (Primary Scan) -->
-              <div class="tl-step outcome">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">06</span>
-                  <span class="tl-step-title">Measured Outcome</span>
-                </div>
-                <div class="tl-outcome-stat">${b.reportedOutcome}</div>
-                <span class="tl-outcome-note">${b.roleContextNote}</span>
+              <div class="c-step outcome-step">
+                <div class="c-step-title">Reported Outcome</div>
+                <div class="c-step-head">${b.reportedOutcome}</div>
+                <span class="c-context-sub">${b.roleContextNote}</span>
               </div>
 
-              <!-- Step 07: Learning -->
-              <div class="tl-step">
-                <div class="tl-step-header">
-                  <span class="tl-step-num">07</span>
-                  <span class="tl-step-title">Product Judgment &amp; Takeaway</span>
-                </div>
-                <div class="tl-desc">${b.learningAdded}</div>
+              <div class="c-step">
+                <div class="c-step-title">What This Added To My Judgment</div>
+                <div class="c-step-desc">${b.learningAdded}</div>
               </div>
             </div>
 
-            <!-- Sidebar Stack with Representative Working Spec -->
-            <div class="c-sidebar-stack">
+            <!-- Right Column: Workflow Shifts & Context -->
+            <div>
               <div class="c-artifact-card">
                 <div class="c-art-title">
                   <span>${b.artifactTitle}</span>
-                  <span class="c-art-sublabel">Working Requirement</span>
+                  <span class="c-art-sublabel">Workflow before → after</span>
                 </div>
-                
-                ${b.artifactSpec ? `
-                  <div class="artifact-spec-box">
-                    <div class="spec-kicker">
-                      <span>${b.artifactSpec.title}</span>
-                      <span class="tag">${b.artifactSpec.tag}</span>
-                    </div>
-                    <div class="spec-code">${b.artifactSpec.code}</div>
-                  </div>
-                ` : ''}
-
                 ${b.artifactRows.map(r => `
                   <div class="c-flow-row ${r.resolved ? 'resolved' : ''}">
                     <b>${r.bold}</b>
@@ -2442,13 +2243,21 @@
 
     const expanded = item.classList.toggle('expanded');
     const trigger = item.querySelector('.bei-trigger');
-    const btnText = item.querySelector('.btn-text');
     if (trigger) {
       trigger.setAttribute('aria-expanded', String(expanded));
     }
-    if (btnText) {
-      btnText.textContent = expanded ? 'Close' : 'Inspect';
+  }
+
+  function openDeepStory(coIdx, storyIdx) {
+    const item = document.getElementById(`bei-${coIdx}-${storyIdx}`);
+    if (!item) return;
+
+    item.classList.add('expanded');
+    const trigger = item.querySelector('.bei-trigger');
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'true');
     }
+    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   function initFromHash(pushHistory) {
@@ -2466,16 +2275,15 @@
   });
 
   const navLinks = document.querySelectorAll('#navlinks a');
-  const sections = ['home', 'ecosystem-map', 'foundation', 'work', 'evidenceViewport', 'synthesis', 'ecosystem'];
+  const sections = ['home', 'foundation', 'work', 'synthesis', 'ecosystem'];
   window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset + 140;
+    const scrollPos = window.pageYOffset + 120;
     sections.forEach((id, i) => {
       const el = document.getElementById(id);
       if (!el) return;
       if (scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
         navLinks.forEach(nl => nl.classList.remove('active'));
-        const activeLink = document.querySelector(`#navlinks a[href="#${id}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        navLinks[i]?.classList.add('active');
       }
     });
   }, { passive: true });
@@ -2484,4 +2292,3 @@
 </script>
 </body>
 </html>
-```
