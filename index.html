@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,7 +106,7 @@
     text-transform: uppercase;
   }
 
-  /* Header Navigation */
+  /* Header Navigation: Strictly Centered */
   header {
     position: sticky;
     top: 14px;
@@ -115,64 +116,107 @@
     padding: 0 clamp(16px, 3vw, 32px);
   }
   .navrow {
-    display: flex;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
     align-items: center;
-    justify-content: space-between;
     padding: 10px 24px;
     border-radius: 999px;
     background: var(--glass-subtle);
     border: 1px solid var(--glass-border);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--glass-specular), 0 12px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--glass-specular), 0 12px 30px rgba(0, 0, 0, 0.45);
   }
+  @media(max-width: 920px) {
+    .navrow {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   .mark {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     line-height: 1.1;
+    justify-self: start;
   }
   .mark .r { color: var(--signal-bright); font-style: normal; }
   .mark small {
     display: block;
     font-weight: 600;
-    font-size: 0.63rem;
+    font-size: 0.62rem;
     color: var(--muted-dim);
     margin-top: 2px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
+  /* Center-Aligned Links Group */
   nav.links {
+    justify-self: center;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 999px;
     padding: 3px 6px;
   }
-  @media(max-width: 768px) { nav.links { display: none; } }
+  @media(max-width: 920px) { nav.links { display: none; } }
   nav.links a {
-    font-size: 0.78rem;
-    color: rgba(250, 249, 246, 0.7);
-    padding: 6px 14px;
+    font-size: 0.77rem;
+    color: rgba(250, 249, 246, 0.72);
+    padding: 6px 13px;
     border-radius: 999px;
     transition: all .18s ease;
     font-weight: 600;
   }
   nav.links a.active {
     color: #fff;
-    background: rgba(34, 181, 155, 0.20);
+    background: rgba(34, 181, 155, 0.22);
     border: 1px solid rgba(34, 181, 155, 0.45);
   }
   nav.links a:not(.active):hover { color: #fff; background: rgba(255,255,255,0.05); }
 
+  .header-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-resume-btn {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border-bright);
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: all .18s ease;
+  }
+  .nav-resume-btn:hover {
+    background: rgba(34, 181, 155, 0.2);
+    border-color: var(--signal-bright);
+  }
+
+  .chapter-tag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
   /* ========================================================
-     01: HERO
+     SCREEN 01: HERO — WHY DOES THIS LAYER EXIST?
   ======================================================== */
   .hero-sec {
     position: relative;
-    padding: 76px 0 80px;
+    padding: 72px 0 76px;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
     margin-top: -62px;
@@ -183,12 +227,12 @@
     inset: 0;
     z-index: 0;
     background-image: 
-      radial-gradient(ellipse at 75% 35%, rgba(34, 181, 155, 0.12) 0%, transparent 60%),
-      linear-gradient(to bottom, rgba(7, 11, 16, 0.85) 0%, var(--ink-950) 100%),
+      radial-gradient(ellipse at 75% 35%, rgba(34, 181, 155, 0.08) 0%, transparent 60%),
+      linear-gradient(to bottom, rgba(7, 11, 16, 0.88) 0%, var(--ink-950) 100%),
       url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=2200&q=80');
     background-size: cover;
     background-position: center 30%;
-    opacity: 0.16;
+    opacity: 0.14;
   }
   .hero-grid-overlay {
     position: absolute;
@@ -245,10 +289,11 @@
     font-size: 1.04rem;
     line-height: 1.68;
     color: var(--muted);
-    max-width: 48ch;
+    max-width: 50ch;
   }
+  .hero-narrative strong { color: #fff; }
 
-  .hero-cta-row { margin-top: 32px; }
+  .hero-cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn-apple {
     display: inline-flex;
     align-items: center;
@@ -353,62 +398,229 @@
   }
 
   /* ========================================================
-     02: THE FOUNDATION
+     SCREEN 02: ECOSYSTEM MAP — HOW SHOULD YOU READ THIS?
+  ======================================================== */
+  .ecosystem-bridge-sec {
+    background: #0B1017;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .eco-bridge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  @media(max-width: 860px) {
+    .eco-bridge-grid { grid-template-columns: 1fr; gap: 14px; }
+  }
+  .eb-card {
+    background: var(--surface-flat);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transition: border-color .2s ease;
+  }
+  .eb-card.active-layer {
+    border-color: var(--signal);
+    background: #111A27;
+    box-shadow: 0 0 0 1px var(--signal), 0 10px 24px rgba(34, 181, 155, 0.1);
+  }
+  .eb-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .eb-number {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--paper-sub);
+    text-transform: uppercase;
+  }
+  .eb-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .eb-badge.here {
+    color: var(--signal-bright);
+    background: rgba(34, 181, 155, 0.15);
+    border: 1px solid rgba(34, 181, 155, 0.35);
+  }
+  .eb-badge.external {
+    color: var(--brass);
+    background: var(--brass-dim);
+    border: 1px solid var(--brass-border);
+  }
+  .eb-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .eb-question {
+    font-size: 0.79rem;
+    font-weight: 700;
+    color: var(--signal-bright);
+    margin-bottom: 6px;
+  }
+  .eb-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .eb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--signal-bright);
+    margin-top: 14px;
+  }
+
+  /* ========================================================
+     SCREEN 03: FOUNDATION (TWO-CARD CONTRASTING TRANSFER)
   ======================================================== */
   .foundation-sec {
     background: var(--paper-bg);
     color: var(--paper-text);
-    padding: 56px 0 52px;
+    padding: 68px 0 64px;
     border-bottom: 1px solid rgba(10, 14, 21, 0.08);
   }
   .foundation-lead-area {
-    max-width: 780px;
-    margin-bottom: 24px;
+    max-width: 820px;
+    margin-bottom: 32px;
   }
   .foundation-lead-area h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.85rem, 3vw, 2.3rem);
+    font-size: clamp(2rem, 3.4vw, 2.6rem);
     line-height: 1.15;
     color: var(--paper-text);
     margin-top: 6px;
     font-weight: 400;
   }
   .foundation-lead-area p {
-    font-size: 0.94rem;
-    line-height: 1.6;
+    font-size: 0.96rem;
+    line-height: 1.65;
     color: var(--paper-muted);
     margin-top: 8px;
   }
 
-  .disciplines-grid {
+  .foundation-two-panel-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 24px;
   }
-  @media(max-width: 900px) { .disciplines-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media(max-width: 520px) { .disciplines-grid { grid-template-columns: 1fr; } }
-  .d-card {
+  @media(max-width: 860px) {
+    .foundation-two-panel-grid { grid-template-columns: 1fr; }
+  }
+
+  .transfer-panel {
     background: #FFFFFF;
     border: 1px solid var(--paper-border);
-    border-radius: 6px;
-    padding: 16px 18px;
+    border-radius: 8px;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .d-card b {
-    display: block;
-    font-size: 0.85rem;
+  .transfer-panel.target {
+    border-left: 3.5px solid var(--signal-deep);
+    background: #FAF8F3;
+  }
+  .tp-tag {
+    font-size: 0.69rem;
     font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--paper-sub);
+    margin-bottom: 6px;
+  }
+  .transfer-panel.target .tp-tag { color: var(--signal-deep); }
+  .tp-head {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
     color: var(--paper-text);
     margin-bottom: 4px;
   }
-  .d-card span {
-    display: block;
-    font-size: 0.78rem;
+  .tp-subhead {
+    font-size: 0.81rem;
     color: var(--paper-muted);
+    margin-bottom: 16px;
+  }
+  .tp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.84rem;
+    color: var(--paper-text);
+  }
+  .tp-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
     line-height: 1.45;
   }
+  .tp-list li::before {
+    content: "•";
+    color: var(--signal);
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .tp-takeaway {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(12, 16, 24, 0.12);
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: var(--paper-muted);
+  }
+
+  .transfer-arrow-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #8C96A8;
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 0 4px;
+  }
+  @media(max-width: 860px) {
+    .transfer-arrow-divider {
+      padding: 10px 0;
+      transform: rotate(90deg);
+    }
+  }
+
+  .transfer-conclusion-banner {
+    background: #EAE5D8;
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-size: 0.84rem;
+    color: #2F3642;
+    text-align: center;
+    font-weight: 600;
+  }
+  .transfer-conclusion-banner b { color: var(--signal-deep); }
 
   /* ========================================================
-     03: THE WORK
+     SCREEN 04: THE WORK — WHERE THE THINKING MET REALITY
   ======================================================== */
   .work-sec {
     background: var(--ink-950);
@@ -417,15 +629,6 @@
     position: relative;
   }
   .work-header { margin-bottom: 28px; }
-  .recruiter-kicker {
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    color: var(--brass);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    display: block;
-  }
   .work-header h2 {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 3.4vw, 2.75rem);
@@ -510,7 +713,7 @@
   .cc-coverage-badge b { color: var(--signal-bright); font-weight: 800; }
 
   /* ========================================================
-     04: EVIDENCE VIEWPORT
+     SCREEN 05: EVIDENCE VIEWPORT
   ======================================================== */
   .evidence-viewport {
     background: var(--paper-bg);
@@ -562,7 +765,7 @@
     margin-bottom: 3px;
   }
 
-  /* Explicit 3-Tier Ownership Boundary Rail */
+  /* Scope & Ownership Rail */
   .ev-meta-rail {
     display: flex;
     flex-direction: column;
@@ -588,14 +791,14 @@
     min-width: 86px;
     flex-shrink: 0;
   }
+  .ev-meta-kicker.scope { color: var(--paper-sub); }
   .ev-meta-kicker.owned { color: #0E6656; }
   .ev-meta-kicker.partnered { color: #8F6A1E; }
-  .ev-meta-kicker.not-mine { color: #727C8E; }
 
   .ev-meta-val { color: #232B38; font-weight: 500; }
+  .ev-meta-val.scope { color: #232B38; font-weight: 500; }
   .ev-meta-val.owned { color: #0E6656; font-weight: 700; }
   .ev-meta-val.partnered { color: #4B5563; font-weight: 500; }
-  .ev-meta-val.not-mine { color: #6B7280; font-weight: 500; font-style: italic; }
 
   /* Editorial Master Header */
   .deep-evidence-master-header {
@@ -883,7 +1086,6 @@
   .tl-step.role .tl-step-title { color: var(--brass-deep); }
   .tl-step.outcome .tl-step-title { color: var(--signal-deep); font-weight: 900; }
 
-  /* Primary scan items (Problem, Decision, Outcome) are visually weighted */
   .tl-problem-text {
     font-size: 0.93rem;
     line-height: 1.62;
@@ -907,7 +1109,6 @@
   }
   .tl-context-note b { color: var(--brass-deep); font-weight: 700; }
 
-  /* Secondary inspection items (Investigation, Product Change, Learning) remain subdued */
   .tl-desc {
     font-size: 0.86rem;
     line-height: 1.58;
@@ -1066,7 +1267,7 @@
   }
 
   /* ========================================================
-     05: PATTERNS & INTELLECTUAL HONESTY
+     PATTERNS & INTELLECTUAL HONESTY
   ======================================================== */
   .evidence-shows-sec {
     background: var(--ink-900);
@@ -1100,7 +1301,6 @@
     margin-top: 12px;
   }
 
-  /* When Evidence Changed My Mind Callout */
   .mind-change-box {
     margin-top: 24px;
     background: rgba(199, 158, 67, 0.08);
@@ -1156,7 +1356,7 @@
   }
 
   /* ========================================================
-     06: THE ECOSYSTEM
+     SCREEN 06: THE ECOSYSTEM
   ======================================================== */
   .ecosystem-sec {
     background: var(--paper-bg);
@@ -1192,6 +1392,25 @@
     justify-content: space-between;
     min-height: 210px;
   }
+  .eco-system-architecture {
+    position: relative;
+  }
+  .esa-node {
+    position: relative;
+  }
+  @media(min-width: 981px) {
+    .esa-node:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.15rem;
+      color: var(--muted);
+      z-index: 2;
+    }
+  }
+
   .esa-node.active {
     border-color: var(--signal);
     background: #FFFDF9;
@@ -1255,20 +1474,25 @@
 <!-- FLOATING FROSTED GLASS HEADER -->
 <header>
   <div class="navrow">
-    <a href="#home" class="mark">The <span class="r">Evidence.</span><small>Avinash Product Ecosystem</small></a>
+    <a href="#home" class="mark">The <span class="r">Evidence.</span><small>Avinash R</small></a>
     
     <nav class="links" id="navlinks">
-      <a href="#home" class="active">Overview</a>
+      <a href="#home" class="active">Purpose</a>
+      <a href="#ecosystem-map">Ecosystem</a>
       <a href="#foundation">Foundation</a>
-      <a href="#work">The Work</a>
-      <a href="#synthesis">What It Shows</a>
-      <a href="#ecosystem">Ecosystem</a>
+      <a href="#work">Work</a>
+      <a href="#evidenceViewport">Evidence</a>
+      <a href="#synthesis">Synthesis</a>
     </nav>
+
+    <div class="header-right">
+      <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn">Resume ↗</a>
+    </div>
   </div>
 </header>
 
 <main>
-  <!-- 01: HERO -->
+  <!-- SCREEN 01: HERO -->
   <section class="hero-sec" id="home">
     <div class="hero-backdrop-photo"></div>
     <div class="hero-grid-overlay"></div>
@@ -1282,18 +1506,19 @@
           <h1 class="hero-h1">The evidence behind <br>the <span class="accent">thinking</span>.</h1>
 
           <div class="hero-narrative">
-            <p>Beyond My Resume shows how I think about products. This website unpacks what happened when that thinking met real constraints, trade-off decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.</p>
+            <p>My resume shows what happened. <em>Beyond My Resume</em> explains how I think. <strong>This website unpacks reality:</strong> what happened when product thinking met real constraints, operational bottlenecks, trade-off decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume metrics.</p>
           </div>
 
           <div class="hero-cta-row">
-            <a href="#work" class="btn-apple">Explore The Evidence <span class="a">↓</span></a>
+            <a href="#work" class="btn-apple">Inspect The Evidence <span class="a">↓</span></a>
+            <a href="#ecosystem-map" class="btn-apple" style="background:transparent;">How To Read This ↗</a>
           </div>
         </div>
 
         <!-- Evidence in Motion: State Engine -->
         <div class="evidence-visual-stage" aria-hidden="true">
           <div class="evs-top">
-            <span>Evidence in Motion</span>
+            <span>From problem to outcome</span>
             <div class="circuit-company-indicator" id="heroCircuitCompany">
               <span class="live-dot"></span> <span id="heroCircuitCoName">Sportstech</span>
             </div>
@@ -1351,47 +1576,123 @@
     </div>
   </section>
 
-  <!-- 02: FOUNDATION -->
-  <section class="foundation-sec" id="foundation">
+  <!-- SCREEN 02: ECOSYSTEM MAP -->
+  <section class="ecosystem-bridge-sec" id="ecosystem-map">
     <div class="wrap">
-      <div class="foundation-lead-area">
-        <div class="eyebrow" style="color:#C79E43;">The Foundation · 2 Years</div>
-        <h2>Operating under real constraints before software.</h2>
-        <p>Before software, I learned how systems behave under real physical constraints: mapping dependencies, defining falsifiable acceptance criteria, and tracing operational symptoms back to constraints.</p>
+      <div style="margin-bottom: 24px;">
+        <span class="chapter-tag">01 / 05 · The Hiring Ecosystem</span>
+        <h2 style="font-family:'DM Serif Display',serif; font-size:1.9rem; color:#fff; font-weight:400;">Three surfaces. One coherent body of work.</h2>
+        <p style="color:var(--muted); font-size:0.92rem; max-width:64ch; margin-top:4px;">Each layer answers a fundamentally different question across the candidate evaluation journey.</p>
       </div>
 
-      <div class="disciplines-grid">
-        <div class="d-card">
-          <b>Systems Thinking</b>
-          <span>Continuous physical production taught me to map end-to-end dependencies before proposing interventions.</span>
+      <div class="eco-bridge-grid">
+        <div class="eb-card">
+          <div>
+            <div class="eb-header-row">
+              <span class="eb-number">Surface 01</span>
+              <span class="eb-badge external">Resume</span>
+            </div>
+            <div class="eb-title">Resume</div>
+            <div class="eb-question">"What did I do?"</div>
+            <div class="eb-desc">Titles, companies, progression, and quantified outcomes formatted for rapid recruiter screening.</div>
+          </div>
+          <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="eb-link">View Resume (PDF) ↗</a>
         </div>
-        <div class="d-card">
-          <b>Sequencing &amp; Handoffs</b>
-          <span>Line scheduling taught me that many execution delays originate in an unaddressed dependency or handoff.</span>
+
+        <div class="eb-card active-layer">
+          <div>
+            <div class="eb-header-row">
+              <span class="eb-number" style="color:var(--signal-bright);">Surface 02</span>
+              <span class="eb-badge here">Active Layer</span>
+            </div>
+            <div class="eb-title">The Evidence</div>
+            <div class="eb-question" style="color:var(--signal-bright);">"How did that thinking hold up?"</div>
+            <div class="eb-desc">The reality behind the claims: messy operational constraints, decisions made, workflows shipped, and measured outcomes.</div>
+          </div>
+          <span style="font-size:0.75rem; font-weight:800; color:var(--signal-bright); margin-top:14px;">Current Verification Surface ✓</span>
         </div>
-        <div class="d-card">
-          <b>Quality Acceptance</b>
-          <span>Component tolerance inspection established the habit that 'done' requires a measurable, falsifiable standard.</span>
-        </div>
-        <div class="d-card">
-          <b>Root-Cause Diagnostics</b>
-          <span>Shop-floor failures taught me to isolate core constraints rather than applying superficial interface fixes.</span>
+
+        <div class="eb-card">
+          <div>
+            <div class="eb-header-row">
+              <span class="eb-number">Surface 03</span>
+              <span class="eb-badge external">Beyond Resume</span>
+            </div>
+            <div class="eb-title">Beyond My Resume</div>
+            <div class="eb-question">"How do I think?"</div>
+            <div class="eb-desc">First-principles product framing, mental models, prioritization frameworks, and trade-offs.</div>
+          </div>
+          <a href="https://beyondmyresume.com" target="_blank" rel="noopener" class="eb-link">Explore The Thinking ↗</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 03: THE WORK -->
+  <!-- SCREEN 03: THE FOUNDATION -->
+  <section class="foundation-sec" id="foundation">
+    <div class="wrap">
+      <div class="foundation-lead-area">
+        <span class="eyebrow" style="color:#8F6A1E;">02 / 05 · The Foundation · 2 Years</span>
+        <h2>Before software, I learned how systems behave under real-world constraints.</h2>
+        <p>My career began on 24/7 continuous steel and heavy manufacturing lines. This was not a detour—it was where I learned to trace operational symptoms to root constraints, map handoff dependencies, and enforce falsifiable quality standards.</p>
+      </div>
+
+      <div class="foundation-two-panel-grid">
+        <div class="transfer-panel">
+          <div>
+            <div class="tp-tag">Physical Systems · 2017–2019</div>
+            <div class="tp-head">Manufacturing Operations</div>
+            <div class="tp-subhead">Continuous 24/7 heavy industrial lines</div>
+            <ul class="tp-list">
+              <li>Physical dependency cascading across continuous production units</li>
+              <li>Component tolerance inspection &amp; vendor validation criteria</li>
+              <li>Planning line work around engineering tolerances and machine dependencies</li>
+              <li>Coordinating cross-functional response to live shop-floor bottlenecks</li>
+            </ul>
+          </div>
+          <div class="tp-takeaway">
+            What it gave me: Rigor in tracing operational breakdowns to systemic constraints rather than applying superficial fixes.
+          </div>
+        </div>
+
+        <div class="transfer-arrow-divider" aria-hidden="true">
+          →
+        </div>
+
+        <div class="transfer-panel target">
+          <div>
+            <div class="tp-tag">Digital Systems · 2020–Present</div>
+            <div class="tp-head">Software &amp; Product Management</div>
+            <div class="tp-subhead">Fintech Lending · Enterprise AI · Consumer IoT</div>
+            <ul class="tp-list">
+              <li>End-to-end customer journey mapping &amp; system dependency handling</li>
+              <li>Defining falsifiable user story acceptance criteria before sprints begin</li>
+              <li>Sequencing release roadmaps across multi-pod engineering squads</li>
+              <li>Diagnosing drop-off bottlenecks across complex self-service funnels</li>
+            </ul>
+          </div>
+          <div class="tp-takeaway">
+            What carried over: The product environment changed from steel coils to software APIs. The underlying discipline of managing dependencies and testing outcomes didn't.
+          </div>
+        </div>
+      </div>
+
+      <div class="transfer-conclusion-banner">
+        <strong>The Transfer:</strong> Physical production taught me that execution delays almost always originate in an unaddressed dependency or handoff—a principle that directly drives my product roadmapping today.
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 04: THE WORK -->
   <section class="work-sec" id="work">
     <div class="wrap">
       <div class="work-header">
-        <span class="recruiter-kicker">8+ Years Across Software, Consumer IoT &amp; Industrial Systems</span>
+        <span class="chapter-tag">03 / 05 · The Environments</span>
         <h2>Where the thinking met reality.</h2>
-        <p>Select a product environment to inspect the operational bottlenecks, product decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume outcomes.</p>
+        <p>Select a product environment to inspect the operational bottlenecks, product decisions, and reported outcomes across 12 evidence stories covering 16 quantified resume metrics.</p>
       </div>
 
       <div class="company-nav-cards">
-        <!-- Card 1: Sportstech -->
         <button type="button" class="company-card active" id="cc-0" onclick="switchCompany(0, true)">
           <div class="cc-meta">
             <span class="cc-domain">Consumer IoT</span>
@@ -1401,16 +1702,9 @@
             <div class="cc-name">Sportstech</div>
             <div class="cc-role">Product Manager · Connected Fitness &amp; Subscription Ecosystem</div>
           </div>
-          <div class="cc-environment-stack">
-            <span class="env-tag">Smart Hardware</span>
-            <span class="env-tag">Mobile App</span>
-            <span class="env-tag">AI Coaching</span>
-            <span class="env-tag">Subscription</span>
-          </div>
           <div class="cc-coverage-badge"><b>5 evidence stories</b> · 7 quantified metrics covered</div>
         </button>
 
-        <!-- Card 2: GetAI × ITC Infotech -->
         <button type="button" class="company-card" id="cc-1" onclick="switchCompany(1, true)">
           <div class="cc-meta">
             <span class="cc-domain">Enterprise AI</span>
@@ -1420,16 +1714,9 @@
             <div class="cc-name">GetAI × ITC Infotech</div>
             <div class="cc-role">Product Manager · Shop Floor IOMS &amp; AI Contracts CMS</div>
           </div>
-          <div class="cc-environment-stack">
-            <span class="env-tag">Plant Ops</span>
-            <span class="env-tag">Offline Sync</span>
-            <span class="env-tag">AI Drafting</span>
-            <span class="env-tag">Clause Review</span>
-          </div>
           <div class="cc-coverage-badge"><b>3 evidence stories</b> · 4 quantified metrics covered</div>
         </button>
 
-        <!-- Card 3: VS Happy Infotech -->
         <button type="button" class="company-card" id="cc-2" onclick="switchCompany(2, true)">
           <div class="cc-meta">
             <span class="cc-domain">Fintech Lending</span>
@@ -1439,24 +1726,15 @@
             <div class="cc-name">VS Happy Infotech</div>
             <div class="cc-role">Project Manager → Product Manager (from 2022)</div>
           </div>
-          <div class="cc-environment-stack">
-            <span class="env-tag">Self-Service</span>
-            <span class="env-tag">Intake Funnel</span>
-            <span class="env-tag">Underwriting</span>
-            <span class="env-tag">SQL Dashboards</span>
-          </div>
           <div class="cc-coverage-badge"><b>4 evidence stories</b> · 5 quantified metrics covered</div>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-     04: EVIDENCE VIEWPORT
-  ======================================================== -->
+  <!-- SCREEN 05: EVIDENCE VIEWPORT -->
   <section class="evidence-viewport" id="evidenceViewport">
     <div class="wrap">
-      <!-- Company Meta Context -->
       <div class="ev-company-header">
         <div class="ev-title-area">
           <div class="eyebrow" id="evCompanyDomain">Consumer IoT</div>
@@ -1469,8 +1747,12 @@
         </div>
       </div>
 
-      <!-- Explicit 3-Tier Ownership Boundary Rail -->
+      <!-- Scope & Ownership Rail -->
       <div class="ev-meta-rail">
+        <div class="ev-meta-line">
+          <span class="ev-meta-kicker scope">Scope</span>
+          <span class="ev-meta-val scope" id="evScopeVal">Connected hardware onboarding · Smart Gym · AI coaching · Workout experience · Subscription growth</span>
+        </div>
         <div class="ev-meta-line">
           <span class="ev-meta-kicker owned">Owned</span>
           <span class="ev-meta-val owned" id="evOwnedVal">Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking</span>
@@ -1479,13 +1761,9 @@
           <span class="ev-meta-kicker partnered">Partnered</span>
           <span class="ev-meta-val partnered" id="evPartneredVal">UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing</span>
         </div>
-        <div class="ev-meta-line">
-          <span class="ev-meta-kicker not-mine">Not Mine</span>
-          <span class="ev-meta-val not-mine" id="evNotMineVal">Hardware PCB/BLE firmware manufacturing · Gym hardware industrial tooling · Membership base pricing</span>
-        </div>
       </div>
 
-      <!-- Editorial Master Header -->
+      <!-- Master Header -->
       <div class="deep-evidence-master-header">
         <div class="demh-left">
           <div class="from-resume-label">From Resume · Evidence Behind The Claim</div>
@@ -1514,20 +1792,19 @@
     </div>
   </section>
 
-  <!-- 05: PATTERNS & INTELLECTUAL HONESTY -->
+  <!-- PATTERNS & INTELLECTUAL HONESTY -->
   <section class="evidence-shows-sec" id="synthesis">
     <div class="wrap">
       <div class="ess-layout">
         <div class="ess-copy">
-          <div class="eyebrow" style="color:#C79E43;">Product Synthesis</div>
+          <div class="eyebrow" style="color:#C79E43;">04 / 05 · Product Synthesis</div>
           <h2>Patterns observed across environments.</h2>
-          <p>Across fintech, enterprise manufacturing, and connected consumer hardware, four operational patterns repeatedly shaped adoption and velocity.</p>
+          <p>Across fintech, enterprise manufacturing, and connected consumer hardware, four operational patterns repeatedly surfaced across the work.</p>
 
-          <!-- Defensible PM Signal: When Evidence Changed My Mind -->
           <div class="mind-change-box">
             <div class="mind-change-tag">Intellectual Honesty · When Evidence Changed My Mind</div>
             <div class="mind-change-text">
-              At Sportstech, our initial hypothesis was that device setup drop-offs were driven by insufficient instructional guidance, leading to calls for animated video guides. Telemetry analysis disproved this: users weren't abandoning due to confusion; they were encountering Bluetooth stack discovery timeouts. We shifted focus from educational tutorials to the connection flow itself, after which onboarding setup completion improved materially.
+              At Sportstech, our initial hypothesis was that device setup drop-offs were driven by insufficient instructional guidance, leading to calls for animated video guides. Telemetry analysis changed that diagnosis: users were not abandoning because they lacked guidance; the connection flow itself was the bottleneck. We shifted focus from educational tutorials to the connection flow, after which onboarding setup completion improved materially.
             </div>
           </div>
         </div>
@@ -1558,13 +1835,13 @@
     </div>
   </section>
 
-  <!-- 06: THE ECOSYSTEM -->
+  <!-- SCREEN 06: THE ECOSYSTEM -->
   <section class="ecosystem-sec" id="ecosystem">
     <div class="wrap">
       <div class="eco-head">
-        <div class="eyebrow" style="color:#C79E43;">The Ecosystem</div>
+        <div class="eyebrow" style="color:#C79E43;">05 / 05 · The Next Step</div>
         <h2>Four layers. One coherent body of work.</h2>
-        <p>Four interconnected artifacts addressing distinct evaluation questions across the candidate journey.</p>
+        <p>Four interconnected steps, each answering a different evaluation question.</p>
       </div>
 
       <div class="eco-system-architecture">
@@ -1572,7 +1849,7 @@
           <div>
             <div class="esa-step-tag">1 · Career Context</div>
             <div class="esa-title">Resume</div>
-            <div class="esa-question">What did I do?</div>
+            <div class="esa-question">"What did I do?"</div>
             <div class="esa-body">Career trajectory, titles, companies, and quantified achievements structured for fast recruiter evaluation.</div>
           </div>
           <a href="./Avinash_Resume.pdf" target="_blank" rel="noopener" class="esa-link">View Resume (PDF) ↗</a>
@@ -1582,7 +1859,7 @@
           <div>
             <div class="esa-step-tag">2 · Product Mindset</div>
             <div class="esa-title">Beyond My Resume</div>
-            <div class="esa-question">How do I think?</div>
+            <div class="esa-question">"How do I think?"</div>
             <div class="esa-body">Product mental models, prioritization frameworks, discovery trade-offs, and lessons from execution failures.</div>
           </div>
           <a href="https://beyondmyresume.com" target="_blank" rel="noopener" class="esa-link">Explore The Thinking ↗</a>
@@ -1592,7 +1869,7 @@
           <div>
             <div class="esa-step-tag" style="color:var(--signal);">3 · Production Evidence</div>
             <div class="esa-title">The Evidence</div>
-            <div class="esa-question" style="color:var(--signal);">How that thinking held up</div>
+            <div class="esa-question" style="color:var(--signal);">"How that thinking held up"</div>
             <div class="esa-body">The proof behind the bullet points: real operational constraints, direct PM ownership, shipped workflows, and reported outcomes across 12 stories.</div>
           </div>
           <span style="font-size: 0.72rem; font-weight:700; color:var(--signal); margin-top:12px; letter-spacing:0.04em;">You Are Here</span>
@@ -1602,7 +1879,7 @@
           <div>
             <div class="esa-step-tag">4 · The Conversation</div>
             <div class="esa-title">The Interview</div>
-            <div class="esa-question">Let's discuss the work</div>
+            <div class="esa-question">"Let's discuss the work"</div>
             <div class="esa-body">Direct conversation: testing assumptions, probing trade-offs, and discussing role fit.</div>
           </div>
           <a href="https://www.linkedin.com/in/avinash-pm/" target="_blank" rel="noopener" class="esa-link">Connect on LinkedIn ↗</a>
@@ -1647,9 +1924,9 @@
       name: "Sportstech",
       what: "A connected fitness ecosystem spanning smart hardware (treadmills, bikes, rowing machines, Smart Gym strength equipment), companion mobile apps, workout streaming, and personalized workout recommendations.",
       roleDesc: "Product Manager responsible for connected fitness experiences, hardware onboarding, AI coaching, and subscription growth experiments.",
+      scopeVal: "Connected hardware onboarding · Smart Gym · AI coaching · Workout experience · Subscription growth",
       ownedLine: "Problem framing · PRD acceptance criteria · BLE discovery states · Experiment timing · Milestone tracking",
       partneredLine: "UI/UX visual states · Mobile engineering squad · Hardware QA team · Growth marketing",
-      notMineLine: "Hardware PCB/BLE firmware manufacturing · Gym hardware industrial tooling · Membership base pricing",
       bullets: [
         {
           isFlagship: true,
@@ -1748,7 +2025,7 @@
         {
           outcome: "+81.9%",
           outcomeSub: "YoY Subscriber Scale",
-          headline: "Scaled connected ecosystem through hardware-app synergy across 174K+ users",
+          headline: "Strengthened the hardware-to-software loop across the connected ecosystem",
           bizContext: "Company-level expansion goal: scaling recurring subscription volume across hardware buyers.",
           problemBehind: "Hardware sales and software subscriptions were operating as disconnected revenue channels, limiting compounding subscriber growth across the expanding freemium member base.",
           investigation: "Connecting the unboxing moment directly to software value strengthened the activation loop across single and multi-device hardware owners.",
@@ -1777,9 +2054,9 @@
       name: "GetAI × ITC Infotech",
       what: "Digital operations and AI transformation for ITC's Foods & Beverages plants (snacks, noodles, pasta, biscuits, and staples).",
       roleDesc: "Product Manager owning two enterprise workflows: shop-floor operations through IOMS and AI-assisted contract workflows through CMS.",
+      scopeVal: "Shop-floor digitization · IOMS mobile sync · AI contract workflows · Clause variance review · Plant analytics",
       ownedLine: "IOMS mobile sync requirements · CMS AI prompt boundary guidelines · Human review gate logic · KPI schemas",
       partneredLine: "Plant engineering leads · Enterprise UI designers · Security/compliance auditors · Plant supervisors",
-      notMineLine: "Plant physical Wi-Fi mesh network infrastructure · SAP ERP core ledger administration · Corporate legal sign-offs",
       bullets: [
         {
           isFlagship: true,
@@ -1863,9 +2140,9 @@
       name: "VS Happy Infotech",
       what: "A US-based financial services platform managing auto title, mortgage, commercial, and personal loan origination.",
       roleDesc: "Joined as Project Team Manager in 2020; transitioned into Product Manager in 2022 owning applicant self-service, document intake, and operational reporting.",
+      scopeVal: "Loan onboarding · Self-service applications · Document intake · Queue visibility · SLA reporting",
       ownedLine: "Self-service funnel PRDs · Document validation rules · SQL dashboard schemas · Sprint grooming prioritization",
       partneredLine: "Underwriting operations heads · Frontend web designers · Database engineers · Compliance officers",
-      notMineLine: "Capital credit risk thresholds · Credit bureau licensing agreements · Loan balance underwriting decisions",
       bullets: [
         {
           outcome: "+20 · -20%",
@@ -2010,10 +2287,10 @@
     document.getElementById('evCompanyWhat').textContent = co.what;
     document.getElementById('evCompanyRoleDesc').textContent = co.roleDesc;
 
-    // 3-Tier Ownership Rail
+    // Scope & Ownership Rail
+    document.getElementById('evScopeVal').textContent = co.scopeVal;
     document.getElementById('evOwnedVal').textContent = co.ownedLine;
     document.getElementById('evPartneredVal').textContent = co.partneredLine;
-    document.getElementById('evNotMineVal').textContent = co.notMineLine;
     document.getElementById('evStoryCount').textContent = `${co.bullets.length} Stories`;
 
     // Render Evidence Stories
@@ -2189,15 +2466,16 @@
   });
 
   const navLinks = document.querySelectorAll('#navlinks a');
-  const sections = ['home', 'foundation', 'work', 'synthesis', 'ecosystem'];
+  const sections = ['home', 'ecosystem-map', 'foundation', 'work', 'evidenceViewport', 'synthesis', 'ecosystem'];
   window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset + 120;
+    const scrollPos = window.pageYOffset + 140;
     sections.forEach((id, i) => {
       const el = document.getElementById(id);
       if (!el) return;
       if (scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
         navLinks.forEach(nl => nl.classList.remove('active'));
-        navLinks[i]?.classList.add('active');
+        const activeLink = document.querySelector(`#navlinks a[href="#${id}"]`);
+        if (activeLink) activeLink.classList.add('active');
       }
     });
   }, { passive: true });
@@ -2206,3 +2484,4 @@
 </script>
 </body>
 </html>
+```
