@@ -188,7 +188,7 @@
       url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=2200&q=80');
     background-size: cover;
     background-position: center 30%;
-    opacity: 0.18;
+    opacity: 0.16;
   }
   .hero-grid-overlay {
     position: absolute;
@@ -353,7 +353,7 @@
   }
 
   /* ========================================================
-     02: THE FOUNDATION (Compressed)
+     02: THE FOUNDATION
   ======================================================== */
   .foundation-sec {
     background: var(--paper-bg);
@@ -436,7 +436,7 @@
   .work-header p {
     font-size: 0.94rem;
     color: var(--muted);
-    max-width: 64ch;
+    max-width: 62ch;
     margin-top: 8px;
   }
 
@@ -1669,9 +1669,9 @@
           learningAdded: "You cannot educate your way out of onboarding friction. Improving the discovery architecture was a higher-leverage intervention than adding setup guide content.",
           artifactTitle: "Representative PM Spec",
           artifactSpec: {
-            title: "Requirement Spec · BLE Proximity Flow",
+            title: "Sanitized Working Requirement · AC-BLE-02",
             tag: "PRD-2025-03",
-            code: "STATE_MACHINE: DISCONNECTED -> RSSI_DETECT (Proximity Threshold) -> AUTO_PAIR -> CALIBRATION_INIT\nAC-1.2: If discovery latency > timeout threshold, execute background retry before surfacing user-facing recovery UI."
+            code: "CONNECTION_FLOW: DISCONNECTED -> RSSI Proximity Scan -> Auto-Pair Handshake -> Calibration Prompt\nAC-1.2: If discovery exceeds timeout threshold, trigger silent background retry before surfacing manual selection fallback."
           },
           artifactRows: [
             { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "High setup friction" },
@@ -1685,13 +1685,13 @@
           headline: "Moved subscription conversion into workout milestones while reinforcing renewal habits",
           bizContext: "Converting hardware buyers into recurring subscribers and maintaining high renewal retention was necessary to expand margins beyond single hardware unit sales.",
           problemBehind: "Free-tier activation was healthy, but too few newly onboarded hardware owners converted into paid memberships. The paywall was presented upfront during unboxing before users experienced software value, while renewals required ongoing progress reinforcement rather than passive invoicing.",
-          investigation: "Onboarding drop-off logs indicated that presenting premium value during initial setup was premature. Furthermore, cohort analysis showed that members who consistently hit workout milestones were significantly more likely to remain active through renewal cycles.",
+          investigation: "Onboarding drop-off logs indicated that presenting premium value during initial setup was premature. Furthermore, cohort patterns showed stronger renewal retention among members consistently hitting workout milestones.",
           decision: "Tested presenting premium value prompts after users completed meaningful workout milestones rather than during unboxing, while prioritizing progress streaks and milestone recognition to protect long-term renewal retention.",
           pmOwnership: "Defined the subscription experiment matrix, trial offer timing, streak milestone logic, and monitored cohort conversion and retention rates.",
           designCollab: "Partnered with UX Design on contextual post-workout paywall states, milestone celebration cards, and transparent subscription plan comparisons.",
           productChange: "Implemented contextual trial prompts triggered after workout milestones, clearer premium feature distinctions (custom plans and coaching), progress streak tracking, and flexible subscription options.",
           reportedOutcome: "4.3% Paid Conversion Rate · 96.8% Renewal Retention Rate",
-          roleContextNote: "4.3% paid conversion observed from milestone trial prompts; 96.8% annual renewal retention tracked across active subscribed accounts.",
+          roleContextNote: "4.3% paid conversion observed from milestone trial prompts; 96.8% annual renewal retention tracked across active subscribed accounts (observed cohort pattern).",
           measurement: "Paid conversion reached 4.3% among newly onboarded hardware cohorts; 96.8% annual renewal retention tracked across active subscribed accounts.",
           learningAdded: "Timing and contextual relevance of the paywall matter more than aggressive upfront gating on day one; reinforcing consistency through progress milestones sustains long-term retention.",
           artifactTitle: "Monetization & Retention Flow",
@@ -1749,7 +1749,7 @@
           outcome: "+81.9%",
           outcomeSub: "YoY Subscriber Scale",
           headline: "Scaled connected ecosystem through hardware-app synergy across 174K+ users",
-          bizContext: "Hardware sales alone could not support the platform business model; unifying hardware packaging with app onboarding incentives was necessary to drive recurring subscriber scale.",
+          bizContext: "Company-level expansion goal: scaling recurring subscription volume across hardware buyers.",
           problemBehind: "Hardware sales and software subscriptions were operating as disconnected revenue channels, limiting compounding subscriber growth across the expanding freemium member base.",
           investigation: "Connecting the unboxing moment directly to software value strengthened the activation loop across single and multi-device hardware owners.",
           decision: "Prioritized stronger handoffs between hardware ownership, multi-device app pairing, ongoing coaching value, and ecosystem-wide subscription access.",
@@ -1757,7 +1757,7 @@
           designCollab: "Coordinated with Brand & Industrial Design on packaging QR paths, unboxing app handoffs, and multi-device setup screens.",
           productChange: "Delivered unified multi-device pairing and integrated ecosystem subscriptions covering all smart cardio and strength equipment.",
           reportedOutcome: "+81.9% YoY Subscriber Growth",
-          roleContextNote: "Role-level business outcome: +81.9% YoY platform subscriber growth observed across the 174K+ user ecosystem.",
+          roleContextNote: "Platform-level business outcome observed across the connected ecosystem during the multi-device rollout period.",
           measurement: "+81.9% year-over-year subscriber growth tracked across the connected fitness platform.",
           learningAdded: "IoT synergy occurs when hardware ownership directly seeds and accelerates software subscription engagement.",
           artifactTitle: "Ecosystem Scaling Shift",
@@ -1799,9 +1799,9 @@
           learningAdded: "Software must respect real environmental constraints. Designing for offline realities unlocked floor adoption where cloud tools failed.",
           artifactTitle: "Representative Sync Spec",
           artifactSpec: {
-            title: "Sync Architecture · Local Queue & Conflict Rule",
+            title: "Sanitized Working Requirement · AC-SYNC-01",
             tag: "IOMS-SYNC-01",
-            code: "SYNC_RULE: Local IndexedDB -> Batch queue -> Background ping (20s)\nCONFLICT_HANDLING: Shift supervisor timestamp takes precedence on concurrent row edits."
+            code: "SYNC_RULE: Local IndexedDB queue -> Background sync listener -> Automated batch push on network restore.\nCONFLICT_HANDLING: Shift supervisor timestamp takes precedence on concurrent row edits; local cached entries preserved until 200 OK receipt."
           },
           artifactRows: [
             { resolved: false, bold: "Before", text: "Unstable plant connectivity caused form drops and reinforced reliance on paper logbooks", note: "Connectivity gap" },
@@ -1882,11 +1882,11 @@
           roleContextNote: "Primary applicant experience and funnel conversion outcome observed after self-service rollout.",
           measurement: "NPS improvement measured via post-intake customer surveys; churn reduction measured as the decrease in borrower drop-offs between initial inquiry and completed document submission.",
           learningAdded: "Diagnosing whether friction stems from superficial usability versus a structural operating-model dependency is essential before committing engineering resources.",
-          artifactTitle: "Onboarding Flow Architecture",
+          artifactTitle: "Representative Funnel Spec",
           artifactSpec: {
-            title: "Funnel Architecture · 4-Step Intake Decomposition",
+            title: "Sanitized Working Requirement · AC-INTAKE-04",
             tag: "PRD-FUNNEL-04",
-            code: "PROGRESSION: 1. Identity Auth -> 2. Asset Lookup (VIN/Mileage) -> 3. Instant Range -> 4. Doc Upload\nGATE RULE: Do not block app progression on manual CS phone consultation."
+            code: "STAGE_GATES: 1. Identity Auth -> 2. Valuation Engine Query -> 3. Estimated Loan Range -> 4. Self-Service Doc Upload\nHANDOFF_RULE: Direct routing to underwriting queue upon completed document packaging without requiring manual phone intake."
           },
           artifactRows: [
             { resolved: false, bold: "Before (Assisted Journey)", text: "Customer phone call → CS phone intake → Manual app creation → Disjointed email doc request → Email attachment return → Manual verification backlog", note: "CS dependency" },
@@ -2126,7 +2126,7 @@
               <div class="c-artifact-card">
                 <div class="c-art-title">
                   <span>${b.artifactTitle}</span>
-                  <span class="c-art-sublabel">PM Spec</span>
+                  <span class="c-art-sublabel">Working Requirement</span>
                 </div>
                 
                 ${b.artifactSpec ? `
