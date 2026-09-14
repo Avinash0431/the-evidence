@@ -1747,7 +1747,7 @@
             <span class="env-tag">AI Coaching</span>
             <span class="env-tag">Subscription</span>
           </div>
-          <div class="cc-coverage-badge"><b>5 evidence stories</b> · 7 quantified metrics covered</div>
+          <div class="cc-coverage-badge"><b>5 evidence stories</b> · 6 quantified metrics covered</div>
         </button>
 
         <!-- Card 2: GetAI (ITC Infotech) -->
@@ -1861,7 +1861,7 @@
           <div class="instinct-row">
             <b>01 · The bottleneck was rarely where the team first looked</b>
             <span>At Sportstech, pairing failure looked like an onboarding tutorial issue until funnel drop-off pointed to the BLE discovery flow. At VS Happy, backlogs prompted calls for more phone reps until self-service proved intake architecture was the bottleneck.</span>
-            <span class="proof-cite">Seen across: Sportstech (+25% Activation) · VS Happy (14 → 6d TTV)</span>
+            <span class="proof-cite">Seen across: Sportstech (Smart Gym 0→1) · VS Happy (14 → 6d TTV)</span>
           </div>
 
           <div class="instinct-row">
@@ -1977,7 +1977,7 @@
 ======================================================== -->
 <script>
   const companiesData = [
-    // 0: Sportstech (5 Evidence Stories covering 7 Quantified Metrics)
+    // 0: Sportstech (5 Evidence Stories covering 6 Quantified Metrics)
     {
       slug: "sportstech",
       domain: "Consumer IoT · Connected Fitness",
@@ -1994,24 +1994,24 @@
       ownershipLine: "Core Ownership: Product discovery · Companion app PRDs · Feature prioritization · Experiment design · Cross-functional rollout",
       bullets: [
         {
-          outcome: "+25% Day-1 Activation",
-          headline: "Redesigned device pairing from manual setup to guided discovery",
-          bizContext: "Pairing was the gateway to the entire connected fitness experience; drop-offs here halted engagement before habit formation could start.",
-          problemBehind: "Newly unboxed smart fitness equipment required pairing with the companion mobile app before users could start their first workout. Customers were dropping off during unboxing because the setup flow involved manual device selection and ambiguous connection states. The friction was not a lack of setup tutorials, but friction in the discovery and connection flow itself.",
-          investigation: "Onboarding analytics and customer support tickets showed that users experienced friction attempting to complete hardware discovery after unboxing. The friction was concentrated in the connection flow, not in the availability of setup guidance.",
-          decision: "Rather than adding more tutorial copy or guide videos, we redesigned the device connection flow directly in the companion app to remove friction.",
-          pmOwnership: "Authored PRD requirements, defined discovery states, and set activation metrics.",
-          designCollab: "Collaborated with Product Design on UX discovery states, connection progress cues, and retry visual feedback.",
-          productChange: "Replaced multi-step manual device selection with a guided discovery flow that gave immediate visual connection feedback upon opening the app.",
-          reportedOutcome: "+25% Day-1 Activation",
-          roleContextNote: "Primary onboarding initiative outcome among newly unboxed hardware cohorts.",
-          measurement: "Reported outcome: Day-1 activation tracked for cohorts completing device pairing and an initial workout session within 24 hours of setup.",
-          learningAdded: "You cannot market or educate your way out of onboarding friction. Solving the device setup experience was a higher-leverage growth action than adding guide content.",
-          artifactTitle: "Device Onboarding: Manual Setup vs. Guided Flow",
+          outcome: "0→1 Smart Gym Launch",
+          headline: "Took Smart Gym from 0→1, owning customer research, MVP definition, roadmap, and launch",
+          bizContext: "Smart Gym required an end-to-end product path from customer research through MVP definition, roadmap, and launch within a connected fitness ecosystem.",
+          problemBehind: "The product needed a defined MVP, a sequenced roadmap, and coordinated execution across hardware, mobile, design, and engineering teams.",
+          investigation: "Owned customer research to inform the MVP definition and roadmap, translating the product opportunity into a launchable scope.",
+          decision: "Defined the MVP and roadmap, then took Smart Gym through launch while aligning the hardware, mobile, design, and engineering teams involved.",
+          pmOwnership: "Owned customer research, MVP definition, roadmap, and launch for Smart Gym.",
+          designCollab: "Aligned Product Design with the MVP scope and launch requirements as part of the cross-functional Smart Gym rollout.",
+          productChange: "Took Smart Gym from 0→1 through customer research, MVP definition, roadmap sequencing, and launch across the connected fitness ecosystem.",
+          reportedOutcome: "0→1 Smart Gym Launch",
+          roleContextNote: "End-to-end ownership of the Smart Gym product launch within the connected fitness ecosystem.",
+          measurement: "Launch outcome: Smart Gym taken from 0→1 through customer research, MVP definition, roadmap, and launch. No Smart Gym-specific quantified outcome is claimed here.",
+          learningAdded: "0→1 product work requires connecting discovery, MVP scope, roadmap decisions, and cross-functional launch execution into one coherent product path.",
+          artifactTitle: "Smart Gym: 0→1 Product Path",
           artifactRows: [
-            { resolved: false, bold: "Before (Manual Pairing)", text: "Unbox hardware → Open app → Manual device list search → Ambiguous pairing timeouts → Support calls", note: "Setup friction" },
-            { resolved: true, bold: "After (Guided Discovery)", text: "Unbox hardware → App auto-discovers device → One-tap connection → Immediate calibration workout launch" },
-            { resolved: false, bold: "Reported Outcome", text: "+25% lift in Day-1 device pairing and workout activation" }
+            { resolved: false, bold: "Discovery", text: "Customer research → Product opportunity → MVP definition", note: "Product discovery" },
+            { resolved: true, bold: "Product Path", text: "MVP definition → Roadmap sequencing → Hardware + Mobile + Design + Engineering alignment → Launch" },
+            { resolved: false, bold: "Outcome", text: "Smart Gym taken from 0→1 through end-to-end product ownership" }
           ]
         },
         {
@@ -2292,9 +2292,9 @@
 
   // Evidence in Motion State Engine
   const heroCircuitCycles = [
-    { co: "Sportstech", prob: "Pairing Friction At Unboxing", sol: "Companion app discovery flow redesign", metric: "+25% Activation", out: "+25%" },
+    { co: "Sportstech", prob: "Smart Gym 0→1", sol: "Customer research → MVP → Roadmap → Launch", metric: "0→1 Smart Gym", out: "0→1" },
     { co: "VS Happy", prob: "Manual Intake & 14-Day Cycle", sol: "Self-service document upload workflow", metric: "14 → 6d TTV", out: "6d" },
-    { co: "GetAI × ITC", prob: "Factory Floor Wi-Fi Outages", sol: "Offline-first tablet logging & sync", metric: "+35% Engagement", out: "+35%" }
+    { co: "GetAI (ITC Infotech)", prob: "Factory Floor Wi-Fi Outages", sol: "Offline-first tablet logging & sync", metric: "+35% Engagement", out: "+35%" }
   ];
   let heroCycleIdx = 0;
 
