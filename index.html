@@ -3,11 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Evidence | Avinash R — Product Manager</title>
+<title>The Evidence | Avinash R, Product Manager</title>
 <meta name="description" content="The real-world evidence layer of the Avinash product ecosystem: how product thinking met real constraints, operational decisions, and reported outcomes across 12 evidence stories.">
+    <meta property="og:title" content="The Evidence | Avinash R, Product Manager">
+    <meta property="og:description" content="The real-world evidence layer of the Avinash product ecosystem: how product thinking met real constraints, operational decisions, and reported outcomes across 12 evidence stories.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avinash0431.github.io/the-evidence/">
+    <meta property="og:image" content="https://avinash0431.github.io/the-evidence/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Evidence | Avinash R, Product Manager">
+    <meta name="twitter:description" content="The real-world evidence layer of the Avinash product ecosystem: how product thinking met real constraints, operational decisions, and reported outcomes across 12 evidence stories.">
+    <meta name="twitter:image" content="https://avinash0431.github.io/the-evidence/assets/og-image.png">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
 
 <!-- Proxima Nova Webfont CDN + Fallbacks -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dannymichel/proxima-nova@1.0.1/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,6 +52,7 @@
     --signal-bright: #2DD4B4;
     --signal-dim: rgba(34, 181, 155, 0.12);
     --signal-border: rgba(34, 181, 155, 0.36);
+    --signal-deep: #0E6656;
 
     --brass: #C79E43;
     --brass-dim: rgba(199, 158, 67, 0.12);
@@ -146,6 +157,18 @@
     border-radius: 999px;
     padding: 3px 6px;
   }
+  @media(max-width: 900px) {
+    .wiw-scan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wiw-scan-item:nth-child(2) { border-right: 0; }
+    .wiw-scan-item:nth-child(-n+2) { border-bottom: 1px solid #E7E2D6; }
+  }
+  @media(max-width: 540px) {
+    .wiw-scan-grid { grid-template-columns: 1fr; }
+    .wiw-scan-item { border-right: 0; border-bottom: 1px solid #E7E2D6; }
+    .wiw-scan-item:last-child { border-bottom: 0; }
+    .interview-signal-strip { grid-template-columns: 1fr; }
+  }
+
   @media(max-width: 768px) { nav.links { display: none; } }
   nav.links a {
     font-size: 0.8rem;
@@ -279,7 +302,7 @@
     letter-spacing: 0.02em;
   }
   .hero-role-badge::before {
-    content: "—";
+    content: ",";
     color: var(--brass);
     font-weight: 800;
   }
@@ -435,11 +458,7 @@
   /* ========================================================
      SCREEN 02: ECOSYSTEM MAP (SURFACE 1: RESUME, SURFACE 2: BEYOND MY RESUME, SURFACE 3: THE EVIDENCE)
   ======================================================== */
-  .ecosystem-bridge-sec {
-    background: #0B1017;
-    padding: 56px 0;
-    border-bottom: 1px solid var(--line);
-  }
+  
   .eco-bridge-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -449,22 +468,8 @@
   @media(max-width: 860px) {
     .eco-bridge-grid { grid-template-columns: 1fr; gap: 14px; }
   }
-  .eb-card {
-    background: var(--surface-flat);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: 22px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px;
-    transition: border-color .2s ease;
-  }
-  .eb-card.active-layer {
-    border-color: var(--signal);
-    background: #111A27;
-    box-shadow: 0 0 0 1px var(--signal), 0 10px 24px rgba(34, 181, 155, 0.1);
-  }
+  
+  
   .eb-header-row {
     display: flex;
     justify-content: space-between;
@@ -495,12 +500,7 @@
     background: var(--brass-dim);
     border: 1px solid var(--brass-border);
   }
-  .eb-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
-    color: #fff;
-    margin-bottom: 4px;
-  }
+  
   .eb-question {
     font-size: 0.79rem;
     font-weight: 700;
@@ -512,19 +512,11 @@
     color: var(--muted);
     line-height: 1.5;
   }
-  .eb-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.76rem;
-    font-weight: 800;
-    color: var(--signal-bright);
-    margin-top: 14px;
-  }
+  
 
 
   /* ========================================================
-     02: THE FOUNDATION: COMPACT SYSTEMS BRIDGE
+     01: THE FOUNDATION: COMPACT SYSTEMS BRIDGE
   ======================================================== */
   .foundation-sec {
     background: var(--paper-bg);
@@ -657,7 +649,7 @@
 
 
   /* ========================================================
-     03: THE WORK: PRODUCT ENVIRONMENTS
+     02: THE WORK: PRODUCT ENVIRONMENTS
   ======================================================== */
   .work-sec {
     background: var(--ink-950);
@@ -752,7 +744,7 @@
   .cc-coverage-badge b { color: var(--signal-bright); font-weight: 800; }
 
   /* ========================================================
-     04: EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
+     03: EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
   ======================================================== */
   .evidence-viewport {
     background: var(--paper-bg);
@@ -799,6 +791,28 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+  .wiw-scan-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid #DAD5C6;
+    background: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .wiw-scan-item {
+    padding: 12px 14px;
+    min-width: 0;
+    border-right: 1px solid #E7E2D6;
+  }
+  .wiw-scan-item:last-child { border-right: 0; }
+  .wiw-scan-item strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.79rem;
+    line-height: 1.35;
+    color: #2D333F;
+    font-weight: 700;
   }
   .wiw-row {
     display: flex;
@@ -895,6 +909,36 @@
     justify-self: end;
   }
 
+  .interview-signal-strip {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.25fr 1.25fr .7fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .interview-signal-strip > div {
+    background: #FFFDF8;
+    border: 1px solid #E2DCCB;
+    border-radius: 6px;
+    padding: 11px 12px;
+    min-width: 0;
+  }
+  .interview-signal-strip span {
+    display: block;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8F6A1E;
+    margin-bottom: 5px;
+  }
+  .interview-signal-strip strong {
+    display: block;
+    font-size: 0.76rem;
+    line-height: 1.4;
+    color: #303746;
+    font-weight: 650;
+  }
   .bullets-evidence-list {
     display: flex;
     flex-direction: column;
@@ -1296,7 +1340,7 @@
   .measurement-callout b { display: block; color: var(--paper-text); margin-bottom: 2px; }
 
   /* ========================================================
-     05: PRODUCT SYNTHESIS
+     04: PRODUCT SYNTHESIS
   ======================================================== */
   .evidence-shows-sec {
     background: var(--ink-900);
@@ -1397,7 +1441,7 @@
   }
 
   /* ========================================================
-     06: THE ECOSYSTEM
+     05: THE ECOSYSTEM
   ======================================================== */
   .ecosystem-sec {
     background: var(--paper-bg);
@@ -1489,6 +1533,12 @@
     font-weight: 600;
   }
   .foot-links a:hover { color: #fff; }
+  .reported-outcome-note {
+    margin-top: 7px;
+    font-size: 0.66rem;
+    line-height: 1.35;
+    color: var(--muted-dim);
+  }
 </style>
 </head>
 <body>
@@ -1502,11 +1552,11 @@
     
     <nav class="links" id="navlinks">
       <a href="#home" class="active">Purpose</a>
-      <a href="#ecosystem-map">Ecosystem</a>
       <a href="#foundation">Foundation</a>
       <a href="#work">Work</a>
       <a href="#evidenceViewport">Evidence</a>
       <a href="#synthesis">Synthesis</a>
+      <a href="#ecosystem">Ecosystem</a>
     </nav>
 
     <div class="header-tagline">
@@ -1537,14 +1587,13 @@
 
           <div class="hero-cta-row">
             <a href="#work" class="btn-apple">Explore The Evidence <span class="a">↓</span></a>
-            <a href="#ecosystem-map" class="btn-apple" style="background:transparent;">How To Read This ↗</a>
           </div>
         </div>
 
         <!-- Evidence in Motion: State Engine -->
         <div class="evidence-visual-stage" aria-hidden="true">
           <div class="evs-top">
-            <span>Evidence in Motion</span>
+            <span>Evidence in Motion · Preview</span>
             <div class="circuit-company-indicator" id="heroCircuitCompany">
               <span class="live-dot"></span> <span id="heroCircuitCoName">Sportstech</span>
             </div>
@@ -1563,23 +1612,21 @@
 
               <g class="circuit-node active" transform="translate(140, 50)">
                 <circle cx="0" cy="0" r="8" />
-                <text class="n-label" x="-12" y="-14">Diagnosis</text>
+                
               </g>
 
               <g class="circuit-node active" transform="translate(140, 130)">
                 <circle cx="0" cy="0" r="10" />
-                <text class="n-label" x="-24" y="22">Trade-off</text>
                 <text class="n-head" x="-24" y="-16">Decision</text>
               </g>
 
               <g class="circuit-node active" transform="translate(280, 130)">
                 <circle cx="0" cy="0" r="8" />
-                <text class="n-label" x="-10" y="20">Shipped</text>
+                
               </g>
 
               <g class="circuit-node active" transform="translate(280, 50)">
                 <circle cx="0" cy="0" r="10" />
-                <text class="n-label" x="-20" y="-16">Measurement</text>
                 <text class="n-head" x="-22" y="26">Outcome</text>
               </g>
 
@@ -1603,64 +1650,8 @@
     </div>
   </section>
 
-  <!-- SCREEN 02: ECOSYSTEM MAP (SURFACE 1: RESUME, SURFACE 2: BEYOND MY RESUME, SURFACE 3: THE EVIDENCE) -->
-  <section class="ecosystem-bridge-sec" id="ecosystem-map">
-    <div class="wrap">
-      <div style="margin-bottom: 24px;">
-        <span class="chapter-tag">The Hiring Ecosystem</span>
-        <h2 style="font-family:'DM Serif Display',serif; font-size:1.9rem; color:#fff; font-weight:400;">Three surfaces. One coherent body of work.</h2>
-        <p style="color:var(--muted); font-size:0.92rem; max-width:64ch; margin-top:4px;">Each layer answers a fundamentally different question across the candidate evaluation journey.</p>
-      </div>
-
-      <div class="eco-bridge-grid">
-        <!-- SURFACE 01 -->
-        <div class="eb-card">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number">Surface 01</span>
-              <span class="eb-badge external">Resume</span>
-            </div>
-            <div class="eb-title">Resume</div>
-            <div class="eb-question">"What did I do?"</div>
-            <div class="eb-desc">Titles, companies, progression, and quantified outcomes formatted for rapid recruiter screening.</div>
-          </div>
-          <a href="./assets/Avinash_Resume.pdf" target="_blank" rel="noopener" class="eb-link">View Resume (PDF) ↗</a>
-        </div>
-
-        <!-- SURFACE 02 -->
-        <div class="eb-card">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number">Surface 02</span>
-              <span class="eb-badge external">Beyond Resume</span>
-            </div>
-            <div class="eb-title">Beyond My Resume</div>
-            <div class="eb-question">"How do I think?"</div>
-            <div class="eb-desc">First-principles product framing, mental models, prioritization frameworks, and trade-offs.</div>
-          </div>
-          <a href="https://avinash0431.github.io/beyond-my-resume/" target="_blank" rel="noopener" class="eb-link">Explore The Thinking ↗</a>
-        </div>
-
-        <!-- SURFACE 03 -->
-        <div class="eb-card active-layer">
-          <div>
-            <div class="eb-header-row">
-              <span class="eb-number" style="color:var(--signal-bright);">Surface 03</span>
-              <span class="eb-badge here">Active Layer</span>
-            </div>
-            <div class="eb-title">The Evidence</div>
-            <div class="eb-question" style="color:var(--signal-bright);">"How did that thinking hold up?"</div>
-            <div class="eb-desc">The reality behind the claims: messy operational constraints, decisions made, workflows shipped, and measured outcomes.</div>
-          </div>
-          <span style="font-size:0.75rem; font-weight:800; color:var(--signal-bright); margin-top:14px;">Current Verification Surface ✓</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- ========================================================
-     02: THE FOUNDATION: COMPACT SYSTEMS BRIDGE
+     01: THE FOUNDATION: COMPACT SYSTEMS BRIDGE
   ======================================================== -->
   <section class="foundation-sec" id="foundation">
     <div class="wrap">
@@ -1711,12 +1702,12 @@
       </div>
 
       <div class="transfer-conclusion-banner">
-        <strong>The Transfer:</strong> Physical production taught me that execution delays almost always originate in an unaddressed dependency or handoff—a principle that directly drives my product roadmapping today.
+        <strong>The Transfer:</strong> Physical production taught me that execution delays almost always originate in an unaddressed dependency or handoff, a principle that directly drives my product roadmapping today.
       </div>
     </div>
   </section>
   <!-- ========================================================
-     03: THE WORK: PRODUCT ENVIRONMENTS
+     02: THE WORK: PRODUCT ENVIRONMENTS
   ======================================================== -->
   <section class="work-sec" id="work">
     <div class="wrap">
@@ -1789,7 +1780,7 @@
   </section>
 
   <!-- ========================================================
-     04: EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
+     03: EVIDENCE VIEWPORT: EVIDENCE STORIES DIRECTLY
   ======================================================== -->
   <section class="evidence-viewport" id="evidenceViewport">
     <div class="wrap">
@@ -1797,46 +1788,44 @@
       <div class="ev-company-header">
         <div class="ev-title-area">
           <div class="eyebrow" id="evCompanyDomain">Consumer IoT</div>
-          <h3 id="evCompanyName">Sportstech</h3>
+          <h3 id="evCompanyName" aria-live="polite">Sportstech</h3>
           <p id="evCompanyWhat">A connected fitness ecosystem spanning smart hardware (treadmills, bikes, rowing machines, Smart Gym strength equipment), companion mobile apps, workout streaming, and personalized workout recommendations.</p>
         </div>
         <div class="ev-company-role">
           <b>Role Scope &amp; Focus</b>
-          <span id="evCompanyRoleDesc">Product Manager responsible for connected fitness experiences, hardware onboarding, AI coaching, and subscription growth experiments.</span>
+          <span id="evCompanyRoleDesc">Product Manager shaping connected fitness experiences across hardware, mobile, AI coaching, and subscription growth.</span>
         </div>
       </div>
 
-      <!-- Scope & Ownership Flat Strip -->
+      <!-- Scope & Ownership Scan Strip -->
       <div class="what-i-worked-on-box">
-        <div class="wiw-row">
-          <span class="wiw-label">What I Worked On:</span>
-          <div class="wiw-tags" id="evScopeTags">
-            <!-- Dynamically populated tags -->
-          </div>
+        <div class="wiw-scan-grid">
+          <div class="wiw-scan-item"><span class="wiw-label">Environment</span><strong id="evEnvironment">Consumer IoT · Connected Fitness</strong></div>
+          <div class="wiw-scan-item"><span class="wiw-label">Product Surface</span><strong id="evProductSurface">Hardware · Mobile · AI · Subscription</strong></div>
+          <div class="wiw-scan-item"><span class="wiw-label">Responsibility</span><strong id="evResponsibility">Discovery · Roadmap · Prioritization · Rollout</strong></div>
+          <div class="wiw-scan-item"><span class="wiw-label">Evidence</span><strong id="evEvidenceSummary">5 stories · 6 quantified outcomes</strong></div>
         </div>
-        <div class="wiw-ownership-line" id="evOwnershipLine">
-          <!-- Dynamically populated ownership signal -->
-        </div>
+        <div class="wiw-ownership-line" id="evOwnershipLine"></div>
       </div>
 
       <!-- Evidence Stories Section -->
       <div class="deep-evidence-heading">
         <div class="deep-evidence-heading-copy">
-          <div class="from-resume-heading">From resume</div>
+          <div class="from-resume-heading">Resume claim → evidence</div>
           <div class="deep-evidence-title">Evidence Stories</div>
         </div>
-        <div class="deep-evidence-heading-note">Outcome → investigation → decision → product change → measured result</div>
+        <div class="deep-evidence-heading-note">Outcome → investigation → decision → product change → measured result</div><div class="reported-outcome-note">Reported outcomes reflect the source work and are not presented as independently audited figures.</div>
       </div>
 
       <!-- Resume Bullets & In-Place Expandable Stories for ALL BULLETS -->
-      <div class="bullets-evidence-list" id="evBulletsList">
+      <div class="bullets-evidence-list" id="evBulletsList" aria-live="polite">
         <!-- Dynamically populated evidence stories -->
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-     05: PRODUCT SYNTHESIS
+     04: PRODUCT SYNTHESIS
   ======================================================== -->
   <section class="evidence-shows-sec" id="synthesis">
     <div class="wrap">
@@ -1858,12 +1847,12 @@
           <div class="instinct-row">
             <b>01 · The bottleneck was rarely where the team first looked</b>
             <span>At Sportstech, flat acquisition could have led to more acquisition spend, but the decision was to strengthen the product itself through coaching intelligence. At VS Happy, slow time-to-value could have led to more support capacity, but workflow redesign proved the higher-leverage intervention.</span>
-            <span class="proof-cite">Seen across: Sportstech (Smart Gym 0→1) · VS Happy (14 → 6d TTV)</span>
+            <span class="proof-cite">Seen across: Sportstech (+30% Acquisition) · VS Happy (14 → 6d TTV)</span>
           </div>
 
           <div class="instinct-row">
-            <b>02 · The physical environment shapes the software architecture</b>
-            <span>A factory floor with intermittent connectivity cannot depend on always-online forms. A connected fitness product also has hardware, mobile, and product dependencies that shape what a viable MVP and launch path look like. Designing for the real environment matters.</span>
+            <b>02 · The operating environment shapes the product architecture</b>
+            <span>A factory floor with intermittent connectivity cannot depend on always-online forms. A connected fitness product has hardware, mobile, and product dependencies that shape the viable MVP and launch path. Designing for the actual operating environment matters.</span>
             <span class="proof-cite">Seen across: GetAI (+35% Engagement) · Sportstech (Smart Gym 0→1)</span>
           </div>
 
@@ -1876,7 +1865,7 @@
           <div class="instinct-row">
             <b>04 · Measuring operational movement, not release outputs</b>
             <span>Shipping software is an output. The meaningful evaluation is whether activation, session completion, cycle time, or retention moved after rollout.</span>
-            <span class="proof-cite">Seen across all 12 evidence stories</span>
+            <span class="proof-cite">Seen across: Sportstech (+22% Session Completion) · GetAI (95% On-Time Delivery)</span>
           </div>
         </div>
       </div>
@@ -1884,7 +1873,7 @@
   </section>
 
   <!-- ========================================================
-     06: THE ECOSYSTEM
+     05: THE ECOSYSTEM
   ======================================================== -->
   <section class="ecosystem-sec" id="ecosystem">
     <div class="wrap">
@@ -1980,15 +1969,11 @@
       domain: "Consumer IoT · Connected Fitness",
       name: "Sportstech",
       what: "A connected fitness ecosystem spanning smart hardware (treadmills, bikes, rowing machines, Smart Gym strength equipment), companion mobile apps, workout streaming, and personalized workout recommendations.",
-      roleDesc: "Product Manager responsible for connected fitness experiences, hardware onboarding, AI coaching, and subscription growth experiments.",
-      scopeTags: [
-        "Connected hardware onboarding",
-        "Smart Gym",
-        "AI coaching",
-        "Workout experience",
-        "Subscription growth"
-      ],
-      ownershipLine: "Core Ownership: Product discovery · Companion app PRDs · Feature prioritization · Experiment design · Cross-functional rollout",
+      roleDesc: "Product Manager shaping connected fitness experiences across hardware, mobile, AI coaching, and subscription growth.",
+      ownershipLine: "Operating at system level: cross-functional alignment across hardware, mobile, design, and engineering, with roadmap and launch accountability.",
+      productSurface: "Hardware · Mobile · AI · Subscription",
+      responsibility: "Discovery · Roadmap · Prioritization · Experiment design · Rollout",
+      evidenceSummary: "5 stories · 6 quantified outcomes",
       bullets: [
         {
           outcome: "0→1 Smart Gym Launch",
@@ -2105,15 +2090,10 @@
       name: "GetAI (ITC Infotech)",
       what: "Digital operations and AI transformation for ITC's Foods & Beverages plants (snacks, noodles, pasta, biscuits, and staples).",
       roleDesc: "Product Manager owning two enterprise workflows: shop-floor operations through IOMS and AI-assisted contract workflows through CMS.",
-      scopeTags: [
-        "Shop-floor digitization",
-        "IOMS",
-        "Contract workflows",
-        "AI-assisted drafting",
-        "Clause review",
-        "Analytics"
-      ],
-      ownershipLine: "Core Ownership: IOMS mobile sync requirements · CMS AI workflow PRDs & prompt boundaries · Milestone delivery",
+      ownershipLine: "Operating across technical constraints: offline sync, AI workflow boundaries, PRD definition, and milestone delivery across enterprise teams.",
+      productSurface: "IOMS · Offline Sync · AI Contracts · CMS",
+      responsibility: "Requirements · Workflow design · Prompt boundaries · Delivery",
+      evidenceSummary: "3 stories · 4 quantified outcomes",
       bullets: [
         {
           outcome: "+35% Feature Engagement",
@@ -2188,21 +2168,17 @@
       name: "VS Happy Infotech",
       what: "A US-based financial services platform managing auto title, mortgage, commercial, and personal loan origination.",
       roleDesc: "Joined as Project Team Manager in 2020; transitioned into Product Manager in 2022 owning applicant self-service, document intake, and operational reporting.",
-      scopeTags: [
-        "Loan onboarding",
-        "Self-service applications",
-        "Document workflows",
-        "Applicant visibility",
-        "Operational reporting"
-      ],
-      ownershipLine: "Core Ownership: Self-service funnel PRDs · Document verification scope · Milestone KPIs · Backlog prioritization",
+      ownershipLine: "Operating across customer and operational workflows: self-service, document verification, milestone KPIs, and backlog prioritization.",
+      productSurface: "Self-Service · Intake · Verification · Reporting",
+      responsibility: "PRDs · KPI definition · Prioritization · Operational design",
+      evidenceSummary: "4 stories · 5 quantified outcomes",
       bullets: [
         {
           outcome: "+20 NPS Points & -20% Churn",
           headline: "Digitized loan onboarding from assisted intake to customer self-service",
           bizContext: "Customer Success was acting as a manual relay for data entry rather than advising borrowers, inflating churn and customer frustration.",
           problemBehind: "Customer intake was entirely assisted and manual. Borrowers had to contact Customer Success by phone, provide their details, wait for an agent to create the application, and then exchange documents through email before underwriting could begin. The deeper issue wasn't a confusing form. It was that customers depended on Customer Success to move through almost every stage of the journey.",
-          investigation: "Customer feedback and support logs revealed that applications stalled waiting for agent availability rather than customer hesitation. The assisted-intake model itself was the bottleneck—optimizing agent forms would not remove the customer's operational dependency on staff.",
+          investigation: "Customer feedback and support logs revealed that applications stalled waiting for agent availability rather than customer hesitation. The assisted-intake model itself was the bottleneck,optimizing agent forms would not remove the customer's operational dependency on staff.",
           decision: "Transitioned the onboarding model to direct customer self-service rather than adding support headcount to manage phone backlogs.",
           pmOwnership: "Authored the self-service web application PRD, mapped borrower qualification stages, established document acceptance criteria, and aligned underwriting on digital handoffs.",
           designCollab: "Partnered with UX Design on progressive disclosure across intake steps, mobile camera photo-capture guidance, and interactive vehicle valuation range estimates.",
@@ -2332,8 +2308,10 @@
     document.getElementById('evCompanyWhat').textContent = co.what;
     document.getElementById('evCompanyRoleDesc').textContent = co.roleDesc;
 
-    const scopeBox = document.getElementById('evScopeTags');
-    scopeBox.innerHTML = co.scopeTags.map(t => `<span class="wtag">${t}</span>`).join('');
+    document.getElementById('evEnvironment').textContent = co.domain;
+    document.getElementById('evProductSurface').textContent = co.productSurface;
+    document.getElementById('evResponsibility').textContent = co.responsibility;
+    document.getElementById('evEvidenceSummary').textContent = co.evidenceSummary;
     document.getElementById('evOwnershipLine').textContent = co.ownershipLine;
 
     // Render Evidence Stories directly
@@ -2358,6 +2336,11 @@
 
         <div class="bei-story-pane" id="story-${idx}-${i}">
           <div class="causal-grid">
+            <div class="interview-signal-strip">
+              <div><span>Context</span><strong>${b.bizContext}</strong></div>
+              <div><span>Decision</span><strong>${b.decision}</strong></div>
+              <div><span>Consequence</span><strong>${b.reportedOutcome}</strong></div>
+            </div>
             <div class="causal-narrative-steps">
               <div class="c-step">
                 <div class="c-step-title">The Problem Behind The Outcome</div>
@@ -2444,18 +2427,6 @@
     }
   }
 
-  function openDeepStory(coIdx, storyIdx) {
-    const item = document.getElementById(`bei-${coIdx}-${storyIdx}`);
-    if (!item) return;
-
-    item.classList.add('expanded');
-    const trigger = item.querySelector('.bei-trigger');
-    if (trigger) {
-      trigger.setAttribute('aria-expanded', 'true');
-    }
-    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
   function initFromHash(pushHistory) {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     const foundIdx = companiesData.findIndex(c => c.slug === hash);
@@ -2471,7 +2442,8 @@
   });
 
   const navLinks = document.querySelectorAll('#navlinks a');
-  const sections = ['home', 'ecosystem-map', 'foundation', 'work', 'evidenceViewport', 'synthesis'];
+  const sections = ['home', 'foundation', 'work', 'evidenceViewport', 'synthesis', 'ecosystem'];;
+
   window.addEventListener('scroll', () => {
     const scrollPos = window.pageYOffset + 120;
     sections.forEach((id, i) => {
