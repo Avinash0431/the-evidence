@@ -30,11 +30,11 @@
 
     /* Surface Hierarchy */
     --surface-flat: #0E1420;
-    --glass-subtle: rgba(16, 23, 36, 0.65);
-    --glass-active: rgba(22, 33, 52, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-subtle: rgba(16, 23, 36, 0.72);
+    --glass-active: rgba(22, 33, 52, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.12);
     --glass-border-bright: rgba(255, 255, 255, 0.22);
-    --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
+    --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
     --glass-blur: blur(20px) saturate(180%);
     --glass-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.35);
 
@@ -46,7 +46,7 @@
     --paper-muted: #4E5767;
     --paper-sub: #727C8E;
 
-    /* Color System: 90% Neutral · 8% Signal Teal · 2% Brass */
+    /* Color System */
     --signal: #22B59B;
     --signal-bright: #2DD4B4;
     --signal-dim: rgba(34, 181, 155, 0.12);
@@ -62,13 +62,13 @@
     --muted-dim: rgba(250, 249, 246, 0.48);
     --line: rgba(255, 255, 255, 0.08);
     --maxw: 1220px;
-    --header-h: 74px;
+    --header-h: 72px;
   }
 
   * { box-sizing: border-box; }
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -84,13 +84,13 @@
     -webkit-font-smoothing: antialiased;
     font-size: 15px;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     position: relative;
   }
 
   section {
-    scroll-margin-top: calc(var(--header-h) + 16px);
+    scroll-margin-top: calc(var(--header-h) + 20px);
   }
 
   h1, h2, h3, h4 {
@@ -127,19 +127,23 @@
   }
 
   /* ========================================================
-     ORIGINAL FLOATING 3-PART NAV BAR
+     FIXED FLOATING HEADER (STAYS VISIBLE ON SCROLL)
   ======================================================== */
   header {
-    position: sticky;
+    position: fixed;
     top: 12px;
+    left: 0;
+    right: 0;
     z-index: 1000;
     width: 100%;
     max-width: var(--maxw);
     margin: 0 auto;
     padding: 0 clamp(12px, 3vw, 32px);
+    pointer-events: none; /* Allows clicking hero elements behind header edges */
   }
 
   .navrow {
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -150,7 +154,7 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--glass-specular), 0 16px 36px rgba(0, 0, 0, 0.45);
+    box-shadow: var(--glass-specular), 0 16px 36px rgba(0, 0, 0, 0.5);
     position: relative;
   }
 
@@ -171,7 +175,7 @@
     text-transform: uppercase;
   }
 
-  /* Desktop Nav Links (Center) */
+  /* Desktop Nav Links (Centered) */
   nav.links {
     display: flex;
     align-items: center;
@@ -221,102 +225,116 @@
     flex-shrink: 0;
   }
 
-  /* Compact Mobile Trigger Button */
-  .mobile-nav-btn {
+  /* ========================================================
+     MOBILE HAMBURGER BUTTON & DRAWER MENU
+  ======================================================== */
+  .hamburger-btn {
     display: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 7px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #fff;
-    font-size: 0.74rem;
-    font-weight: 700;
+    gap: 4px;
     cursor: pointer;
+    padding: 0;
+    transition: background .2s ease, border-color .2s ease;
     flex-shrink: 0;
-    transition: background .18s ease, border-color .18s ease;
   }
-  .mobile-nav-btn:hover, .mobile-nav-btn.open {
+  .hamburger-btn:hover {
     background: rgba(34, 181, 155, 0.2);
     border-color: var(--signal-bright);
   }
-  .mobile-nav-btn .mn-active-text {
-    color: var(--signal-bright);
-    text-transform: capitalize;
+  .ham-line {
+    display: block;
+    width: 17px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform .22s cubic-bezier(0.16, 1, 0.3, 1), opacity .18s ease;
   }
-  .mn-caret {
-    display: inline-block;
-    font-size: 0.65rem;
-    transition: transform .2s ease;
+  /* Morphing hamburger lines into 'X' when open */
+  .hamburger-btn.open .ham-top {
+    transform: translateY(6px) rotate(45deg);
+    background-color: var(--signal-bright);
   }
-  .mobile-nav-btn.open .mn-caret {
-    transform: rotate(180deg);
+  .hamburger-btn.open .ham-mid {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger-btn.open .ham-bot {
+    transform: translateY(-6px) rotate(-45deg);
+    background-color: var(--signal-bright);
   }
 
-  /* Mobile Dropdown Menu */
-  .mobile-dropdown {
+  /* Mobile Navigation Drawer */
+  .mobile-menu-drawer {
+    pointer-events: auto;
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     left: clamp(12px, 3vw, 32px);
     right: clamp(12px, 3vw, 32px);
-    background: rgba(14, 20, 32, 0.95);
+    background: rgba(10, 15, 24, 0.96);
     border: 1px solid var(--glass-border-bright);
-    border-radius: 14px;
-    padding: 14px;
+    border-radius: 18px;
+    padding: 16px;
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: var(--glass-shadow);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), var(--glass-specular);
     z-index: 1001;
-    animation: dropIn .18s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: drawerSlide .2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  @keyframes dropIn {
-    from { opacity: 0; transform: translateY(-6px); }
+  @keyframes drawerSlide {
+    from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .mobile-dropdown.open {
+  .mobile-menu-drawer.open {
     display: block;
   }
-  .mobile-nav-links {
+  .mobile-nav-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-    margin-bottom: 10px;
+    gap: 8px;
+    margin-bottom: 12px;
   }
-  .mobile-nav-links a {
-    display: block;
-    font-size: 0.8rem;
+  .mobile-nav-list a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--muted);
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all .16s ease;
   }
-  .mobile-nav-links a.active {
+  .mobile-nav-list a.active {
     color: #fff;
     background: rgba(34, 181, 155, 0.22);
     border-color: var(--signal);
     box-shadow: inset 0 1px 1px rgba(255,255,255,0.18);
   }
-  .mobile-menu-tagline {
+  .mobile-drawer-tagline {
     font-size: 0.72rem;
     color: var(--brass);
     font-weight: 700;
     text-align: center;
-    padding-top: 8px;
+    padding-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Responsive Switch for Mobile vs Desktop (including Mobile in Desktop Mode) */
+  /* Responsive Breakpoint for Mobile View vs Desktop View */
   @media (max-width: 880px) {
     nav.links { display: none; }
     .header-tagline { display: none; }
-    .mobile-nav-btn { display: inline-flex; }
-    .navrow { padding: 9px 16px; }
+    .hamburger-btn { display: flex; }
+    .navrow { padding: 8px 14px; }
   }
 
   /* ========================================================
@@ -324,11 +342,9 @@
   ======================================================== */
   .hero-sec {
     position: relative;
-    padding: 76px 0 84px;
+    padding: clamp(92px, 12vw, 118px) 0 84px;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
-    margin-top: -64px;
-    padding-top: 124px;
   }
   .hero-backdrop-photo {
     position: absolute;
@@ -1522,13 +1538,13 @@
 </head>
 <body>
 
-<!-- Floating Header (Original 3-part layout on desktop, compact on mobile) -->
+<!-- FIXED FLOATING HEADER (VISIBLE WHILE SCROLLING IN BOTH MOBILE & DESKTOP) -->
 <header>
   <div class="navrow">
     <!-- Left: Mark -->
     <a href="#home" class="mark">The <span class="r">Evidence.</span><small>Avinash Product Ecosystem</small></a>
     
-    <!-- Middle: Links (Desktop) -->
+    <!-- Middle: Links (Desktop & Desktop-on-Mobile) -->
     <nav class="links" id="navlinks" aria-label="Main Navigation">
       <a href="#home" class="active" data-section="home">Purpose</a>
       <a href="#foundation" data-section="foundation">Foundation</a>
@@ -1543,16 +1559,17 @@
       One candidate · Three lenses
     </div>
 
-    <!-- Mobile Menu Trigger -->
-    <button type="button" class="mobile-nav-btn" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="mn-active-text" id="mobileActiveLabel">Purpose</span>
-      <span class="mn-caret" aria-hidden="true">▼</span>
+    <!-- Mobile Hamburger Menu Button (Mobile View Only) -->
+    <button type="button" class="hamburger-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="ham-line ham-top"></span>
+      <span class="ham-line ham-mid"></span>
+      <span class="ham-line ham-bot"></span>
     </button>
   </div>
 
-  <!-- Mobile Dropdown -->
-  <div class="mobile-dropdown" id="mobileDropdown" aria-hidden="true">
-    <nav class="mobile-nav-links">
+  <!-- Mobile Drawer Menu (Smooth sliding panel on mobile) -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <nav class="mobile-nav-list">
       <a href="#home" class="active" data-section="home" onclick="closeMobileMenu()">Purpose</a>
       <a href="#foundation" data-section="foundation" onclick="closeMobileMenu()">Foundation</a>
       <a href="#work" data-section="work" onclick="closeMobileMenu()">Work</a>
@@ -1560,7 +1577,7 @@
       <a href="#synthesis" data-section="synthesis" onclick="closeMobileMenu()">Synthesis</a>
       <a href="#ecosystem" data-section="ecosystem" onclick="closeMobileMenu()">Ecosystem</a>
     </nav>
-    <div class="mobile-menu-tagline">
+    <div class="mobile-drawer-tagline">
       One candidate · Three lenses
     </div>
   </div>
@@ -2300,22 +2317,24 @@
     setInterval(rotateHeroCircuit, 4500);
   }
 
-  // Mobile menu toggle
+  // Hamburger Menu Interaction
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileDropdown = document.getElementById('mobileDropdown');
+  const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
 
   function toggleMobileMenu() {
-    const isOpen = mobileDropdown.classList.toggle('open');
+    const isOpen = mobileMenuDrawer.classList.toggle('open');
     mobileMenuBtn.classList.toggle('open', isOpen);
     mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
-    mobileDropdown.setAttribute('aria-hidden', String(!isOpen));
+    mobileMenuDrawer.setAttribute('aria-hidden', String(!isOpen));
   }
 
   function closeMobileMenu() {
-    mobileDropdown.classList.remove('open');
-    mobileMenuBtn.classList.remove('open');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    mobileDropdown.setAttribute('aria-hidden', 'true');
+    if (mobileMenuDrawer) {
+      mobileMenuDrawer.classList.remove('open');
+      mobileMenuBtn.classList.remove('open');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenuDrawer.setAttribute('aria-hidden', 'true');
+    }
   }
 
   if (mobileMenuBtn) {
@@ -2331,12 +2350,12 @@
     }
   });
 
-  // Smooth Scroll with Header Offset
+  // Navigation & Company Selection Scroll
   function scrollToEvidenceViewport() {
     const target = document.getElementById('evidenceViewport');
     if (target) {
       const header = document.querySelector('header');
-      const offset = (header ? header.offsetHeight : 70) + 14;
+      const offset = (header ? header.offsetHeight : 70) + 16;
       const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({
         top: targetPos,
@@ -2501,11 +2520,10 @@
     initFromHash(false);
   });
 
-  // Bulletproof ScrollSpy Highlighting (Handles Desktop, Mobile & Desktop-on-Mobile)
+  // ScrollSpy Active State Highlighting (Desktop & Mobile Synchronized)
   const sectionIds = ['home', 'foundation', 'work', 'evidenceViewport', 'synthesis', 'ecosystem'];
   const desktopLinks = document.querySelectorAll('#navlinks a');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-  const mobileActiveLabel = document.getElementById('mobileActiveLabel');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
 
   function setActiveTab(activeId) {
     desktopLinks.forEach(a => {
@@ -2515,13 +2533,6 @@
     mobileLinks.forEach(a => {
       a.classList.toggle('active', a.getAttribute('data-section') === activeId);
     });
-
-    if (mobileActiveLabel) {
-      const activeLink = document.querySelector(`.mobile-nav-links a[data-section="${activeId}"]`);
-      if (activeLink) {
-        mobileActiveLabel.textContent = activeLink.textContent.trim();
-      }
-    }
   }
 
   function handleScrollSpy() {
@@ -2533,14 +2544,14 @@
       document.body.clientHeight, document.documentElement.clientHeight
     );
 
-    // 1. Bottom of page guarantee: if near document end, highlight Ecosystem
+    // 1. Bottom of page check: guarantees Ecosystem highlights at page bottom
     if (scrollY + winHeight >= docHeight - 120) {
       setActiveTab('ecosystem');
       return;
     }
 
-    // 2. Viewport-relative measurement
-    const triggerLine = Math.max(90, winHeight * 0.28);
+    // 2. Viewport relative line trigger for accurate reading position
+    const triggerLine = Math.max(88, winHeight * 0.28);
     let activeId = sectionIds[0];
 
     for (let i = 0; i < sectionIds.length; i++) {
