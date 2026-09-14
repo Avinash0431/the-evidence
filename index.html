@@ -1,33 +1,3 @@
-Here is the complete, updated HTML file.
-
-Key Improvements Made:
-
-1.  Instant Smooth Navigation to Evidence:
-      - Selecting any company from The Work section (on mobile, tablet, or
-        desktop) now immediately switches the dataset and smoothly scrolls
-        directly down to the Evidence Stories Viewport (#evidenceViewport) with
-        proper sticky header offset clearance.
-      - Added clear visual affordance cues (Explore stories ↓) to company cards
-        so users know tapping them immediately loads that company's evidence.
-2.  True Dual-Mode Responsiveness (Mobile + Desktop-on-Mobile + Laptop):
-      - Mobile Viewports (<768px): Stacks the evidence triggers (.bei-trigger),
-        collaboration rails, metrics grid, and company headers cleanly into
-        single-column layouts with comfortable tap targets and no awkward
-        horizontal squishing.
-      - "Desktop Site" on Mobile (~980px–1024px): Fixed rigid widths and added
-        min-width: 0, flexible wrapping, and fluid typography so nothing
-        overflows or breaks if a mobile user requests the desktop version.
-      - Artifact & Causal Steps: On smaller screens, the before/after artifact
-        cards stack under the investigation steps rather than squeezing into 2
-        unusable narrow columns.
-3.  Typography & Layout Alignment:
-      - Fixed alignment on .wiw-scan-grid, .interview-signal-strip, and
-        .deep-evidence-heading across breakpoints.
-      - Fixed header alignment so the floating pill doesn't crush the logo or
-        tagline on smaller mobile screens.
-      - Added overflow-x: hidden to html, body to eliminate any horizontal
-        wobbling on mobile touch devices.
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
